@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Scaffolding - Reference Manual - 19&nbsp; R Environment Essentials</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./baseR_Miscellaneous.html" rel="next">
+<link href="./baseR_Working_with_Files.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Scaffolding - Reference Manual - 19&nbsp; R Environment Essentials">
+<meta property="og:site-name" content="Scaffolding - Reference Manual">
+<meta name="twitter:title" content="Scaffolding - Reference Manual - 19&nbsp; R Environment Essentials">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./baseR_Statements_and_Variables.html">Learning How to Programming</a></li><li class="breadcrumb-item"><a href="./baseR_R_Environment_Essentials.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Environment Essentials</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Scaffolding - Reference Manual</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Purpose</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">IDE</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_components.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">IDE Component Conversations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">IDE Demos Conversations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Learning How to Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Statements_and_Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statements and Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Vectors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Introduction_to_Lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Lists</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Matrix_Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Matrix Operations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Data_Frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with Data Frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Combining_and_Reshaping_Data_Structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combining and Reshaping Data Structures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Casting_and_Structure_Manipulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Casting and Structure Manipulations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Functions_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Functions in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_String_Manipulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">String Manipulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Applying_Functions_Across_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Applying Functions Across Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Probability_Distributions_and_Sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Probability Distributions and Sampling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Dates_and_Times.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dates and Times</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Basic_Graphics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Basic Graphics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Working with Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_R_Environment_Essentials.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Environment Essentials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Miscellaneous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendices_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#checking-r-version" id="toc-checking-r-version" class="nav-link active" data-scroll-target="#checking-r-version"><span class="header-section-number">19.1</span> Checking R version</a>
+  <ul class="collapse">
+  <li><a href="#video" id="toc-video" class="nav-link" data-scroll-target="#video"><span class="header-section-number">19.1.1</span> Video</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="header-section-number">19.1.2</span> Code</a></li>
+  <li><a href="#transcript" id="toc-transcript" class="nav-link" data-scroll-target="#transcript"><span class="header-section-number">19.1.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#installing-and-managing-packages-in-the-numerious-ide" id="toc-installing-and-managing-packages-in-the-numerious-ide" class="nav-link" data-scroll-target="#installing-and-managing-packages-in-the-numerious-ide"><span class="header-section-number">19.2</span> Installing and Managing Packages in the Numerious IDE</a>
+  <ul class="collapse">
+  <li><a href="#video-1" id="toc-video-1" class="nav-link" data-scroll-target="#video-1"><span class="header-section-number">19.2.1</span> Video</a></li>
+  <li><a href="#code-1" id="toc-code-1" class="nav-link" data-scroll-target="#code-1"><span class="header-section-number">19.2.2</span> Code</a></li>
+  <li><a href="#transcript-1" id="toc-transcript-1" class="nav-link" data-scroll-target="#transcript-1"><span class="header-section-number">19.2.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#getwd-and-setwd" id="toc-getwd-and-setwd" class="nav-link" data-scroll-target="#getwd-and-setwd"><span class="header-section-number">19.3</span> getwd and setwd</a>
+  <ul class="collapse">
+  <li><a href="#video-2" id="toc-video-2" class="nav-link" data-scroll-target="#video-2"><span class="header-section-number">19.3.1</span> Video</a></li>
+  <li><a href="#code-2" id="toc-code-2" class="nav-link" data-scroll-target="#code-2"><span class="header-section-number">19.3.2</span> Code</a></li>
+  <li><a href="#transcript-2" id="toc-transcript-2" class="nav-link" data-scroll-target="#transcript-2"><span class="header-section-number">19.3.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#how-to-write-a-reproducible-example" id="toc-how-to-write-a-reproducible-example" class="nav-link" data-scroll-target="#how-to-write-a-reproducible-example"><span class="header-section-number">19.4</span> How to write a reproducible example</a>
+  <ul class="collapse">
+  <li><a href="#video-3" id="toc-video-3" class="nav-link" data-scroll-target="#video-3"><span class="header-section-number">19.4.1</span> Video</a></li>
+  <li><a href="#code-3" id="toc-code-3" class="nav-link" data-scroll-target="#code-3"><span class="header-section-number">19.4.2</span> Code</a></li>
+  <li><a href="#transcript-3" id="toc-transcript-3" class="nav-link" data-scroll-target="#transcript-3"><span class="header-section-number">19.4.3</span> Transcript</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Environment Essentials</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="checking-r-version" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="checking-r-version"><span class="header-section-number">19.1</span> Checking R version</h2>
+<section id="video" class="level3" data-number="19.1.1">
+<h3 data-number="19.1.1" class="anchored" data-anchor-id="video"><span class="header-section-number">19.1.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code" class="level3" data-number="19.1.2">
+<h3 data-number="19.1.2" class="anchored" data-anchor-id="code"><span class="header-section-number">19.1.2</span> Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>R.version</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript" class="level3" data-number="19.1.3">
+<h3 data-number="19.1.3" class="anchored" data-anchor-id="transcript"><span class="header-section-number">19.1.3</span> Transcript</h3>
+<p><strong>User:</strong> Hey R-Bot, I’ve been told that knowing the R version is important when asking for help online, like on Stack Overflow. Can you explain how to access this information in the IDE?</p>
+<p><strong>R-Bot:</strong> Absolutely! Understanding your R version helps others reproduce your problem, as R's behavior can vary between versions. Let’s dive in and explore how to retrieve this information in the Numerius IDE.</p>
+<section id="step-1-what-is-an-r-version" class="level4" data-number="19.1.3.1">
+<h4 data-number="19.1.3.1" class="anchored" data-anchor-id="step-1-what-is-an-r-version"><span class="header-section-number">19.1.3.1</span> Step 1: What is an R Version?</h4>
+<p><strong>R-Bot:</strong> R versions track updates to the language, including bug fixes, new features, and changes to existing functions. Knowing your version is critical when debugging or troubleshooting because:</p>
+<ul>
+<li><p>Certain features may only exist in newer versions.</p></li>
+<li><p>Functions might behave differently between versions.</p></li>
+<li><p>Bug fixes in one version may not apply to older versions.</p></li>
+</ul>
+<p><strong>User:</strong> That makes sense. So, where can I find this version information?</p>
+<p><strong>R-Bot:</strong> Let’s use a few commands to access it. Open your <strong>Editor Component</strong> in the IDE and type the following commands one by one.</p>
+</section>
+<section id="step-2-checking-the-r-version" class="level4" data-number="19.1.3.2">
+<h4 data-number="19.1.3.2" class="anchored" data-anchor-id="step-2-checking-the-r-version"><span class="header-section-number">19.1.3.2</span> Step 2: Checking the R Version</h4>
+<p><strong>R-Bot:</strong> First, run this command to see a structured summary of your R version:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>User:</strong> Okay, I ran it, and I see this list with a lot of details like platform, arch, and version string.</p>
+<p><strong>R-Bot:</strong> Correct! Let’s break it down:</p>
+<ul>
+<li><p><strong>platform:</strong> Describes the architecture and operating system. Here in the IDE, it’s wasm32-unknown-emscripten, indicating a WebAssembly version of R.</p></li>
+<li><p><strong>arch:</strong> The architecture, which is wasm32.</p></li>
+<li><p><strong>os:</strong> The operating system, here labeled emscripten.</p></li>
+<li><p><strong>system:</strong> Combines architecture and operating system.</p></li>
+<li><p><strong>major/minor:</strong> The R version, which in this case is 4.4.1.</p></li>
+<li><p><strong>year, month, day:</strong> The release date of this version.</p></li>
+</ul>
+</section>
+<section id="step-3-quick-access-to-r-version-information" class="level4" data-number="19.1.3.3">
+<h4 data-number="19.1.3.3" class="anchored" data-anchor-id="step-3-quick-access-to-r-version-information"><span class="header-section-number">19.1.3.3</span> Step 3: Quick Access to R Version Information</h4>
+<p><strong>R-Bot:</strong> If you don’t need the full details, you can use R.version to get the same information as a list:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>R.version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or, for just the version as a string, you can use:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>User:</strong> I see! That one just says R version 4.4.1 (2024-06-14).</p>
+<p><strong>R-Bot:</strong> Exactly. This is concise and great for including in online questions.</p>
+<p><strong>User:</strong> What about version? Is that the same thing?</p>
+<p><strong>R-Bot:</strong> Good question! The version object is actually just a shortcut to R.version. You can use it interchangeably. For example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll see the same structured list of version details.</p>
+</section>
+<section id="step-4-why-version-information-matters" class="level4" data-number="19.1.3.4">
+<h4 data-number="19.1.3.4" class="anchored" data-anchor-id="step-4-why-version-information-matters"><span class="header-section-number">19.1.3.4</span> Step 4: Why Version Information Matters</h4>
+<p><strong>R-Bot:</strong> When asking for help online, sharing your version information can clarify:</p>
+<ol type="1">
+<li><p>Whether you’re using a stable release or a development version.</p></li>
+<li><p>If certain features or bugs might explain your issue.</p></li>
+<li><p>Compatibility issues between your environment and the advice given.</p></li>
+</ol>
+<p>You can copy the output of R.version.string and include it in your question.</p>
+</section>
+<section id="example-use-case" class="level4" data-number="19.1.3.5">
+<h4 data-number="19.1.3.5" class="anchored" data-anchor-id="example-use-case"><span class="header-section-number">19.1.3.5</span> Example Use Case</h4>
+<p><strong>R-Bot:</strong> Let’s pretend you’re reporting an issue on Stack Overflow. You’d say something like:</p>
+<blockquote class="blockquote">
+<p>“I’m using R version 4.4.1 (2024-06-14) on a WebAssembly platform in the Numerius IDE. I’m encountering [describe your problem]. Here’s my code: …”</p>
+</blockquote>
+<p><strong>User:</strong> That’s clear and provides the details someone might need to reproduce the issue.</p>
+</section>
+<section id="recap" class="level4" data-number="19.1.3.6">
+<h4 data-number="19.1.3.6" class="anchored" data-anchor-id="recap"><span class="header-section-number">19.1.3.6</span> Recap</h4>
+<p><strong>R-Bot:</strong> To summarize:</p>
+<ul>
+<li><p>Use R.Version() for detailed version info.</p></li>
+<li><p>Use R.version.string or version for quick summaries.</p></li>
+<li><p>Always include your R version in support requests to help others help you!</p></li>
+</ul>
+<p><strong>User:</strong> Got it! Thanks, R-Bot. This makes it much clearer how to include my R version when asking for help.</p>
+<p><strong>R-Bot:</strong> My pleasure! Let me know if you want to explore more system information.</p>
+</section>
+</section>
+</section>
+<section id="installing-and-managing-packages-in-the-numerious-ide" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="installing-and-managing-packages-in-the-numerious-ide"><span class="header-section-number">19.2</span> Installing and Managing Packages in the Numerious IDE</h2>
+<section id="video-1" class="level3" data-number="19.2.1">
+<h3 data-number="19.2.1" class="anchored" data-anchor-id="video-1"><span class="header-section-number">19.2.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-1" class="level3" data-number="19.2.2">
+<h3 data-number="19.2.2" class="anchored" data-anchor-id="code-1"><span class="header-section-number">19.2.2</span> Code</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">installed.packages</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-1" class="level3" data-number="19.2.3">
+<h3 data-number="19.2.3" class="anchored" data-anchor-id="transcript-1"><span class="header-section-number">19.2.3</span> Transcript</h3>
+<p><strong>User:</strong> Hey, R-Bot, I’ve been having trouble installing packages in the IDE. I tried using install.packages(), but it doesn’t work. Why is that?</p>
+<p><strong>R-Bot:</strong> Great question! The Numerious IDE uses a WebAssembly version of R, which brings some unique limitations. Let me break this down for you.</p>
+<section id="why-install.packages-doesnt-work" class="level4" data-number="19.2.3.1">
+<h4 data-number="19.2.3.1" class="anchored" data-anchor-id="why-install.packages-doesnt-work"><span class="header-section-number">19.2.3.1</span> Why install.packages() Doesn't Work</h4>
+<p><strong>R-Bot:</strong> The usual method of installing packages with install.packages() doesn’t work in this IDE for two main reasons:</p>
+<ol type="1">
+<li><p><strong>Platform Limitations:<br>
+</strong>The IDE runs a WebAssembly build of R on your browser. This version doesn’t have the same system-level capabilities as native R on your computer. Specifically, it cannot dynamically compile and install packages.</p></li>
+<li><p><strong>Network Restrictions:<br>
+</strong>The IDE enforces strict network security rules, called a Content Security Policy (CSP). This ensures your data stays private, but it also blocks external network requests, like those needed to fetch and install packages from CRAN.</p></li>
+</ol>
+<p><strong>User:</strong> Oh, that makes sense. So, how do I install and manage packages here?</p>
+</section>
+<section id="installing-packages-in-the-ide" class="level4" data-number="19.2.3.2">
+<h4 data-number="19.2.3.2" class="anchored" data-anchor-id="installing-packages-in-the-ide"><span class="header-section-number">19.2.3.2</span> Installing Packages in the IDE</h4>
+<p><strong>R-Bot:</strong> The Numerious IDE comes with <strong>batteries included</strong>, meaning many commonly used packages are pre-installed. You can see these in the <strong>Packages Component</strong>. Let’s explore how to work with them:</p>
+<p><em>Viewing Installed Packages:</em><strong><br>
+</strong>Open the <strong>Packages Component</strong> from the sidebar. You’ll see a table of all pre-installed packages, including their names, versions, and descriptions.<br>
+Alternatively, you can list installed packages programmatically by running:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">installed.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><p>This returns a matrix of all installed packages. Each row is a package, and columns include:</p>
+<ul>
+<li><p><strong>Package:</strong> The name of the package.</p></li>
+<li><p><strong>Version:</strong> The version installed.</p></li>
+<li><p><strong>Priority:</strong> Whether it’s a base or recommended package.</p></li>
+<li><p><strong>LibPath:</strong> The library location.</p></li>
+</ul></li>
+<li><p>In the IDE, packages are pre-installed in the shared app-wide library.</p></li>
+</ol>
+<p><em>Attaching a Package:</em><strong><br>
+</strong>To use a package, you need to attach it to your R session. This makes its functions available.<br>
+For example, to attach the dplyr package, use:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Or, in the <strong>Packages Component</strong>, find dplyr in the table and click the <strong>Attach</strong> button (paperclip icon). This sends the library(dplyr) command to the Console Component.</li>
+</ol>
+<p><em>Checking Package Versions:</em><strong><br>
+</strong>Knowing the version of a package is critical when asking for help or troubleshooting. You can check a package version programmatically like this:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Alternatively, look in the <strong>Packages Component</strong> under the <strong>Version</strong> column.</li>
+</ol>
+<p><strong>User:</strong> That’s helpful! So, if I can’t use install.packages(), how do I get additional packages?</p>
+</section>
+<section id="handling-additional-packages" class="level4" data-number="19.2.3.3">
+<h4 data-number="19.2.3.3" class="anchored" data-anchor-id="handling-additional-packages"><span class="header-section-number">19.2.3.3</span> Handling Additional Packages</h4>
+<p><strong>R-Bot:</strong> The Numerious IDE doesn’t support installing new packages from CRAN due to the limitations I mentioned earlier. If you need a package that isn’t pre-installed, here’s what you can do:</p>
+<ol type="1">
+<li><p><strong>Requesting New Packages:<br>
+</strong>Contact the IDE support team or community to request that specific packages be added to future versions.</p></li>
+<li><p><strong>Using Pre-Bundled Libraries:<br>
+</strong>If you’re working on your local machine with native R, you can install the packages you need there and upload the results into the IDE using RDS files.</p></li>
+<li><p><strong>Explore Alternatives:<br>
+</strong>Many common workflows have packages already installed. It’s worth checking if a similar package exists in the pre-installed library.</p></li>
+</ol>
+</section>
+<section id="best-practices-for-troubleshooting-and-help" class="level4" data-number="19.2.3.4">
+<h4 data-number="19.2.3.4" class="anchored" data-anchor-id="best-practices-for-troubleshooting-and-help"><span class="header-section-number">19.2.3.4</span> Best Practices for Troubleshooting and Help</h4>
+<p><strong>R-Bot:</strong> When asking for help online or troubleshooting, here are a few tips:</p>
+<p><em>Always Include the Package Version:</em><strong><br>
+</strong>Whether you’re posting on Stack Overflow or asking a colleague, share the package version. Run this to get it:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><p>Example:<br>
+I’m using dplyr version 1.1.0 in the Numerious IDE (WebAssembly version of R).</p></li>
+<li><p><strong>Share Your Platform Info:<br>
+</strong>The IDE uses a WebAssembly R environment, which has unique constraints. Mention that in your query to help others provide better advice.</p></li>
+<li><p><strong>Use utils::installed.packages() to Explore:<br>
+</strong>This is a comprehensive way to explore what’s available in your IDE.</p></li>
+</ol>
+<p><strong>User:</strong> That’s great advice, R-Bot. I’ll make sure to include the package version and platform details when I ask for help.</p>
+<p><strong>R-Bot:</strong> Perfect! Now you’re equipped to work with and troubleshoot packages in the Numerious IDE. If you need more guidance, I’m always here to help!</p>
+</section>
+</section>
+</section>
+<section id="getwd-and-setwd" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="getwd-and-setwd"><span class="header-section-number">19.3</span> getwd and setwd</h2>
+<section id="video-2" class="level3" data-number="19.3.1">
+<h3 data-number="19.3.1" class="anchored" data-anchor-id="video-2"><span class="header-section-number">19.3.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-2" class="level3" data-number="19.3.2">
+<h3 data-number="19.3.2" class="anchored" data-anchor-id="code-2"><span class="header-section-number">19.3.2</span> Code</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Downloads/MyProject"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>filepath <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">getwd</span>(), <span class="st">"out"</span>, <span class="st">"results.csv"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filepath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-2" class="level3" data-number="19.3.3">
+<h3 data-number="19.3.3" class="anchored" data-anchor-id="transcript-2"><span class="header-section-number">19.3.3</span> Transcript</h3>
+<p><strong>User:</strong> Hey, R-Bot, I keep hearing about getwd() and setwd() when working with R. What are they, and should I use them in the Numerious IDE?</p>
+<p><strong>R-Bot:</strong> Great question! Let’s start with what these functions do. getwd() is a function in R that tells you the <strong>current working directory</strong> of your R session. This is the folder where R is looking for files by default when you use relative paths.</p>
+<p>On the other hand, setwd() is a function that <strong>sets the working directory</strong> to a different folder, allowing you to change where R looks for or saves files. But when you're working in the Numerious IDE, best practices differ a bit.</p>
+<p><strong>User:</strong> Okay, so should I use setwd() in the IDE?</p>
+<p><strong>R-Bot:</strong> The short answer is no, you should avoid using setwd() in the Numerious IDE. Let me explain why:</p>
+<ol type="1">
+<li><p><strong>Working Directory Already Set</strong>: In the IDE, the working directory is automatically set to the <strong>root of your project folder</strong> when you create or open a project. This ensures consistency and keeps things reproducible.</p></li>
+<li><p><strong>Relative Paths Are Best</strong>: You can use relative paths like ./in/yourfile.csv or ./out/results.csv. These paths will work seamlessly within the IDE and when you download your project as a snapshot. By sticking to relative paths, you avoid any surprises when sharing your project or running it elsewhere.</p></li>
+</ol>
+<p><strong>User:</strong> So when would I ever need setwd()?</p>
+<p><strong>R-Bot:</strong> Good question! While you don’t need it in the IDE, setwd() is helpful <strong>outside</strong> the Numerious IDE, for example:</p>
+<p><strong>Running Code Locally</strong>: If you download a snapshot of your project and open it on your computer, you’ll need to use setwd() to tell R where your project files are. For instance, you might set the working directory to the folder where you extracted the snapshot:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Downloads/MyProject"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><strong>Packages Requiring External Applications</strong>: Some packages, like those running Stan models, may not work in the IDE because they depend on software installed on your computer. If you’re running these locally, setwd() ensures your code can find the necessary files.</p></li>
+<li><p><strong>Performance on Other Platforms</strong>: R in the IDE runs on WebAssembly, which isn’t always as fast as native implementations on your local machine. If you’re using C++-backed packages or heavy computation, you might prefer running the code locally, where setting the working directory is necessary.</p></li>
+</ul>
+<p><strong>User:</strong> Got it. So, getwd() is more relevant in the IDE?</p>
+<p><strong>R-Bot:</strong> Exactly! getwd() is super useful in the IDE if you want to <strong>confirm the working directory</strong>. For example, if you’re writing code to generate a file path, you might use:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>filepath <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">getwd</span>(), <span class="st">"out"</span>, <span class="st">"results.csv"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filepath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will print the absolute path to your file, which can be helpful when debugging or sharing paths with someone else.</p>
+<p><strong>User:</strong> So the best practice is to use relative paths in the IDE and only use setwd() when running code locally or for special use cases?</p>
+<p><strong>R-Bot:</strong> Bingo! That’s the golden rule. Stick with relative paths like ./in/yourfile.csv or ./mid/temporaryfile.txt in the IDE. Save setwd() for local work, especially when running snapshots on your own machine or using packages that need external dependencies.</p>
+<p>Remember, by avoiding setwd() in the IDE, your projects remain portable, reproducible, and less prone to path-related bugs. It’s a small habit that goes a long way!</p>
+<p><strong>User:</strong> Thanks, R-Bot! I’ll keep that in mind.</p>
+<p><strong>R-Bot:</strong> Anytime! Now go ahead and try using getwd() to check your current directory, and start practicing relative paths. Happy coding!</p>
+</section>
+</section>
+<section id="how-to-write-a-reproducible-example" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="how-to-write-a-reproducible-example"><span class="header-section-number">19.4</span> How to write a reproducible example</h2>
+<section id="video-3" class="level3" data-number="19.4.1">
+<h3 data-number="19.4.1" class="anchored" data-anchor-id="video-3"><span class="header-section-number">19.4.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-3" class="level3" data-number="19.4.2">
+<h3 data-number="19.4.2" class="anchored" data-anchor-id="code-3"><span class="header-section-number">19.4.2</span> Code</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">structure</span>(<span class="fu">list</span>(<span class="at">mpg =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">21</span>, <span class="fl">22.8</span>, ...)), <span class="at">.Names =</span> <span class="fu">c</span>(<span class="st">"mpg"</span>, ...), <span class="at">class =</span> <span class="st">"data.frame"</span>, <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Mazda RX4"</span>, ...))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">structure</span>(<span class="fu">list</span>(<span class="at">mpg =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">21</span>, <span class="fl">22.8</span>, ...)), <span class="at">.Names =</span> <span class="fu">c</span>(<span class="st">"mpg"</span>, ...), <span class="at">class =</span> <span class="st">"data.frame"</span>, <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Mazda RX4"</span>, ...))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">## This is where the plot doesn't look right</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_data, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp)) <span class="sc">+</span> </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Session info</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-3" class="level3" data-number="19.4.3">
+<h3 data-number="19.4.3" class="anchored" data-anchor-id="transcript-3"><span class="header-section-number">19.4.3</span> Transcript</h3>
+<p><strong>User:</strong> Hey, R-Bot, I keep hearing that I should write reproducible examples when asking for help. What does that mean?</p>
+<p><strong>R-Bot:</strong> Excellent question! A reproducible example, or “reprex,” is a small snippet of R code that allows someone else to recreate your problem. It’s your best tool for getting good help because it makes it easy for others to diagnose and solve your issue.</p>
+<p>Let me walk you through the key steps to create a reproducible example. We’ll follow advice from Hadley Wickham, one of the R legends.</p>
+<p><strong>User:</strong> That sounds great! Where do I start?</p>
+<p><strong>R-Bot:</strong> Step 1 is to <strong>include all required packages</strong> at the top of your script. For example, if your problem involves ggplot2, you should explicitly load it like this:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That way, anyone running your script will immediately know what packages are required. It also ensures they can install the necessary packages if they don’t already have them.</p>
+<p><strong>User:</strong> Okay, and what about the data? That’s usually the tricky part.</p>
+<p><strong>R-Bot:</strong> Excellent question! Step 2 is about <strong>including your data</strong>. The easiest and most reliable way to share data in R is with the dput() function. This generates R code to recreate your dataset.</p>
+<p>For example, if you’re working with the mtcars dataset, you’d do the following:</p>
+<ol type="1">
+<li><p>Run dput(mtcars) in your console.</p></li>
+<li><p>Copy the output—it will look something like this:</p></li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">structure</span>(<span class="fu">list</span>(<span class="at">mpg =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">21</span>, <span class="fl">22.8</span>, ...)), <span class="at">.Names =</span> <span class="fu">c</span>(<span class="st">"mpg"</span>, ...), <span class="at">class =</span> <span class="st">"data.frame"</span>, <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Mazda RX4"</span>, ...))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Paste it into your script, prefixed with the variable assignment:</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">structure</span>(<span class="fu">list</span>(<span class="at">mpg =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">21</span>, <span class="fl">22.8</span>, ...)), <span class="at">.Names =</span> <span class="fu">c</span>(<span class="st">"mpg"</span>, ...), <span class="at">class =</span> <span class="st">"data.frame"</span>, <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Mazda RX4"</span>, ...))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This ensures anyone running your script has the exact same data you’re working with. It avoids confusion or inconsistencies.</p>
+<p><strong>User:</strong> That’s really useful! What’s next?</p>
+<p><strong>R-Bot:</strong> Step 3 is writing <strong>clean, concise, and readable code</strong>. Here’s how to do that effectively:</p>
+<ul>
+<li><strong>Use spaces and clear variable names</strong>: Instead of x, use something like car_data.</li>
+</ul>
+<p><strong>Add comments</strong>: Mark where the problem lies. For example:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">## This is where the plot doesn't look right</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_data, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp)) <span class="sc">+</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Simplify your code</strong>: Remove everything unrelated to the problem. The shorter your script, the easier it is for someone to help.</li>
+</ul>
+<p>Remember, your goal is to make it easy for others to understand the issue.</p>
+<p><strong>User:</strong> Got it. Is there anything else I should include?</p>
+<p><strong>R-Bot:</strong> Step 4 is providing <strong>session information</strong>. This is critical because R packages and environments can vary. Including session info ensures others can see what version of R and packages you’re using.</p>
+<p>At the end of your script, add this:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Session info</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will print details like your R version, operating system, and package versions. It’s especially helpful if your issue might be caused by outdated packages or platform differences.</p>
+<p><strong>User:</strong> How do I know if my example is truly reproducible?</p>
+<p><strong>R-Bot:</strong> Great question! Before sharing, restart your R session, paste your script into the console, and run it. If it works and reproduces the issue exactly as described, you’re good to go. If it doesn’t, refine your script until it does.</p>
+<p><strong>User:</strong> This all makes sense. Can we summarize the steps?</p>
+<p><strong>R-Bot:</strong> Sure! Here’s the checklist for a reproducible example:</p>
+<ol type="1">
+<li><p><strong>Load required packages</strong>: Clearly state all libraries your code depends on.</p></li>
+<li><p><strong>Include data with dput()</strong>: Provide data that reproduces your issue in a sharable format.</p></li>
+<li><p><strong>Write clean and concise code</strong>: Make it easy to read and isolate the problem.</p></li>
+<li><p><strong>Add session info</strong>: Include sessionInfo() to describe your R environment.</p></li>
+<li><p><strong>Test your script</strong>: Restart R and ensure it works as intended.</p></li>
+</ol>
+<p>By following these steps, you’ll save yourself and others time and get much better help.</p>
+<p><strong>User:</strong> Thanks, R-Bot! I’ll start writing better reproducible examples. This will definitely help me get better responses.</p>
+<p><strong>R-Bot:</strong> Happy to help! With these tips, you’ll be an R problem-solving pro in no time. Now, go create some perfect reprexes!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./baseR_Working_with_Files.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Working with Files</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./baseR_Miscellaneous.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

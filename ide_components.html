@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Scaffolding - Reference Manual - 2&nbsp; IDE Component Conversations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ide_demos.html" rel="next">
+<link href="./getting_started.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Scaffolding - Reference Manual - 2&nbsp; IDE Component Conversations">
+<meta property="og:site-name" content="Scaffolding - Reference Manual">
+<meta name="twitter:title" content="Scaffolding - Reference Manual - 2&nbsp; IDE Component Conversations">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ide_components.html">IDE</a></li><li class="breadcrumb-item"><a href="./ide_components.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">IDE Component Conversations</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Scaffolding - Reference Manual</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Purpose</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">IDE</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_components.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">IDE Component Conversations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">IDE Demos Conversations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Learning How to Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Statements_and_Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statements and Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Vectors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Introduction_to_Lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Lists</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Matrix_Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Matrix Operations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Data_Frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with Data Frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Combining_and_Reshaping_Data_Structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combining and Reshaping Data Structures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Casting_and_Structure_Manipulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Casting and Structure Manipulations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Functions_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Functions in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_String_Manipulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">String Manipulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Applying_Functions_Across_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Applying Functions Across Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Probability_Distributions_and_Sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Probability Distributions and Sampling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Dates_and_Times.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dates and Times</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Basic_Graphics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Basic Graphics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Working with Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_R_Environment_Essentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Environment Essentials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Miscellaneous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendices_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link active" data-scroll-target="#scripts"><span class="header-section-number">2.1</span> Scripts</a>
+  <ul class="collapse">
+  <li><a href="#video" id="toc-video" class="nav-link" data-scroll-target="#video"><span class="header-section-number">2.1.1</span> Video</a></li>
+  <li><a href="#transcript" id="toc-transcript" class="nav-link" data-scroll-target="#transcript"><span class="header-section-number">2.1.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#readme" id="toc-readme" class="nav-link" data-scroll-target="#readme"><span class="header-section-number">2.2</span> Readme</a>
+  <ul class="collapse">
+  <li><a href="#video-1" id="toc-video-1" class="nav-link" data-scroll-target="#video-1"><span class="header-section-number">2.2.1</span> Video</a></li>
+  <li><a href="#transcript-1" id="toc-transcript-1" class="nav-link" data-scroll-target="#transcript-1"><span class="header-section-number">2.2.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#editor" id="toc-editor" class="nav-link" data-scroll-target="#editor"><span class="header-section-number">2.3</span> Editor</a>
+  <ul class="collapse">
+  <li><a href="#video-2" id="toc-video-2" class="nav-link" data-scroll-target="#video-2"><span class="header-section-number">2.3.1</span> Video</a></li>
+  <li><a href="#transcript-2" id="toc-transcript-2" class="nav-link" data-scroll-target="#transcript-2"><span class="header-section-number">2.3.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#console" id="toc-console" class="nav-link" data-scroll-target="#console"><span class="header-section-number">2.4</span> Console</a>
+  <ul class="collapse">
+  <li><a href="#video-3" id="toc-video-3" class="nav-link" data-scroll-target="#video-3"><span class="header-section-number">2.4.1</span> Video</a></li>
+  <li><a href="#transcript-3" id="toc-transcript-3" class="nav-link" data-scroll-target="#transcript-3"><span class="header-section-number">2.4.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#environment" id="toc-environment" class="nav-link" data-scroll-target="#environment"><span class="header-section-number">2.5</span> Environment</a>
+  <ul class="collapse">
+  <li><a href="#video-4" id="toc-video-4" class="nav-link" data-scroll-target="#video-4"><span class="header-section-number">2.5.1</span> Video</a></li>
+  <li><a href="#transcript-4" id="toc-transcript-4" class="nav-link" data-scroll-target="#transcript-4"><span class="header-section-number">2.5.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#viewer" id="toc-viewer" class="nav-link" data-scroll-target="#viewer"><span class="header-section-number">2.6</span> Viewer</a>
+  <ul class="collapse">
+  <li><a href="#video-5" id="toc-video-5" class="nav-link" data-scroll-target="#video-5"><span class="header-section-number">2.6.1</span> Video</a></li>
+  <li><a href="#transcript-5" id="toc-transcript-5" class="nav-link" data-scroll-target="#transcript-5"><span class="header-section-number">2.6.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#search" id="toc-search" class="nav-link" data-scroll-target="#search"><span class="header-section-number">2.7</span> Search</a>
+  <ul class="collapse">
+  <li><a href="#video-6" id="toc-video-6" class="nav-link" data-scroll-target="#video-6"><span class="header-section-number">2.7.1</span> Video</a></li>
+  <li><a href="#transcript-6" id="toc-transcript-6" class="nav-link" data-scroll-target="#transcript-6"><span class="header-section-number">2.7.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#converter" id="toc-converter" class="nav-link" data-scroll-target="#converter"><span class="header-section-number">2.8</span> Converter</a>
+  <ul class="collapse">
+  <li><a href="#video-7" id="toc-video-7" class="nav-link" data-scroll-target="#video-7"><span class="header-section-number">2.8.1</span> Video</a></li>
+  <li><a href="#transcript-7" id="toc-transcript-7" class="nav-link" data-scroll-target="#transcript-7"><span class="header-section-number">2.8.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#courses" id="toc-courses" class="nav-link" data-scroll-target="#courses"><span class="header-section-number">2.9</span> Courses</a>
+  <ul class="collapse">
+  <li><a href="#video-8" id="toc-video-8" class="nav-link" data-scroll-target="#video-8"><span class="header-section-number">2.9.1</span> Video</a></li>
+  <li><a href="#transcript-8" id="toc-transcript-8" class="nav-link" data-scroll-target="#transcript-8"><span class="header-section-number">2.9.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#code-history" id="toc-code-history" class="nav-link" data-scroll-target="#code-history"><span class="header-section-number">2.10</span> Code History</a>
+  <ul class="collapse">
+  <li><a href="#video-9" id="toc-video-9" class="nav-link" data-scroll-target="#video-9"><span class="header-section-number">2.10.1</span> Video</a></li>
+  <li><a href="#transcript-9" id="toc-transcript-9" class="nav-link" data-scroll-target="#transcript-9"><span class="header-section-number">2.10.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#file-history" id="toc-file-history" class="nav-link" data-scroll-target="#file-history"><span class="header-section-number">2.11</span> File History</a>
+  <ul class="collapse">
+  <li><a href="#video-10" id="toc-video-10" class="nav-link" data-scroll-target="#video-10"><span class="header-section-number">2.11.1</span> Video</a></li>
+  <li><a href="#transcript-10" id="toc-transcript-10" class="nav-link" data-scroll-target="#transcript-10"><span class="header-section-number">2.11.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help"><span class="header-section-number">2.12</span> Help</a>
+  <ul class="collapse">
+  <li><a href="#video-11" id="toc-video-11" class="nav-link" data-scroll-target="#video-11"><span class="header-section-number">2.12.1</span> Video</a></li>
+  <li><a href="#transcript-11" id="toc-transcript-11" class="nav-link" data-scroll-target="#transcript-11"><span class="header-section-number">2.12.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">2.13</span> Data</a>
+  <ul class="collapse">
+  <li><a href="#video-12" id="toc-video-12" class="nav-link" data-scroll-target="#video-12"><span class="header-section-number">2.13.1</span> Video</a></li>
+  <li><a href="#transcript-12" id="toc-transcript-12" class="nav-link" data-scroll-target="#transcript-12"><span class="header-section-number">2.13.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#zips" id="toc-zips" class="nav-link" data-scroll-target="#zips"><span class="header-section-number">2.14</span> Zips</a>
+  <ul class="collapse">
+  <li><a href="#video-13" id="toc-video-13" class="nav-link" data-scroll-target="#video-13"><span class="header-section-number">2.14.1</span> Video</a></li>
+  <li><a href="#transcript-13" id="toc-transcript-13" class="nav-link" data-scroll-target="#transcript-13"><span class="header-section-number">2.14.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="header-section-number">2.15</span> Plots</a>
+  <ul class="collapse">
+  <li><a href="#video-14" id="toc-video-14" class="nav-link" data-scroll-target="#video-14"><span class="header-section-number">2.15.1</span> Video</a></li>
+  <li><a href="#transcript-14" id="toc-transcript-14" class="nav-link" data-scroll-target="#transcript-14"><span class="header-section-number">2.15.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">2.16</span> Packages</a>
+  <ul class="collapse">
+  <li><a href="#video-15" id="toc-video-15" class="nav-link" data-scroll-target="#video-15"><span class="header-section-number">2.16.1</span> Video</a></li>
+  <li><a href="#transcript-15" id="toc-transcript-15" class="nav-link" data-scroll-target="#transcript-15"><span class="header-section-number">2.16.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#preview-editor" id="toc-preview-editor" class="nav-link" data-scroll-target="#preview-editor"><span class="header-section-number">2.17</span> Preview Editor</a>
+  <ul class="collapse">
+  <li><a href="#video-16" id="toc-video-16" class="nav-link" data-scroll-target="#video-16"><span class="header-section-number">2.17.1</span> Video</a></li>
+  <li><a href="#transcript-16" id="toc-transcript-16" class="nav-link" data-scroll-target="#transcript-16"><span class="header-section-number">2.17.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#diff-editor" id="toc-diff-editor" class="nav-link" data-scroll-target="#diff-editor"><span class="header-section-number">2.18</span> Diff Editor</a>
+  <ul class="collapse">
+  <li><a href="#video-17" id="toc-video-17" class="nav-link" data-scroll-target="#video-17"><span class="header-section-number">2.18.1</span> Video</a></li>
+  <li><a href="#transcript-17" id="toc-transcript-17" class="nav-link" data-scroll-target="#transcript-17"><span class="header-section-number">2.18.2</span> Transcript:</a></li>
+  </ul></li>
+  <li><a href="#application-button-bar" id="toc-application-button-bar" class="nav-link" data-scroll-target="#application-button-bar"><span class="header-section-number">2.19</span> Application Button Bar</a>
+  <ul class="collapse">
+  <li><a href="#video-18" id="toc-video-18" class="nav-link" data-scroll-target="#video-18"><span class="header-section-number">2.19.1</span> Video</a></li>
+  <li><a href="#transcript-18" id="toc-transcript-18" class="nav-link" data-scroll-target="#transcript-18"><span class="header-section-number">2.19.2</span> Transcript:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">IDE Component Conversations</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="scripts" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="scripts"><span class="header-section-number">2.1</span> Scripts</h2>
+<section id="video" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="video"><span class="header-section-number">2.1.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="transcript"><span class="header-section-number">2.1.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, what’s the deal with the Scripts component? How does it work?</p>
+<p><strong>R-bot:</strong> Oh, you’re in for a treat! The Scripts component is like your command center for managing and running R scripts in the Numerious IDE. It’s super versatile and makes handling scripts a breeze. Let’s break it down step by step.</p>
+<p><strong>User:</strong> Alright, hit me with it.</p>
+<p><strong>R-bot:</strong> First off, the Scripts component is designed to help you quickly access and manage R scripts stored in your project’s <em>scripts directory</em>. Think of it as your hub for organizing, editing, and executing all your R scripts in one place.</p>
+<p><strong>User:</strong> Sounds handy. What can I do with it?</p>
+<p><strong>R-bot:</strong> Plenty! You’ve got a button bar at the top of the component with some key tools. Let me walk you through them:</p>
+<ul>
+<li><p><strong>The Info Icon:</strong> If you ever forget how something works, just click this, and it’ll bring up documentation for the Scripts component.</p></li>
+<li><p><strong>Plus/Minus Diff Button:</strong> This one’s neat. It lets you compare the content of two scripts with different names. If you’ve ever used the Text File History feature to compare versions, it works similarly.</p></li>
+<li><p><strong>Upload Widget:</strong> You can upload new scripts here! Drag and drop ".r" or ".R" files directly onto the component, or use the file input widget. But here’s the thing—only ".r" and ".R" files are displayed, and if you upload a script with the same name as an existing one, it’ll silently overwrite it. So, watch out for that.</p></li>
+</ul>
+<p><strong>User:</strong> Okay, so I can upload scripts and compare them. What about running scripts?</p>
+<p><strong>R-bot:</strong> Glad you asked! That’s where the <em>table actions</em> come in. Once your scripts are listed in the component, you’ve got a few options:</p>
+<ol type="1">
+<li><p><strong>Open:</strong> This opens the script in a Monaco editor, which is already configured for writing and editing R code. It’s like stepping into a private studio for coding brilliance.</p></li>
+<li><p><strong>Source:</strong> This executes the entire script in the R console. It uses the source() function, so you can run the whole script in one go. This is slightly different from running it line by line in the editor.</p></li>
+<li><p><strong>Run in Parallel:</strong> Got a long-running script? No problem! This feature lets you execute a script in a new browser tab, essentially running it in its own separate R session. You can keep working on other things while it does its thing.</p></li>
+</ol>
+<p><strong>User:</strong> Cool, but does it work with other components?</p>
+<p><strong>R-bot:</strong> Absolutely. The Scripts component plays nicely with the rest of the IDE. For example:</p>
+<ul>
+<li><p><strong>Editor Components:</strong> When you open a script, it launches in a dedicated editor tab. You can make edits, save changes, or even send code snippets to the R console directly from the editor.</p></li>
+<li><p><strong>Console:</strong> The source and parallel run options integrate with the console to execute your scripts seamlessly. You’ll see outputs, errors, or messages right there in real-time.</p></li>
+</ul>
+<p><strong>User:</strong> Sounds like it covers all the bases.</p>
+<p><strong>R-bot:</strong> It really does! Whether you’re organizing your scripts, tweaking some code, or running an analysis, the Scripts component has your back. So, ready to dive in and give it a try? I’ll be right here if you need me!</p>
+</section>
+</section>
+<section id="readme" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="readme"><span class="header-section-number">2.2</span> Readme</h2>
+<section id="video-1" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="video-1"><span class="header-section-number">2.2.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-1" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="transcript-1"><span class="header-section-number">2.2.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, what’s the deal with the README component? What’s it for, and how does it work?</p>
+<p><strong>R-bot:</strong> Oh, the README component? It’s an absolute gem, especially if you’re the type to document your work meticulously—or if you’ve ever had to explain your decisions six months later to a manager or client. Let me tell you all about it.</p>
+<p><strong>User:</strong> Alright, I’m listening.</p>
+<p><strong>R-bot:</strong> The README component is all about managing and editing the README.md file, which sits right at the root of your project directory. Think of the README as the front page of your project’s notebook—it tells the story of your work.</p>
+<p>Why does that matter? Well, a good README answers all those “why” questions. Why did you choose this method? Why are certain files organized the way they are? If someone else—like a collaborator or a manager—needs to pick up where you left off, the README should make everything crystal clear.</p>
+<p><strong>User:</strong> Sounds important. What can I actually do with it?</p>
+<p><strong>R-bot:</strong> Great question. The README component lets you edit this markdown file using the Monaco editor, which is tailored for markdown. You can jot down notes, create formatted lists, embed links, even add headings or tables—it’s a simple yet powerful way to document your project.</p>
+<p>And don’t worry about losing your README. If the file ever goes missing, the application will automatically create a new blank one for you. It’s like a safety net for your documentation.</p>
+<p><strong>User:</strong> What’s this button bar all about?</p>
+<p><strong>R-bot:</strong> The button bar is straightforward but incredibly handy. It has two main features:</p>
+<ol type="1">
+<li><p><strong>The Info Icon:</strong> If you ever need a refresher on how this component works, clicking this will bring up its documentation. It’s your quick reference guide.</p></li>
+<li><p><strong>The Floppy Disk Icon:</strong> This is your save button. Anytime you make changes to the README, hit this to save your work. A little toast notification will pop up in the bottom-right corner to confirm the save was successful.</p></li>
+</ol>
+<p><strong>User:</strong> Okay, so it’s pretty self-contained?</p>
+<p><strong>R-bot:</strong> Mostly, yes! The README component is standalone for the most part. The one place it does interact with other components is through project snapshots. If you create a snapshot using the ZIPS component, your README gets bundled up in the zip file along with your scripts, data, and other project files.</p>
+<p>This way, the README travels with your project, ensuring that anyone restoring the snapshot gets all the context they need.</p>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Absolutely! The README is your project’s narrative, so use it to your advantage:</p>
+<ul>
+<li><p>Write down the purpose of the project, key decisions, and methodologies.</p></li>
+<li><p>Document any assumptions you’ve made or limitations to be aware of.</p></li>
+<li><p>Update it regularly, especially after major changes or milestones. A stale README is about as useful as a broken clock.</p></li>
+</ul>
+<p>Think of it this way: a well-maintained README is a gift to your future self. It’s like leaving breadcrumbs to find your way back through your thought process. Trust me, you’ll thank yourself later.</p>
+<p><strong>User:</strong> I like it. Sounds like it could save a lot of headaches.</p>
+<p><strong>R-bot:</strong> You got it! The README component is all about making your work more organized, reproducible, and easier to share. Dive in, give it a try, and let me know if you need any help along the way!</p>
+</section>
+</section>
+<section id="editor" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="editor"><span class="header-section-number">2.3</span> Editor</h2>
+<section id="video-2" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="video-2"><span class="header-section-number">2.3.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-2" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="transcript-2"><span class="header-section-number">2.3.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, tell me about the Editor Component. How does it work?</p>
+<p><strong>R-bot:</strong> Ah, the Editor Component—this is the powerhouse of the entire application! If you’re working with R scripts, it’s where all the magic happens. Let me walk you through its features and how it fits into your workflow.</p>
+<p><strong>User:</strong> Alright, let’s start with the basics.</p>
+<p><strong>R-bot:</strong> The Editor Component is your go-to tool for writing, editing, and running R scripts. Think of it as your personal IDE, much like RStudio, but streamlined for this app’s environment. You can open multiple scripts, switch between them using tabs, and work on each independently—or synchronize changes across tabs if you enable that feature.</p>
+<p>It’s designed to make coding intuitive and efficient. You can test your code interactively, refine it, and even execute parts of it directly in the R console. It’s built to save you time while keeping you focused.</p>
+<p><strong>User:</strong> What’s in the button bar?</p>
+<p><strong>R-bot:</strong> Ah, the button bar is packed with tools to make your life easier:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> Need help? Click this to see documentation for the Editor Component.</p></li>
+<li><p><strong>Comment/Uncomment:</strong> Select some lines, click this button, and voilà—those lines are commented out. Need them back? One click, and they’re uncommented.</p></li>
+<li><p><strong>Reformat Code:</strong> This tidies up your script using standard R syntax conventions. Great for readability.</p></li>
+<li><p><strong>Collapse/Expand Code:</strong> If you’re working with long scripts, this lets you fold sections to focus on specific parts.</p></li>
+<li><p><strong>Undo/Redo Arrows:</strong> No more panic over mistakes—you can step forward or back in your edit history.</p></li>
+<li><p><strong>Search and Replace:</strong> Quickly find text in your script or replace it. It’s a lifesaver when working with long files.</p></li>
+<li><p><strong>Rename Script:</strong> Update your script’s name directly from the editor.</p></li>
+<li><p><strong>Save Button:</strong> Saves your work. A toast notification confirms the save was successful.</p></li>
+<li><p><strong>History Icon:</strong> Opens the file history, so you can see past versions and even revert changes.</p></li>
+<li><p><strong>Copy Icon:</strong> Copies the entire script to your clipboard.</p></li>
+<li><p><strong>Syntax Copy Icon:</strong> Copies syntax-highlighted code—perfect for presentations or sharing snippets.</p></li>
+<li><p><strong>Run Entire Script:</strong> Sends the entire script to the R console for execution.</p></li>
+<li><p><strong>Run Line by Line:</strong> Executes selected lines or the current line in the R console. Handy for testing code as you go.</p></li>
+</ol>
+<p><strong>User:</strong> Are there any shortcuts I should know about?</p>
+<p><strong>R-bot:</strong> Absolutely! The Editor Component supports a few key shortcuts to speed up your workflow:</p>
+<ul>
+<li><p><strong>Ctrl+S:</strong> Saves the current script. No need to hunt for the save button.</p></li>
+<li><p><strong>Ctrl+Enter:</strong> Executes the current line or your selected code in the R console. Interactive coding at its finest.</p></li>
+<li><p><strong>F1:</strong> Opens the Help Component and filters documentation based on the function or object under your cursor. Quick access to relevant info when you need it.</p></li>
+</ul>
+<p><strong>User:</strong> What happens if I have multiple scripts open?</p>
+<p><strong>R-bot:</strong> You can work on multiple scripts simultaneously using tabs. Here’s how it works:</p>
+<ul>
+<li><p><strong>Independent Mode:</strong> Each script is treated separately. Changes in one tab don’t affect others.</p></li>
+<li><p><strong>Synchronized Mode:</strong> Changes in one tab sync automatically with others that have the same script open.</p></li>
+</ul>
+<p>If you close a script without saving, changes are discarded—unless you’ve enabled the "Restore Documents" setting. With that on, unsaved changes can be recovered the next time you open the app.</p>
+<p><strong>User:</strong> How does it integrate with the R console?</p>
+<p><strong>R-bot:</strong> Seamlessly! There are two main ways to execute code:</p>
+<ol type="1">
+<li><p><strong>Run Entire Script:</strong> Sends the entire script to the console for execution. Great for running the whole thing in one go.</p></li>
+<li><p><strong>Run Line by Line:</strong> Sends the selected lines or just the current line to the console. This is ideal for testing small chunks of code interactively.</p></li>
+</ol>
+<p><strong>User:</strong> Does it have any fancy features like autocomplete?</p>
+<p><strong>R-bot:</strong> You bet! The Editor Component uses IntelliSense features through the Monaco editor. You get:</p>
+<ul>
+<li><p><strong>Autocomplete:</strong> Suggests functions and arguments as you type.</p></li>
+<li><p><strong>Hover Information:</strong> Provides context for functions and objects when you hover over them.</p></li>
+<li><p><strong>Snippets:</strong> Predefined code templates to speed up repetitive tasks.</p></li>
+</ul>
+<p>And it’s customizable! You can tweak settings like font size, themes, and syntax highlighting to fit your style.</p>
+<p><strong>User:</strong> What if something goes wrong?</p>
+<p><strong>R-bot:</strong> Errors are displayed as toast notifications in the bottom-right corner. Whether it’s an issue saving your script or invalid syntax, the notification will let you know what’s up and how to fix it.</p>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Definitely! Here are a few best practices:</p>
+<ol type="1">
+<li><p><strong>Save your work frequently.</strong> Enable autosave if you tend to forget.</p></li>
+<li><p><strong>Use descriptive names for scripts.</strong> Adding prefixes like 001_ helps keep them organized.</p></li>
+<li><p><strong>Keep scripts small and modular.</strong> Break tasks into independent stages for easier debugging and readability.</p></li>
+<li><p><strong>Create project snapshots.</strong> Use the ZIPS component to back up your work regularly.</p></li>
+</ol>
+<p>Follow these, and you’ll have a smooth and productive experience!</p>
+<p><strong>User:</strong> Sounds like a solid tool. Thanks, R-bot!</p>
+<p><strong>R-bot:</strong> Anytime! The Editor Component is here to make coding fun and efficient. Dive in and give it a spin—you’ll love it!</p>
+</section>
+</section>
+<section id="console" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="console"><span class="header-section-number">2.4</span> Console</h2>
+<section id="video-3" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="video-3"><span class="header-section-number">2.4.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-3" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="transcript-3"><span class="header-section-number">2.4.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the Console Component works?</p>
+<p><strong>R-bot:</strong> Of course! The Console Component is your direct line to the R session running in the app. It’s where you can execute R code, see the output, and interact with the backend WebR session. Think of it as the command center for quick tests and supplemental coding tasks, but not a replacement for the Editor Component. Let me break it down for you.</p>
+<p><strong>User:</strong> Let’s start with the basics. What’s the Console for?</p>
+<p><strong>R-bot:</strong> The Console Component allows you to run R code interactively. It’s perfect for testing small code snippets, checking variable values, or interacting with lessons from the Courses Component. All outputs, including errors, are displayed here, giving you real-time feedback. However, it’s not designed for writing extensive scripts—that’s what the Editor Component is for. The console is more about executing and testing than creating.</p>
+<p><strong>User:</strong> What’s on the top bar?</p>
+<p><strong>R-bot:</strong> The top bar includes several handy icons:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> This brings up the Console Component documentation—great if you need a refresher on what’s available.</p></li>
+<li><p><strong>Clipboard Icon:</strong> Copies the last object output as a table. Useful for grabbing results quickly.</p></li>
+<li><p><strong>Braces and Asterisks Icon:</strong> Copies the last object output as R syntax, letting you reuse or share it as code.</p></li>
+<li><p><strong>Sticky Note Icon:</strong> Toggles auto-scroll. If you’re analyzing output from long-running code, you might want to stop the console from jumping to the bottom automatically.</p></li>
+<li><p><strong>Trash Can Icon:</strong> Clears all console output. A fresh start whenever you need it.</p></li>
+<li><p><strong>Spinning Wheel with Stop Icon:</strong> This appears while code is running. You can use it to cancel queued statements, but note it can’t terminate a currently running statement. If a script is stuck, you might need to save your work and refresh the browser to reset the session.</p></li>
+</ol>
+<p>When a lesson from the Courses Component is active, additional lesson-specific icons like the floppy disk for saving, a lightbulb for hints, and rewind/fast-forward controls appear. These help you navigate lesson steps and interact with hints or feedback.</p>
+<p><strong>User:</strong> Are there any keyboard shortcuts?</p>
+<p><strong>R-bot:</strong> Absolutely! The console supports several shortcuts to make things quicker:</p>
+<ul>
+<li><p><strong>Ctrl+L:</strong> Clears the console, wiping out the current output.</p></li>
+<li><p><strong>Ctrl+C:</strong> Copies selected text from the console.</p></li>
+<li><p><strong>Ctrl+V:</strong> Pastes text into the console.</p></li>
+<li><p><strong>Up/Down Arrows:</strong> Lets you scroll through previously executed code statements, so you can easily re-run or tweak them.</p></li>
+</ul>
+<p>While these shortcuts make coding faster, the console doesn’t have autocomplete or IntelliSense. If you need those, head over to the Editor Component.</p>
+<p><strong>User:</strong> What happens to the console state if I close the app?</p>
+<p><strong>R-bot:</strong> The console state is ephemeral—it doesn’t persist if you refresh the browser or close the app. Each session starts fresh, ensuring reproducibility by encouraging you to re-run code. If you need to save your environment, use the snapshot functionality in the Environment Component. Snapshots preserve your variables and objects, but not the console’s output or history.</p>
+<p><strong>User:</strong> How does the console handle errors?</p>
+<p><strong>R-bot:</strong> Errors are displayed in the console just like they would be in a standard R session, using the terminal’s default colors. You can customize these colors through R’s global options if you want. When invalid code is executed, the console shows the error message provided by R, helping you diagnose and fix issues.</p>
+<p><strong>User:</strong> Does the console work with other components?</p>
+<p><strong>R-bot:</strong> It sure does! The console integrates closely with the Editor Component and the Courses Component. Here’s how:</p>
+<ul>
+<li><p><strong>Editor Component:</strong> Code sent from the editor is executed in the console. You can run entire scripts or just selected lines, and the console displays the output.</p></li>
+<li><p><strong>Courses Component:</strong> When you’re working through lessons, the console is where you’ll see instructions, hints, and feedback. Lesson-specific buttons on the top bar let you navigate through steps and access hints.</p></li>
+</ul>
+<p><strong>User:</strong> Any tips for using the console effectively?</p>
+<p><strong>R-bot:</strong> Definitely! Here are a few best practices:</p>
+<ol type="1">
+<li><p>Use the console for testing small code snippets or re-running statements. For anything extensive, write and manage scripts in the Editor Component.</p></li>
+<li><p>Regularly save your work. Use snapshots to preserve your global environment and ensure reproducibility.</p></li>
+<li><p>Keep your console output clean. Clear it with Ctrl+L or the trash can icon when things get cluttered.</p></li>
+</ol>
+<p><strong>User:</strong> Got it! Thanks, R-bot.</p>
+<p><strong>R-bot:</strong> Anytime! The Console Component is a versatile tool for quick testing and interaction. Use it wisely, and you’ll find it complements your workflow perfectly!</p>
+</section>
+</section>
+<section id="environment" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="environment"><span class="header-section-number">2.5</span> Environment</h2>
+<section id="video-4" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="video-4"><span class="header-section-number">2.5.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-4" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="transcript-4"><span class="header-section-number">2.5.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the Environment Component works?</p>
+<p><strong>R-bot:</strong> Absolutely! The Environment Component is your visual dashboard for the R objects in your global environment. It helps you inspect and manage your workspace more conveniently, but remember, learning to use R functions like ls() is just as important! Here’s how it works:</p>
+<p><strong>User:</strong> Great, start with the basics. What does it do?</p>
+<p><strong>R-bot:</strong> The Environment Component displays all the objects currently loaded in your R global environment, like data frames, lists, vectors, and more. It gives you detailed information about each object, such as its name, type, and size, and provides tools for managing these objects.</p>
+<p>For example, you can view an object’s contents, copy it to your clipboard, or even delete it directly from the environment—all without writing a single line of code.</p>
+<p><strong>User:</strong> What’s on the top bar?</p>
+<p><strong>R-bot:</strong> The top bar has several useful icons:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> Opens this documentation for quick reference.</p></li>
+<li><p><strong>Camera Icon:</strong> Saves a snapshot of your global environment as an .RData file. Snapshots let you restore your workspace later if needed.</p></li>
+<li><p><strong>Environment Toggle:</strong> Turns the Environment Component on or off. Turning it off can improve performance if you’re working with a lot of objects or very large datasets.</p></li>
+<li><p><strong>Trash Can Icon:</strong> Clears all objects from your global environment. If you’ve enabled confirmation prompts in your settings, you’ll get a dialog to confirm before everything gets wiped.</p></li>
+</ol>
+<p><strong>User:</strong> What can I do with the objects in the table?</p>
+<p><strong>R-bot:</strong> Plenty! Each row in the table represents an object in your environment, and here’s what the columns let you do:</p>
+<ol type="1">
+<li><p><strong>Copy Column (Clipboard Icon):</strong> Copies the object as a table, so you can paste it into Excel or other tools.</p></li>
+<li><p><strong>Syntax Column (dput Icon):</strong> Copies the R syntax needed to recreate the object using dput(). This is great for sharing reproducible examples.</p></li>
+<li><p><strong>View Column (Eyeball Icon):</strong> Opens the object in a View Component, where you can inspect its tabular contents.</p></li>
+<li><p><strong>Dictionary Column (Journal Icon):</strong> Opens the object as a data dictionary, showing metadata like column names and types for data frames.</p></li>
+<li><p><strong>Name, Class, and Size Columns:</strong> Displays basic information about the object. These are sortable, so you can organize your view by object type, name, or size.</p></li>
+<li><p><strong>Delete Column (Trash Can Icon):</strong> Deletes the object from the environment. Again, if confirmation prompts are enabled, you’ll need to confirm the action.</p></li>
+</ol>
+<p><strong>User:</strong> What happens when I click to view an object?</p>
+<p><strong>R-bot:</strong> When you click the View Column (Eyeball Icon), the object is serialized and displayed in the View Component. This works well for data frames, matrices, and vectors. Other object types aren’t fully supported yet, but we’ll expand that in the future.</p>
+<p>The View Component is read-only, so you can’t modify the object directly. However, you can copy its data or save it as a CSV for further use.</p>
+<p><strong>User:</strong> What about saving the environment?</p>
+<p><strong>R-bot:</strong> That’s where the Camera Icon shines! Clicking it saves a snapshot of your global environment to an .RData file in the mid directory. These snapshots can be restored later through the Data Component.</p>
+<p>Just remember, snapshots are great for quick restoration but not a substitute for saving objects individually. For important objects, save them as .RData or .RDS files for better long-term reproducibility.</p>
+<p><strong>User:</strong> Does the Environment Component work with other parts of the app?</p>
+<p><strong>R-bot:</strong> Absolutely! Here’s how:</p>
+<ol type="1">
+<li><p><strong>Snapshots and Data Component:</strong> Snapshots saved with the Camera Icon appear in the Data Component. From there, you can restore the global environment to its state at the time of the snapshot.</p></li>
+<li><p><strong>View Components:</strong> Clicking on objects opens new View Components where you can inspect the object’s contents or metadata.</p></li>
+</ol>
+<p>This seamless integration makes it easy to manage your environment and work efficiently across the app.</p>
+<p><strong>User:</strong> Any tips for best practices?</p>
+<p><strong>R-bot:</strong> Definitely! Here are some pointers:</p>
+<ol type="1">
+<li><p>Keep your environment clean—remove objects you no longer need.</p></li>
+<li><p>Start scripts with rm(list = ls()) to clear the environment and avoid relying on leftovers from previous sessions.</p></li>
+<li><p>Save important objects individually as .RData or .RDS files to ensure they’re reproducible.</p></li>
+<li><p>Use snapshots for convenience, but don’t rely on them as your primary backup method.</p></li>
+</ol>
+<p><strong>User:</strong> Got it! Thanks, R-bot.</p>
+<p><strong>R-bot:</strong> Anytime! The Environment Component is a powerful tool for managing your workspace. Keep practicing, and you’ll be an R wizard in no time!</p>
+</section>
+</section>
+<section id="viewer" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="viewer"><span class="header-section-number">2.6</span> Viewer</h2>
+<section id="video-5" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="video-5"><span class="header-section-number">2.6.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-5" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="transcript-5"><span class="header-section-number">2.6.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the View Component works?</p>
+<p><strong>R-bot:</strong> Of course! The View Component is like having a spreadsheet inside your app—it’s super handy for inspecting and exploring tabular data directly. Let me break it down for you:</p>
+<p><strong>User:</strong> Let’s start with the basics. What’s the View Component for?</p>
+<p><strong>R-bot:</strong> The View Component is designed to display rectangular data like data frames, matrices, and vectors in a grid format. Think of it as a way to view your data without exporting it to Excel or other tools. It’s great for quick analysis, inspection, and sharing data.</p>
+<p><strong>User:</strong> What tools are in the button bar?</p>
+<p><strong>R-bot:</strong> The button bar gives you a few essential tools:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> Opens this documentation to help you understand the View Component.</p></li>
+<li><p><strong>Copy to Clipboard Button:</strong> Copies the data as tab-delimited text. You can paste it directly into tools like Excel or Google Sheets.</p></li>
+<li><p><strong>Save as CSV Button:</strong> Downloads the data as a CSV file. The file name will match the name of the object you’re viewing, making it easy to organize.</p></li>
+</ol>
+<p>These features are all about convenience—just a click away from sharing or saving your data!</p>
+<p><strong>User:</strong> How does the main table work?</p>
+<p><strong>R-bot:</strong> The table is interactive and user-friendly. Here’s what it offers:</p>
+<ol type="1">
+<li><p><strong>Sorting and Filtering:</strong> You can sort and filter columns to explore large datasets more effectively.</p></li>
+<li><p><strong>Data Size:</strong> While the View Component handles large datasets well, keep in mind that browser memory can limit what it can display. Extremely large datasets might not load if they exceed your browser’s capacity.</p></li>
+<li><p><strong>Supported Formats:</strong> It works best with data frames, matrices, and vectors. If you try to view non-rectangular data, it’ll throw an error and let you know with a toast notification.</p></li>
+</ol>
+<p><strong>User:</strong> What happens if there’s an error?</p>
+<p><strong>R-bot:</strong> If the data can’t be displayed—maybe it’s too big, not rectangular, or there’s another issue—you’ll get a toast notification explaining what went wrong. This way, you’re never left guessing!</p>
+<p><strong>User:</strong> How does the View Component work with other parts of the app?</p>
+<p><strong>R-bot:</strong> It’s very integrated! Here’s how:</p>
+<ol type="1">
+<li><p><strong>Environment Component:</strong> You can click on an object in the Environment Component to open it in a View Component for inspection.</p></li>
+<li><p><strong>Other Components:</strong> The Data Component, Packages Component, and others let you open a View Component to explore data.</p></li>
+<li><p><strong>R Code Integration:</strong> If you prefer, you can write R code to generate and open a View Component programmatically.</p></li>
+</ol>
+<p>It’s designed to fit seamlessly into your workflow, no matter where your data comes from.</p>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Definitely! Here are a few best practices:</p>
+<ol type="1">
+<li><p>Use the View Component for quick data inspection without exporting files—it saves time!</p></li>
+<li><p>If your dataset is huge, try filtering or sampling it first to make sure it renders smoothly.</p></li>
+<li><p>Leverage the sorting and filtering tools to explore your data interactively.</p></li>
+</ol>
+<p>It’s all about making your data exploration as smooth and efficient as possible.</p>
+<p><strong>User:</strong> That’s super helpful! Thanks, R-bot.</p>
+<p><strong>R-bot:</strong> Anytime! The View Component is a powerful tool for data inspection, and I’m always here to help you make the most of it. Let me know if you have more questions!</p>
+</section>
+</section>
+<section id="search" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="search"><span class="header-section-number">2.7</span> Search</h2>
+<section id="video-6" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="video-6"><span class="header-section-number">2.7.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-6" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="transcript-6"><span class="header-section-number">2.7.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, I need to search through all my scripts. How does the Search Component work?</p>
+<p><strong>R-bot:</strong> Great question! The Search Component is like your personal detective for tracking down text across all your scripts. Let me walk you through how it works:</p>
+<p><strong>User:</strong> What’s the Search Component for?</p>
+<p><strong>R-bot:</strong> The Search Component helps you quickly locate specific text across all scripts in your project’s scripts directory. It’s perfect for tasks like tracking down <strong>TODO</strong> comments, refactoring code, or identifying every spot where a specific function or variable is used.</p>
+<p>The best part? The search behavior is similar to the Monaco editor’s search feature, so if you’re already familiar with that, you’ll feel right at home!</p>
+<p><strong>User:</strong> How do I perform a search?</p>
+<p><strong>R-bot:</strong> In the button bar, there’s a <strong>Search Input</strong> where you can type the term you want to find. By default, it supports partial matches, but you can refine your search with toggles:</p>
+<ol type="1">
+<li><p><strong>Case Sensitive:</strong> Matches terms exactly as you’ve written them, including capitalization.</p></li>
+<li><p><strong>Whole Word Match:</strong> Ensures only complete words are matched.</p></li>
+<li><p><strong>Regular Expression Matching:</strong> Enables powerful pattern-based searches using regex.</p></li>
+</ol>
+<p>These toggles let you fine-tune your search to be as broad or specific as you need.</p>
+<p><strong>User:</strong> What about replacing text?</p>
+<p><strong>R-bot:</strong> There’s a <strong>Replace Button</strong> on the button bar that opens a modal for replacing matches. Here’s how it works:</p>
+<ol type="1">
+<li><p>Perform your search first to review the results.</p></li>
+<li><p>Open the replace modal and specify the replacement text.</p></li>
+<li><p>The replace operation applies globally across all matching scripts.</p></li>
+</ol>
+<p>Just a heads-up: It doesn’t preview the matches before replacing, so I recommend double-checking your search results before hitting that replace button.</p>
+<p><strong>User:</strong> What happens when I search? How are the results displayed?</p>
+<p><strong>R-bot:</strong> Great question! The search results appear in a table with these columns:</p>
+<ol type="1">
+<li><p><strong>Script Column:</strong> Displays the name of the script containing the match. Clicking it opens the script in the Editor Component, zoomed in on the matched line.</p></li>
+<li><p><strong>Line Column:</strong> Shows the line number of the match for quick reference.</p></li>
+<li><p><strong>Code Column:</strong> Provides a snippet of the code around the match for context.</p></li>
+</ol>
+<p>It’s all designed to help you pinpoint exactly where the match is located and jump straight into editing.</p>
+<p><strong>User:</strong> What if I enter something invalid, like a broken regex?</p>
+<p><strong>R-bot:</strong> Don’t worry, I’ve got you covered! If your regular expression is invalid, a toast notification will pop up in the bottom-right corner, letting you know what went wrong. And if you try to perform an empty search, it’ll just ignore it without throwing any errors.</p>
+<p><strong>User:</strong> How does it work with other components?</p>
+<p><strong>R-bot:</strong> The Search Component works hand-in-hand with the Editor Component. When you click a script name in the search results, it opens that script in a new Editor tab, with the cursor placed right at the matched line. From there, you can edit or refine the code directly. It’s seamless!</p>
+<p><strong>User:</strong> Do you have any tips for using the Search Component effectively?</p>
+<p><strong>R-bot:</strong> Absolutely! Here are a few best practices:</p>
+<ol type="1">
+<li><p><strong>Review Results Carefully:</strong> Especially before using the Replace functionality, since it applies changes globally without previews.</p></li>
+<li><p><strong>Use Consistent Markers:</strong> Include tags like “TODO” in your scripts to make tracking tasks easier.</p></li>
+<li><p><strong>Refine with Toggles:</strong> Use the search toggles to narrow down results and avoid false positives, especially in larger projects.</p></li>
+</ol>
+<p><strong>User:</strong> That sounds amazing. Thanks for explaining it, R-bot!</p>
+<p><strong>R-bot:</strong> Anytime! The Search Component is a powerful tool for navigating your project, and I’m always here to guide you. Let me know if you need help with anything else!</p>
+</section>
+</section>
+<section id="converter" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="converter"><span class="header-section-number">2.8</span> Converter</h2>
+<section id="video-7" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="video-7"><span class="header-section-number">2.8.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-7" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="transcript-7"><span class="header-section-number">2.8.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the Converter Component works? I’m trying to figure out what it’s for.</p>
+<p><strong>R-bot:</strong> Of course! The Converter Component is a handy little tool designed to make your life easier when working with small, structured datasets. Let me break it down for you:</p>
+<p><strong>User:</strong> What’s the main purpose of this component?</p>
+<p><strong>R-bot:</strong> The Converter Component is here to help you transform tab-delimited data into R syntax. Imagine you’ve got some data in Excel, like a small table or a logic sheet. You can copy that data, paste it into the Converter, and—voila!—it’ll generate R-compatible code for you, like a data.frame().</p>
+<p>It’s perfect for smaller datasets or quick tasks where importing a whole file would be overkill. Plus, it’s super beginner-friendly, so you don’t need to worry about setting up complex file imports.</p>
+<p><strong>User:</strong> Sounds cool! How does it work?</p>
+<p><strong>R-bot:</strong> Simple! The component has two parts:</p>
+<ol type="1">
+<li><p><strong>Left Editor:</strong> This is where you paste your raw tab-delimited text. For example, if you copy a table from Excel, it should include headers and tab-separated values.</p></li>
+<li><p><strong>Right Editor:</strong> After you click the <strong>Convert Button</strong>, this will display the R syntax generated from your input. The syntax is produced using read.table() with sep = "\t" for tabs and header = TRUE for headers, and then dput() is used to format it as clean, reusable R code.</p></li>
+</ol>
+<p>If everything goes well, you’ll see perfectly formatted R code on the right side, ready to copy and use!</p>
+<p><strong>User:</strong> And the buttons?</p>
+<p><strong>R-bot:</strong> Ah, the buttons are where the magic happens:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> Opens this exact documentation, so you can remind yourself how the component works.</p></li>
+<li><p><strong>Eraser Icon:</strong> Clears both editors. Don’t worry—it asks for confirmation first, so you won’t accidentally lose your work.</p></li>
+<li><p><strong>Convert Button:</strong> This is the star of the show! It takes the content from the left editor, processes it, and outputs the R syntax in the right editor.</p></li>
+<li><p><strong>Copy Button:</strong> Once you have your R syntax on the right side, you can click this to copy it to your clipboard. From there, you can paste it directly into your scripts or elsewhere.</p></li>
+</ol>
+<p><strong>User:</strong> What if my input isn’t formatted correctly?</p>
+<p><strong>R-bot:</strong> If the input on the left side isn’t clean—like if it’s not properly tab-delimited or has missing headers—the conversion will fail. When that happens, you’ll get a toast notification in the bottom-right corner of your screen, letting you know there’s an issue.</p>
+<p>To avoid this, make sure the data you paste is well-structured. For example, ensure rows and columns are clearly defined, and tabs are used as separators.</p>
+<p><strong>User:</strong> Does it work with other components?</p>
+<p><strong>R-bot:</strong> The Converter Component is a bit of a lone wolf—it operates independently. However, you can take the R syntax you generate and paste it into the Editor Component to integrate it into your scripts. It’s a great way to quickly prototype or add logic tables to your code!</p>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Definitely! Here are some best practices:</p>
+<ol type="1">
+<li><p><strong>Clean Input Data:</strong> Make sure the data you paste into the left editor is well-structured and tab-delimited. This will give you the best results.</p></li>
+<li><p><strong>Keep It Small:</strong> Use the Converter for smaller datasets or logic tables. For larger datasets, it’s better to import them into R using file uploads or standard data import functions.</p></li>
+<li><p><strong>Quick and Convenient:</strong> Remember, this tool is designed for ease of use, especially for beginners. If you’re an experienced user, you might prefer writing the syntax yourself or using more advanced methods.</p></li>
+</ol>
+<p><strong>User:</strong> Got it! Thanks for the walkthrough, R-bot.</p>
+<p><strong>R-bot:</strong> Anytime! Now go ahead and convert those tables with ease. And if you have more questions, you know where to find me!</p>
+</section>
+</section>
+<section id="courses" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="courses"><span class="header-section-number">2.9</span> Courses</h2>
+<section id="video-8" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="video-8"><span class="header-section-number">2.9.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-8" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="transcript-8"><span class="header-section-number">2.9.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the Courses Component works? I’m trying to understand what it does.</p>
+<p><strong>R-bot:</strong> Absolutely! The Courses Component is like your personal R tutor, guiding you through lessons that teach or assist with various R-related tasks. Let me walk you through everything it offers:</p>
+<p><strong>User:</strong> What’s the purpose of the Courses Component?</p>
+<p><strong>R-bot:</strong> The Courses Component is designed to manage and interact with lessons stored as .yaml files. These lessons teach R concepts or guide you through tasks step by step. It integrates seamlessly with the Console Component, where the lessons run and track your progress.</p>
+<p>You can even save your lesson progress in .progress.rdata files, so if you step away or need to pick up later, you won’t lose your place. It’s especially useful for hands-on learning and practice.</p>
+<p><strong>User:</strong> How do I get started with lessons?</p>
+<p><strong>R-bot:</strong> Getting started is easy! There are three main ways to load lessons:</p>
+<ol type="1">
+<li><p><strong>Download from the Repository:</strong> Click the <strong>Plus with Circle Icon</strong> in the top bar. This opens a course repository where you can browse and download lessons. The application takes care of extracting and setting everything up.</p></li>
+<li><p><strong>Upload Lessons:</strong> You can upload .yaml lesson files directly. Drag-and-drop functionality is supported, so it’s as simple as dropping a file into the component.</p></li>
+<li><p><strong>Restore Progress:</strong> If you’ve saved progress from a previous session, you can upload a .progress.rdata file to pick up right where you left off.</p></li>
+</ol>
+<p>Once a lesson is loaded, it’ll appear in the main table, ready for you to dive in.</p>
+<p><strong>User:</strong> What’s in the main table?</p>
+<p><strong>R-bot:</strong> The main table lists all your lessons and associated files with the following columns:</p>
+<ul>
+<li><p><strong>Copy Column:</strong> This lets you copy the full path of a file to your clipboard, which can be handy for referencing it elsewhere.</p></li>
+<li><p><strong>Open Lesson Column:</strong> Clicking a .yaml file starts a new lesson. If you click a .progress.rdata file, it restores your last saved state for that lesson.</p></li>
+<li><p><strong>Info Column:</strong> Displays metadata, such as the file’s save date and size, so you can keep track of your lessons.</p></li>
+</ul>
+<p><strong>User:</strong> What happens when I start a lesson?</p>
+<p><strong>R-bot:</strong> When you start a lesson, the Console Component becomes your interactive classroom. It shows instructions and tracks your progress through the steps. You’ll also notice some new lesson-specific buttons in the console’s top bar:</p>
+<ol type="1">
+<li><p><strong>Stop Button:</strong> Ends the current lesson.</p></li>
+<li><p><strong>Save Button:</strong> Saves your progress as a .progress.rdata file.</p></li>
+<li><p><strong>Lightbulb Icon:</strong> Provides hints for the current step, with each click offering more detailed help.</p></li>
+<li><p><strong>Back Button:</strong> Moves to the previous step.</p></li>
+<li><p><strong>Play Button:</strong> Replays the instructions for the current step.</p></li>
+<li><p><strong>Fast-Forward Button:</strong> Skips to the next step.</p></li>
+</ol>
+<p>These tools make it easy to navigate through the lesson, get help when needed, and keep your progress safe.</p>
+<p><strong>User:</strong> What if something goes wrong?</p>
+<p><strong>R-bot:</strong> If there’s an issue—like a lesson file that fails to load—you’ll see an error message in the console. Most problems come from improperly formatted files. Make sure you’re using valid .yaml files for lessons and .progress.rdata files for progress restoration.</p>
+<p>If you upload a zip file with related lesson files, be sure to extract it using the ZIPS Component first. The extracted files will then appear in their respective directories, ready for the Courses Component to use.</p>
+<p><strong>User:</strong> How does it work with other components?</p>
+<p><strong>R-bot:</strong> The Courses Component integrates closely with a few other components:</p>
+<ol type="1">
+<li><p><strong>ZIPS Component:</strong> Use this to upload and extract zip files containing lessons and their associated resources, like CSV files or other materials.</p></li>
+<li><p><strong>Console Component:</strong> The console is where the lessons actually run. It handles instructions, tracks your progress, and displays feedback as you work through each step.</p></li>
+</ol>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Definitely! Here are a few best practices:</p>
+<ul>
+<li><p><strong>Manage Lessons Wisely:</strong> Keep the number of lessons in your Courses Component manageable to avoid clutter. Delete lessons you’ve completed or no longer need.</p></li>
+<li><p><strong>Save Progress Frequently:</strong> During long lessons, use the Save Button regularly to avoid losing your place.</p></li>
+<li><p><strong>Organize Files:</strong> If a lesson comes with multiple files, package them in a zip archive and use the ZIPS Component to upload and extract them. This keeps everything organized.</p></li>
+</ul>
+<p><strong>User:</strong> Got it! Thanks for explaining everything, R-bot.</p>
+<p><strong>R-bot:</strong> Anytime! Now go tackle those lessons and become an R wizard! If you need a refresher, just click the Help Icon—I’m always here to guide you!</p>
+</section>
+</section>
+<section id="code-history" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="code-history"><span class="header-section-number">2.10</span> Code History</h2>
+<section id="video-9" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="video-9"><span class="header-section-number">2.10.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-9" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="transcript-9"><span class="header-section-number">2.10.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the Code History Component works? I’ve noticed it logs my console activity, but I want to understand all its features.</p>
+<p><strong>R-bot:</strong> Of course! The Code History Component is like a personal diary for your R code—it keeps track of every statement you execute in the Console Component. Let me walk you through how it works and what makes it so useful.</p>
+<p><strong>User:</strong> What exactly does the Code History Component do?</p>
+<p><strong>R-bot:</strong> At its core, the Code History Component logs all the code you execute in the console. Every statement or block of code is recorded with:</p>
+<ol type="1">
+<li><p><strong>A Start Comment:</strong> This includes a timestamp in ISO datetime format, like # Start (eval_code_plain) 2024-10-10T08:47:32 ----------.</p></li>
+<li><p><strong>The Code Block:</strong> This is the actual code you submitted to the console.</p></li>
+<li><p><strong>An End Comment:</strong> This shows the time it took to execute the code, like # end 26 milliseconds ----------.</p></li>
+</ol>
+<p>The timestamps and durations are really helpful for tracking when you executed certain blocks of code and how long they took to run.</p>
+<p><strong>User:</strong> Can you give me an example of what the history looks like?</p>
+<p><strong>R-bot:</strong> Sure! Here’s an example of how a couple of code blocks would be logged:</p>
+<p># Start (eval_code_plain) 2024-10-10T08:47:32 ----------</p>
+<p>x &lt;- 4</p>
+<p># end 26 milliseconds ----------</p>
+<p># Start (eval_code_plain) 2024-10-10T08:47:37 ----------</p>
+<p>x &lt;- 2</p>
+<p>x &lt;- 3</p>
+<p>x &lt;- 4</p>
+<p># end 40 milliseconds ----------</p>
+<p>As you can see, the history is well-organized and gives you a clear breakdown of what code was executed and when.</p>
+<p><strong>User:</strong> How do I manage the code history? Can I clear it?</p>
+<p><strong>R-bot:</strong> Absolutely! The top bar of the Code History Component includes two main icons:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> Click this to open the documentation (or just ask me!).</p></li>
+<li><p><strong>Trash Can Icon:</strong> This deletes the entire code history for the project. Before the history is cleared, you’ll see a confirmation dialog to prevent accidental deletion.</p></li>
+</ol>
+<p>Clearing the history is a good idea if the project has been inactive for a while or if you no longer need the logs.</p>
+<p><strong>User:</strong> Does the Code History Component integrate with other components?</p>
+<p><strong>R-bot:</strong> Not directly! The Code History Component is independent, focusing solely on logging and displaying executed statements from the Console Component. It doesn’t interact with the Editor or any other components.</p>
+<p><strong>User:</strong> What if something goes wrong while using it?</p>
+<p><strong>R-bot:</strong> The Code History Component is pretty robust. It doesn’t produce errors under normal operation since it only logs and displays code. The only action that could cause issues is deletion, but even that’s safeguarded with a confirmation dialog to ensure you don’t accidentally erase your history.</p>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Definitely! Here are a few best practices:</p>
+<ol type="1">
+<li><p><strong>Use it as a Backup Reference:</strong> If you lose or forget some code during exploratory analysis or iterative development, the history serves as a reliable record.</p></li>
+<li><p><strong>Clear it Periodically:</strong> Prevent excessive buildup by clearing the history when it’s no longer needed, especially for older or inactive projects.</p></li>
+</ol>
+<p><strong>User:</strong> This sounds really useful. Thanks, R-bot!</p>
+<p><strong>R-bot:</strong> My pleasure! With the Code History Component, you’ll never lose track of what you’ve executed. If you have more questions, just ask!</p>
+</section>
+</section>
+<section id="file-history" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="file-history"><span class="header-section-number">2.11</span> File History</h2>
+<section id="video-10" class="level3" data-number="2.11.1">
+<h3 data-number="2.11.1" class="anchored" data-anchor-id="video-10"><span class="header-section-number">2.11.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-10" class="level3" data-number="2.11.2">
+<h3 data-number="2.11.2" class="anchored" data-anchor-id="transcript-10"><span class="header-section-number">2.11.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you walk me through how the Text File History Component works? I’d like to understand its features.</p>
+<p><strong>R-bot:</strong> Of course! The Text File History Component is your project's built-in time machine for scripts and README files. It gives you lightweight version control, allowing you to review, compare, and revert changes with ease. Let me break it down for you.</p>
+<p><strong>User:</strong> What’s the main purpose of the Text File History Component?</p>
+<p><strong>R-bot:</strong> This component is designed to track changes in your scripts and README over time, similar to how Google Docs handles version history. It stores small, efficient diffs of text files rather than full versions, making it fast and storage-friendly.</p>
+<p>You can use it to:</p>
+<ol type="1">
+<li><p>Review previous versions of your files.</p></li>
+<li><p>Compare the current version with past states to see what’s changed.</p></li>
+<li><p>Revert to an earlier version if needed, ensuring you never lose critical work.</p></li>
+</ol>
+<p><strong>User:</strong> How does the interface work? What’s in the top bar?</p>
+<p><strong>R-bot:</strong> The top bar is pretty straightforward:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> Opens this documentation, so you can always get help if you need it.</p></li>
+<li><p><strong>Trash Can Icon:</strong> Deletes all saved history for scripts and the README. Before it wipes anything, a confirmation dialog appears to make sure you don’t accidentally delete your history.</p></li>
+</ol>
+<p><strong>User:</strong> What about the main table? What can I do there?</p>
+<p><strong>R-bot:</strong> The main table lists all past states of tracked files, ordered by timestamp. Each row represents a save point and provides these options:</p>
+<ol type="1">
+<li><p><strong>Preview Column:</strong> Opens a read-only editor where you can review the file's content at the selected timestamp. This is perfect for checking old changes without touching the current file.</p></li>
+<li><p><strong>Diff Column:</strong> Launches a diff editor to compare the file at the selected timestamp with its current version. You’ll see changes highlighted side-by-side or inline, depending on the editor layout.</p></li>
+<li><p><strong>Revert Column:</strong> This reverts the file to the selected timestamp. Keep in mind:</p>
+<ul>
+<li><p>It overwrites the current file without asking for confirmation.</p></li>
+<li><p>If you have the file open in an editor, close it first. Otherwise, unsaved changes in the editor might overwrite the reverted file.</p></li>
+</ul></li>
+</ol>
+<p><strong>User:</strong> What happens if something goes wrong while reverting?</p>
+<p><strong>R-bot:</strong> Issues are rare, but if something like a corrupted or missing file prevents a successful revert, you’ll see a toast notification in the bottom-right corner explaining what went wrong. Just remember to save your current work before reverting!</p>
+<p><strong>User:</strong> Does it work with other components?</p>
+<p><strong>R-bot:</strong> Absolutely! It integrates with:</p>
+<ol type="1">
+<li><p><strong>Preview Editor:</strong> This lets you view the file at a specific timestamp in a read-only mode.</p></li>
+<li><p><strong>Diff Editor:</strong> Helps you compare the current file with an older version, showing what’s been added, removed, or changed.</p></li>
+<li><p><strong>Scripts Component:</strong> When you revert a file, the updated version is immediately available in the scripts directory, so you can reopen it in the editor.</p></li>
+</ol>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Sure! Here are some best practices:</p>
+<ol type="1">
+<li><p><strong>Clean Up Regularly:</strong> If you save very frequently or no longer need older versions, you can clean up the history. But don’t worry too much—diffs are small, so the system can handle lots of saves efficiently.</p></li>
+<li><p><strong>Save Significant Changes:</strong> Before making big edits, save your progress so you can easily revert if needed.</p></li>
+<li><p><strong>Close Editor Tabs Before Reverting:</strong> This ensures the reverted state isn’t accidentally overwritten by unsaved changes in the editor.</p></li>
+</ol>
+<p><strong>User:</strong> This sounds like a powerful tool. Thanks for explaining, R-bot!</p>
+<p><strong>R-bot:</strong> You’re welcome! The Text File History Component is here to make sure you can always backtrack or revisit your work. If you ever need a refresher, just ask!</p>
+</section>
+</section>
+<section id="help" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="help"><span class="header-section-number">2.12</span> Help</h2>
+<section id="video-11" class="level3" data-number="2.12.1">
+<h3 data-number="2.12.1" class="anchored" data-anchor-id="video-11"><span class="header-section-number">2.12.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-11" class="level3" data-number="2.12.2">
+<h3 data-number="2.12.2" class="anchored" data-anchor-id="transcript-11"><span class="header-section-number">2.12.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the Help Component works? I want to understand everything it offers.</p>
+<p><strong>R-bot:</strong> Absolutely! The Help Component is like your trusty guide to all R documentation. It centralizes package and function references, making it easier to access, search, and revisit the information you need. Let me walk you through it.</p>
+<p><strong>User:</strong> What’s the purpose of the Help Component?</p>
+<p><strong>R-bot:</strong> The Help Component is designed to provide quick and detailed access to R documentation for installed packages and objects. It pulls this information directly from the installed R packages, ensuring accuracy. You can think of it as RStudio's Help pane but with extra features like relevance scores and a help history log.</p>
+<p><strong>User:</strong> Relevance scores? What’s that about?</p>
+<p><strong>R-bot:</strong> Great question! The relevance score is displayed in the "Relevance (KG)" column of the main table. It’s based on usage data from Kaggle, giving you an idea of how commonly a function or object is used by analysts and data scientists.</p>
+<p>Here’s how it works:</p>
+<ul>
+<li><p><strong>999:</strong> Means the function or object wasn’t found in the Kaggle dataset. It might still be useful, just less commonly used.</p></li>
+<li><p><strong>001:</strong> Indicates high usage frequency. These are likely to be important or widely applicable functions.</p></li>
+</ul>
+<p>This feature helps you prioritize learning or using functions that others in the data community rely on.</p>
+<p><strong>User:</strong> What else does the main table show?</p>
+<p><strong>R-bot:</strong> The main table has three key columns:</p>
+<ol type="1">
+<li><p><strong>Relevance (KG):</strong> The score we just talked about.</p></li>
+<li><p><strong>Package Name:</strong> Clicking this opens a Help Preview Component with package-level documentation.</p></li>
+<li><p><strong>Object Name:</strong> Clicking this opens detailed documentation for the specific object, whether it’s a function, dataset, or something else.</p></li>
+</ol>
+<p>The Help Preview Component is your window into detailed descriptions, function signatures, and usage examples.</p>
+<p><strong>User:</strong> What’s this Help Preview Component you mentioned?</p>
+<p><strong>R-bot:</strong> The Help Preview Component is where all the magic happens after you select an item from the main table. It includes:</p>
+<ul>
+<li><p><strong>Description:</strong> A summary or detailed explanation of the selected object.</p></li>
+<li><p><strong>Function Signature:</strong> If the object is a function, the signature is displayed here. You can even click on the signature to copy it to your clipboard for easy pasting into your scripts.</p></li>
+</ul>
+<p><strong>User:</strong> Can I search for specific documentation?</p>
+<p><strong>R-bot:</strong> Definitely! The Help Component includes a robust search functionality. You can filter results by:</p>
+<ul>
+<li><p>Package name</p></li>
+<li><p>Object name</p></li>
+<li><p>Description</p></li>
+<li><p>Function signature</p></li>
+</ul>
+<p>The search is case-insensitive, so you don’t have to worry about exact capitalization. Filters are located right below the column headers, consistent with other table components in the app.</p>
+<p><strong>User:</strong> Does it integrate with other components?</p>
+<p><strong>R-bot:</strong> Yes, and this is one of my favorite features! The Help Component integrates seamlessly with the Editor Component. If you’re working in the editor and want to look up a function or object:</p>
+<ol type="1">
+<li><p>Highlight the name in the editor.</p></li>
+<li><p>Press <strong>F1</strong>.</p></li>
+<li><p>The Help Component will open (or come into focus) and filter the table to show the relevant documentation.</p></li>
+</ol>
+<p>This makes it super efficient to reference help without breaking your workflow.</p>
+<p><strong>User:</strong> How does it handle errors?</p>
+<p><strong>R-bot:</strong> Errors are rare, but if they occur—like if a piece of documentation fails to load—a toast notification will appear in the bottom-right corner to let you know what went wrong.</p>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Absolutely:</p>
+<ol type="1">
+<li><p>Use the <strong>Help History Icon</strong> to revisit frequently accessed documentation. It’s a handy way to backtrack without needing to search again.</p></li>
+<li><p>Take full advantage of the <strong>F1 shortcut</strong> in the Editor Component. It’s a game-changer for quick lookups.</p></li>
+<li><p>Pay attention to the relevance scores. They’re a great way to focus on popular and commonly used functions, especially if you’re learning R or exploring new packages.</p></li>
+</ol>
+<p><strong>User:</strong> Thanks, R-bot! This sounds like a super useful tool.</p>
+<p><strong>R-bot:</strong> You’re welcome! The Help Component is designed to make your R coding journey smoother. If you need more guidance, just ask!</p>
+</section>
+</section>
+<section id="data" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="data"><span class="header-section-number">2.13</span> Data</h2>
+<section id="video-12" class="level3" data-number="2.13.1">
+<h3 data-number="2.13.1" class="anchored" data-anchor-id="video-12"><span class="header-section-number">2.13.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-12" class="level3" data-number="2.13.2">
+<h3 data-number="2.13.2" class="anchored" data-anchor-id="transcript-12"><span class="header-section-number">2.13.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain how the Data Component works? I want to understand its features and how to use it effectively.</p>
+<p><strong>R-bot:</strong> Of course! The Data Component is a powerful tool designed to help you manage your project’s files in a structured and reproducible way. Let me walk you through its features and best practices.</p>
+<p><strong>User:</strong> What’s the main purpose of the Data Component?</p>
+<p><strong>R-bot:</strong> The Data Component acts as a file explorer with a focus on reproducibility. It manages files across three key directories:</p>
+<ol type="1">
+<li><p><strong>in:</strong> For raw, unprocessed data. Files here remain untouched to preserve their original state.</p></li>
+<li><p><strong>mid:</strong> A working directory for intermediate files—think temporary outputs or partial results.</p></li>
+<li><p><strong>out:</strong> For final, polished outputs that are ready to share or report.</p></li>
+</ol>
+<p>This structured organization ensures you can trace your workflow and keep your project clean and reproducible.</p>
+<p><strong>User:</strong> How do I upload files?</p>
+<p><strong>R-bot:</strong> You have two options:</p>
+<ol type="1">
+<li><p>Use the <strong>Upload Widget</strong> on the button bar to select files from your device.</p></li>
+<li><p>Drag and drop files directly onto the component.</p></li>
+</ol>
+<p>All uploaded files go into the <strong>in</strong> directory by default, keeping your raw data organized. While you can upload any file type, I recommend sticking to formats you’ll use in your analysis, like CSV or RData.</p>
+<p><strong>User:</strong> What does the main table show?</p>
+<p><strong>R-bot:</strong> The main table gives you a detailed overview of files across the <strong>in</strong>, <strong>mid</strong>, and <strong>out</strong> directories. Each file is represented by a row with the following columns:</p>
+<ul>
+<li><p><strong>Copy Column:</strong> Copies the file’s full path to your clipboard—great for quick references.</p></li>
+<li><p><strong>Read Column:</strong> Copies R syntax for reading the file, like read.csv() for CSV files.</p></li>
+<li><p><strong>Path Column:</strong> Displays the file’s path. Clicking it tries to open the file in a View Component if supported.</p></li>
+<li><p><strong>Download Column:</strong> Lets you download the file as it exists in the project directory.</p></li>
+<li><p><strong>Directory Column:</strong> Indicates which directory the file belongs to: <strong>in</strong>, <strong>mid</strong>, or <strong>out</strong>.</p></li>
+<li><p><strong>Extension Column:</strong> Shows the file’s extension, like .csv or .txt.</p></li>
+<li><p><strong>Image Column:</strong> Restores the global environment from an RData snapshot created via the Environment Component.</p></li>
+<li><p><strong>Delete Column:</strong> Deletes the file from the project. Depending on your settings, a confirmation dialog may appear.</p></li>
+<li><p><strong>Info Column:</strong> Displays metadata like timestamps and file size.</p></li>
+</ul>
+<p><strong>User:</strong> What happens if I click on a file in the Path Column?</p>
+<p><strong>R-bot:</strong> Clicking on a file will try to open it in a <strong>View Component</strong>, provided the file type is supported. For example:</p>
+<ul>
+<li><p>CSV files can be opened and viewed in a spreadsheet-like format.</p></li>
+<li><p>Unsupported file types will trigger a toast notification to let you know they can’t be opened.</p></li>
+</ul>
+<p><strong>User:</strong> How does it integrate with other components?</p>
+<p><strong>R-bot:</strong> The Data Component works closely with:</p>
+<ol type="1">
+<li><p><strong>View Component:</strong> As I mentioned, clicking on a file’s path opens its content in a View Component if the format is supported.</p></li>
+<li><p><strong>Environment Component:</strong> The <strong>Image Column</strong> lets you restore the global environment by loading RData snapshots created in the Environment Component.</p></li>
+</ol>
+<p><strong>User:</strong> What about error handling?</p>
+<p><strong>R-bot:</strong> If an issue arises—like trying to open an unsupported file type—you’ll see a toast notification in the bottom-right corner. The notifications are clear and actionable, so you’ll know what went wrong and how to fix it.</p>
+<p><strong>User:</strong> Any tips for using the Data Component effectively?</p>
+<p><strong>R-bot:</strong> Absolutely! Here are some best practices:</p>
+<ol type="1">
+<li><p><strong>Stick to the directory structure:</strong> Use <strong>in</strong> for raw data, <strong>mid</strong> for intermediate files, and <strong>out</strong> for finalized outputs. This keeps your workflow clean and traceable.</p></li>
+<li><p><strong>Clean up regularly:</strong> Periodically delete unnecessary files from the <strong>mid</strong> directory to avoid clutter.</p></li>
+<li><p><strong>Leverage the Read Column:</strong> Use it to quickly generate R syntax for loading files. This reduces errors and saves time.</p></li>
+<li><p><strong>Preserve raw data:</strong> Never modify files in the <strong>in</strong> directory. Always work on copies in the <strong>mid</strong> directory to maintain an audit trail.</p></li>
+</ol>
+<p><strong>User:</strong> Thanks, R-bot! This sounds like a great tool for staying organized.</p>
+<p><strong>R-bot:</strong> You’re welcome! The Data Component is all about making your projects clean, reproducible, and easy to manage. If you have more questions, you know where to find me!</p>
+</section>
+</section>
+<section id="zips" class="level2" data-number="2.14">
+<h2 data-number="2.14" class="anchored" data-anchor-id="zips"><span class="header-section-number">2.14</span> Zips</h2>
+<section id="video-13" class="level3" data-number="2.14.1">
+<h3 data-number="2.14.1" class="anchored" data-anchor-id="video-13"><span class="header-section-number">2.14.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-13" class="level3" data-number="2.14.2">
+<h3 data-number="2.14.2" class="anchored" data-anchor-id="transcript-13"><span class="header-section-number">2.14.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain the ZIPS Component to me? I want to know how it works and what I can do with it.</p>
+<p><strong>R-bot:</strong> Absolutely! The ZIPS Component is like your project's safety net and collaboration buddy. It manages snapshots of your project, making it easy to back up, restore, or share your work. Let me break it down for you.</p>
+<p><strong>User:</strong> What’s the main purpose of the ZIPS Component?</p>
+<p><strong>R-bot:</strong> Great question! The ZIPS Component serves three key purposes:</p>
+<ol type="1">
+<li><p><strong>Backup and Restore:</strong> You can save the current state of your project as a snapshot and restore it later if needed.</p></li>
+<li><p><strong>Revert to a Previous State:</strong> If something goes wrong or you want to revisit an earlier version, you can extract a snapshot to revert your project.</p></li>
+<li><p><strong>Project Portability:</strong> You can share snapshots as zip files with collaborators or move them between devices. This ensures everyone’s on the same page.</p></li>
+</ol>
+<p>It’s especially handy for protecting your work from browser storage limitations, giving you peace of mind.</p>
+<p><strong>User:</strong> What’s included in a snapshot?</p>
+<p><strong>R-bot:</strong> Snapshots include:</p>
+<ul>
+<li><p>Files from README.md, scripts, and the ./in, ./mid, and ./out directories.</p></li>
+<li><p>Installed R libraries and packages saved in the project.</p></li>
+<li><p>Any additional files created manually or during your workflow.</p></li>
+</ul>
+<p>However, they don’t include:</p>
+<ul>
+<li><p>Code history or version control data.</p></li>
+<li><p>App settings or any IndexedDB-stored data.</p></li>
+</ul>
+<p>Think of it as zipping your project folder—everything file-related is captured, but app-specific data isn’t.</p>
+<p><strong>User:</strong> How do I create a snapshot?</p>
+<p><strong>R-bot:</strong> Simple! Use the <strong>Plus Icon</strong> in the button bar. Clicking it creates a zip file of your entire project in its current state. Just make sure your project is clean and reflects the state you want to preserve before hitting that button.</p>
+<p><strong>User:</strong> What happens after I upload or create a zip file?</p>
+<p><strong>R-bot:</strong> Newly created or uploaded zip files appear in the ZIPS Component's main table. Each file gets its own row with the following actions:</p>
+<ul>
+<li><p><strong>Copy:</strong> Click the clipboard icon to copy the file’s full path to your clipboard.</p></li>
+<li><p><strong>Download:</strong> Click the download icon to save the zip to your device.</p></li>
+<li><p><strong>Extract:</strong> Click the file name to extract its contents into the project directory.</p>
+<ul>
+<li><p>Files in the snapshot overwrite existing files with the same name.</p></li>
+<li><p>Files not in the snapshot stay unchanged.</p></li>
+</ul></li>
+<li><p><strong>Delete:</strong> Click the trash icon to remove the zip file after confirming the action.</p></li>
+<li><p><strong>Info:</strong> Click the info icon to view details like the file’s size and creation date.</p></li>
+</ul>
+<p><strong>User:</strong> What should I watch out for when extracting zip files?</p>
+<p><strong>R-bot:</strong> Good question! Be cautious when extracting zip files, especially if they contain:</p>
+<ul>
+<li><p><strong>README.md</strong> or scripts: These could overwrite files currently open in other components, causing inconsistencies.</p></li>
+<li><p>Large projects: Double-check that extracting the snapshot won’t remove files you still need.</p></li>
+</ul>
+<p>Always review what’s in the snapshot before extracting it, and ensure your project is saved.</p>
+<p><strong>User:</strong> What if something goes wrong during extraction?</p>
+<p><strong>R-bot:</strong> If an error occurs—like a corrupted zip file or a failed extraction—you’ll see a toast notification in the bottom-right corner of the app. It’ll tell you what went wrong so you can take action.</p>
+<p><strong>User:</strong> Does the ZIPS Component integrate with other components?</p>
+<p><strong>R-bot:</strong> Not directly, but it influences them. For example:</p>
+<ul>
+<li><p>Extracting a zip modifies your project structure, which affects files managed by components like Scripts, README, or Data.</p></li>
+<li><p>Files restored from a snapshot will show up in their respective components, ready to use.</p></li>
+</ul>
+<p><strong>User:</strong> Do you have any tips for using this component effectively?</p>
+<p><strong>R-bot:</strong> You bet! Here are my top tips:</p>
+<ol type="1">
+<li><p><strong>Take Regular Snapshots:</strong> Before major changes, create a zip to ensure you can revert if needed.</p></li>
+<li><p><strong>Review Before Creating:</strong> Check that your project is in the desired state before creating a snapshot.</p></li>
+<li><p><strong>Handle With Care:</strong> Be mindful of overwriting files when extracting a zip.</p></li>
+<li><p><strong>Clean Up Periodically:</strong> Delete old or unnecessary zip files to keep the ZIPS Component tidy.</p></li>
+<li><p><strong>Share Snapshots Wisely:</strong> Use zip files to collaborate or transfer projects, ensuring consistency across devices or users.</p></li>
+</ol>
+<p><strong>User:</strong> Thanks, R-bot! That clears everything up.</p>
+<p><strong>R-bot:</strong> Anytime! The ZIPS Component is your safeguard and collaboration tool in one. Use it well, and your projects will always be secure and shareable!</p>
+</section>
+</section>
+<section id="plots" class="level2" data-number="2.15">
+<h2 data-number="2.15" class="anchored" data-anchor-id="plots"><span class="header-section-number">2.15</span> Plots</h2>
+<section id="video-14" class="level3" data-number="2.15.1">
+<h3 data-number="2.15.1" class="anchored" data-anchor-id="video-14"><span class="header-section-number">2.15.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-14" class="level3" data-number="2.15.2">
+<h3 data-number="2.15.2" class="anchored" data-anchor-id="transcript-14"><span class="header-section-number">2.15.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey, R-bot, can you explain the Plots Component to me? I need to know how it works.</p>
+<p><strong>R-bot:</strong> Of course! The Plots Component is your go-to tool for visualizing plots directly within your R session. It’s like having an interactive gallery for all the plots you create while working in the app. Let me guide you through it!</p>
+<p><strong>User:</strong> What’s the main purpose of this component?</p>
+<p><strong>R-bot:</strong> The Plots Component is designed to dynamically display any plots you generate during your R session. It uses the WebR Canvas graphics device to render plots right inside the app. You don’t have to save files or open external tools—it’s all integrated for a smooth workflow.</p>
+<p>However, plots aren’t preserved between sessions, so if there’s a masterpiece you want to keep, make sure to save it manually as a file!</p>
+<p><strong>User:</strong> How do I interact with the plots?</p>
+<p><strong>R-bot:</strong> Easy peasy! The button bar at the top gives you everything you need:</p>
+<ul>
+<li><p><strong>Info Icon:</strong> Opens this documentation in case you forget anything.</p></li>
+<li><p><strong>Left/Right Arrows:</strong> Navigate through your collection of plots in the order they were created. It’s like flipping through a carousel.</p></li>
+<li><p><strong>Metadata Display:</strong> Tells you which plot you’re currently viewing, along with a timestamp of when it was created.</p></li>
+<li><p><strong>Trash Icon:</strong> Deletes the specific plot you’re viewing. It’s a quick way to declutter without touching other plots.</p></li>
+</ul>
+<p><strong>User:</strong> What happens if I resize the component?</p>
+<p><strong>R-bot:</strong> Great question! The Canvas element automatically resizes to fit the available space in the component. The plot will expand or shrink while preserving its dimensions. So whether you’re working on a large monitor or a compact window, your plot will always look its best.</p>
+<p><strong>User:</strong> Can I save or copy plots from here?</p>
+<p><strong>R-bot:</strong> Absolutely! It depends on your browser, though:</p>
+<ul>
+<li><p>Some browsers let you <strong>copy the Canvas to your clipboard</strong> directly.</p></li>
+<li><p>Most browsers support saving the Canvas as a PNG file—you can usually right-click on the plot and select “Save As.”</p></li>
+</ul>
+<p><strong>User:</strong> What if something goes wrong?</p>
+<p><strong>R-bot:</strong> If an error pops up while rendering a plot, you’ll get a toast notification in the bottom-right corner of the app. It’ll tell you what went wrong so you can fix it. Errors are rare but might happen if the Canvas device runs into issues.</p>
+<p><strong>User:</strong> Does it work with other components?</p>
+<p><strong>R-bot:</strong> Oh, absolutely! Here’s how:</p>
+<ul>
+<li><p>It integrates seamlessly with the <strong>Console and Editor Components.</strong> Anytime you generate a plot in R—whether through the Console or by running a script in the Editor—it shows up here.</p></li>
+<li><p>It’s distinct from the <strong>View Component</strong>, which handles tabular data. The Plots Component is purely for visualizations generated from your R code.</p></li>
+</ul>
+<p><strong>User:</strong> Do you have tips for using it effectively?</p>
+<p><strong>R-bot:</strong> You bet! Here are my best tips:</p>
+<ol type="1">
+<li><p><strong>Manage Memory:</strong> If you’re creating a lot of plots, delete unused ones with the trash icon to keep things running smoothly.</p></li>
+<li><p><strong>Save for Reproducibility:</strong> Always save important plots as PNG or PDF files so you can reference them later.</p></li>
+<li><p><strong>Remember Session Limits:</strong> Plots are cleared when the session ends. Save anything you want to keep before wrapping up your work.</p></li>
+</ol>
+<p><strong>User:</strong> That’s perfect! Thanks, R-bot!</p>
+<p><strong>R-bot:</strong> You’re welcome! Have fun plotting, and don’t forget to save your favorite visualizations! If you have more questions, you know where to find me.</p>
+</section>
+</section>
+<section id="packages" class="level2" data-number="2.16">
+<h2 data-number="2.16" class="anchored" data-anchor-id="packages"><span class="header-section-number">2.16</span> Packages</h2>
+<section id="video-15" class="level3" data-number="2.16.1">
+<h3 data-number="2.16.1" class="anchored" data-anchor-id="video-15"><span class="header-section-number">2.16.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-15" class="level3" data-number="2.16.2">
+<h3 data-number="2.16.2" class="anchored" data-anchor-id="transcript-15"><span class="header-section-number">2.16.2</span> Transcript:</h3>
+<p><strong>User:</strong> R-bot, can you walk me through how the Packages Component works? I want to understand everything about it.</p>
+<p><strong>R-bot:</strong> Absolutely! The Packages Component is your command center for managing R packages within your project. Let’s go step by step!</p>
+<p><strong>User:</strong> What’s the purpose of this component?</p>
+<p><strong>R-bot:</strong> The Packages Component is designed to simplify how you interact with R packages. With over 20,000 packages available in R, this tool helps you:</p>
+<ul>
+<li><p><strong>View</strong> all packages in your environment.</p></li>
+<li><p><strong>Install</strong> new packages.</p></li>
+<li><p><strong>Attach or Detach</strong> installed packages for use in your session.</p></li>
+</ul>
+<p>It’s all about streamlining dependency management and ensuring your workflow is as smooth as butter!</p>
+<p><strong>User:</strong> What does the interface look like?</p>
+<p><strong>R-bot:</strong> At the top, you’ll find the <strong>Button Bar</strong>, and below that is the <strong>Main Table</strong> where all the package information is displayed.</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong> Opens this very documentation—your cheat sheet for using the component.</p></li>
+<li><p><strong>Eyeball View Icon:</strong> Displays a detailed table of installed packages, their dependencies, versions, and statuses. This table opens in a separate View Component.</p></li>
+</ol>
+<p><strong>User:</strong> What’s in the main table?</p>
+<p><strong>R-bot:</strong> The Main Table is where the magic happens! Each row represents a package, and you’ll see these key columns:</p>
+<ol type="1">
+<li><p><strong>Status:</strong></p>
+<ul>
+<li><p><strong>Attached:</strong> The package is loaded and ready for use.</p></li>
+<li><p><strong>Detached:</strong> Installed but not currently loaded.</p></li>
+<li><p><strong>Not Installed:</strong> Available for installation.</p></li>
+</ul></li>
+<li><p><strong>Action:</strong></p>
+<ul>
+<li><p><strong>Attach:</strong> Loads the package into your session using library().</p></li>
+<li><p><strong>Detach:</strong> Unloads the package from your session.</p></li>
+<li><p><strong>Install:</strong> Installs the package via install.packages().</p></li>
+</ul></li>
+<li><p>All these actions execute directly in the Console Component, so you’ll see the R commands as they run.</p></li>
+<li><p><strong>CRAN:</strong> A direct link to the package’s CRAN page. Clicking it opens the package’s documentation in your browser.</p></li>
+<li><p><strong>Package Name:</strong> Clicking the name filters the Help Component to show that package’s documentation.</p></li>
+<li><p><strong>Version:</strong> Displays the version of the package available for installation or currently installed.</p></li>
+<li><p><strong>Title:</strong> A brief description of what the package does.</p></li>
+</ol>
+<p><strong>User:</strong> What happens if something goes wrong?</p>
+<p><strong>R-bot:</strong> Errors are handled gracefully. Since all actions run as R commands in the Console Component, you’ll see any error messages there. For example, if a package fails to install, the console will explain why—maybe a dependency issue or a network problem.</p>
+<p><strong>User:</strong> Can I search for packages or explore dependencies?</p>
+<p><strong>R-bot:</strong> Yes, and the Eyeball View Icon is perfect for that! It opens a detailed table in the View Component, showing installed packages, their dependencies, and other metadata. It’s like having X-ray vision for your package environment.</p>
+<p><strong>User:</strong> Does this component work with others?</p>
+<p><strong>R-bot:</strong> It integrates beautifully! Here’s how:</p>
+<ol type="1">
+<li><p><strong>Help Component:</strong> Clicking a package name in the table will filter the Help Component to show its documentation.</p></li>
+<li><p><strong>View Component:</strong> The Eyeball View Icon launches a tabular summary of all installed packages.</p></li>
+</ol>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Definitely! Here are my top recommendations:</p>
+<ol type="1">
+<li><p><strong>Use Pre-installed Packages:</strong> Many common packages like ggplot2 and dplyr are already installed. Check them out before installing new ones.</p></li>
+<li><p><strong>Install Only What You Need:</strong> WebR projects are isolated, so libraries are saved within your project folder. This keeps things reproducible.</p></li>
+<li><p><strong>Leverage Documentation:</strong> Use the CRAN links and Help Component to understand a package before installing it.</p></li>
+</ol>
+<p><strong>User:</strong> Thanks, R-bot. That’s exactly what I needed!</p>
+<p><strong>R-bot:</strong> You’re welcome! Happy coding, and let me know if you need more help managing those packages.</p>
+</section>
+</section>
+<section id="preview-editor" class="level2" data-number="2.17">
+<h2 data-number="2.17" class="anchored" data-anchor-id="preview-editor"><span class="header-section-number">2.17</span> Preview Editor</h2>
+<section id="video-16" class="level3" data-number="2.17.1">
+<h3 data-number="2.17.1" class="anchored" data-anchor-id="video-16"><span class="header-section-number">2.17.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-16" class="level3" data-number="2.17.2">
+<h3 data-number="2.17.2" class="anchored" data-anchor-id="transcript-16"><span class="header-section-number">2.17.2</span> Transcript:</h3>
+<p><strong>User:</strong> Hey R-bot, can you explain how the Preview Editor Component works?</p>
+<p><strong>R-bot:</strong> Of course! The Preview Editor Component is your go-to tool for reviewing the state of a file at a specific timestamp. It’s perfect for confirming what a file looked like in the past before deciding whether to revert to that version or just borrowing a bit of code. Let’s break it down.</p>
+<p><strong>User:</strong> What’s the main purpose of this component?</p>
+<p><strong>R-bot:</strong> This component is all about <strong>previewing</strong>! It gives you a read-only view of a file’s content from a specific point in time. You’ll typically access it through the <strong>Text File History Component</strong> by clicking the "Preview" button on a particular file version. Think of it as a way to look back without actually changing anything in your current project.</p>
+<p><strong>User:</strong> What does the interface look like?</p>
+<p><strong>R-bot:</strong> The Preview Editor Component has a simple and focused layout:</p>
+<ul>
+<li><p><strong>Button Bar:</strong> At the top, you’ll find an <strong>Info Icon</strong> for this documentation and <strong>File Metadata</strong> that shows the file’s name and timestamp. This makes it clear which version you’re reviewing.</p></li>
+<li><p><strong>Main Editor:</strong> This is a <strong>read-only Monaco editor</strong> where the file’s content is displayed exactly as it was at the selected timestamp.</p></li>
+</ul>
+<p><strong>User:</strong> Can I make changes to the file in the editor?</p>
+<p><strong>R-bot:</strong> Nope, the editor is strictly read-only. This is intentional to prevent accidental modifications to historical versions. But you can still <strong>copy code</strong> from the preview and paste it into your current scripts if you need to reuse something.</p>
+<p><strong>User:</strong> Where does the file content come from?</p>
+<p><strong>R-bot:</strong> Great question! The content is pulled directly from the project database, ensuring it’s an exact snapshot of the file at that timestamp. You can trust that what you see is what the file looked like back then.</p>
+<p><strong>User:</strong> Does this component work with others?</p>
+<p><strong>R-bot:</strong> It does! It integrates exclusively with the <strong>Text File History Component.</strong> When you click "Preview" on a file version in the history table, this component opens to display that version. It’s like a dynamic extension of the history tool.</p>
+<p><strong>User:</strong> Any tips for using it effectively?</p>
+<p><strong>R-bot:</strong> Absolutely!</p>
+<ol type="1">
+<li><p><strong>Double-Check Before Reverting:</strong> Always preview the content of a file version before reverting to it. This reduces the risk of overwriting your current work with something unintended.</p></li>
+<li><p><strong>Copy Without Reverting:</strong> Use the read-only editor to copy and reuse useful bits of code from previous versions without needing to revert the entire file.</p></li>
+</ol>
+<p><strong>User:</strong> Thanks, R-bot. That clears things up!</p>
+<p><strong>R-bot:</strong> You’re welcome! The Preview Editor Component is a simple but powerful tool, and now you know exactly how to make the most of it. Let me know if you have more questions!</p>
+</section>
+</section>
+<section id="diff-editor" class="level2" data-number="2.18">
+<h2 data-number="2.18" class="anchored" data-anchor-id="diff-editor"><span class="header-section-number">2.18</span> Diff Editor</h2>
+<section id="video-17" class="level3" data-number="2.18.1">
+<h3 data-number="2.18.1" class="anchored" data-anchor-id="video-17"><span class="header-section-number">2.18.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-17" class="level3" data-number="2.18.2">
+<h3 data-number="2.18.2" class="anchored" data-anchor-id="transcript-17"><span class="header-section-number">2.18.2</span> Transcript:</h3>
+<p><strong>User:</strong> R-bot, can you explain how the Diff Editor Component works?</p>
+<p><strong>R-bot:</strong> Absolutely! The Diff Editor Component is like your detective tool for finding differences between two versions of a file or script. It’s a read-only visual comparison tool that helps you understand changes before taking any action like reverting or overwriting. Let me walk you through it!</p>
+<p><strong>User:</strong> What’s the main purpose of this component?</p>
+<p><strong>R-bot:</strong> Its main job is to <strong>compare two files or versions</strong> side by side (or stacked, depending on the layout) and show the exact differences. You’ll see additions, deletions, and changes clearly highlighted, so there’s no guesswork. You might use it when:</p>
+<ul>
+<li><p>Comparing two scripts from the <strong>Scripts Component</strong>.</p></li>
+<li><p>Reviewing a previous file version against its current state from the <strong>Text File History Component</strong>.</p></li>
+</ul>
+<p><strong>User:</strong> What does the interface look like?</p>
+<p><strong>R-bot:</strong> The interface has two main parts:</p>
+<ol type="1">
+<li><p><strong>Button Bar:</strong> At the top, you’ll see metadata for the files being compared, like their names and timestamps. This ensures you know exactly which files or versions you’re looking at.</p></li>
+<li><p><strong>Monaco Diff Editor:</strong> This is the star of the show! It’s a powerful editor that visually highlights differences between the two files.</p></li>
+</ol>
+<p><strong>User:</strong> How does it handle layouts?</p>
+<p><strong>R-bot:</strong> The editor is super smart about layout. It adapts based on how much screen space is available:</p>
+<ul>
+<li><p><strong>Side-by-Side View:</strong> If there’s enough space, you’ll see the files next to each other. Differences are aligned for easy scanning.</p></li>
+<li><p><strong>Stacked View:</strong> If space is tight, the files stack vertically, with highlights showing changes.</p></li>
+</ul>
+<p><strong>User:</strong> Can I make edits in the Diff Editor?</p>
+<p><strong>R-bot:</strong> Nope! The Diff Editor is strictly <strong>read-only</strong>. This ensures you don’t accidentally alter anything while reviewing changes. If you need to make edits, you can copy the content and paste it into an editable component like the Editor Component.</p>
+<p><strong>User:</strong> What’s the workflow for using it?</p>
+<p><strong>R-bot:</strong> It integrates seamlessly with other components:</p>
+<ul>
+<li><p>From the <strong>Scripts Component</strong>, you can select two different scripts and open them in the Diff Editor.</p></li>
+<li><p>From the <strong>Text File History Component</strong>, you can compare a timestamped version of a file with its current version.</p></li>
+</ul>
+<p>This makes it versatile whether you’re managing scripts or reviewing version history.</p>
+<p><strong>User:</strong> What if something goes wrong?</p>
+<p><strong>R-bot:</strong> Errors are rare, but if they happen—like if a file was deleted or there’s a database issue—a toast notification will appear in the bottom-right corner of the app, letting you know what went wrong.</p>
+<p><strong>User:</strong> Got any best practices for using the Diff Editor?</p>
+<p><strong>R-bot:</strong> Definitely!</p>
+<ol type="1">
+<li><p><strong>Verify Changes:</strong> Always use the Diff Editor to confirm what’s different between two files before reverting or overwriting anything. It’s your safety net.</p></li>
+<li><p><strong>Resize for Clarity:</strong> If you’re comparing long scripts or files with lots of differences, resize the component to make everything more readable.</p></li>
+<li><p><strong>Review Regularly:</strong> It’s a great habit to periodically check differences during development to track changes and ensure consistency.</p></li>
+</ol>
+<p><strong>User:</strong> Thanks, R-bot. That sounds really useful!</p>
+<p><strong>R-bot:</strong> You’re welcome! The Diff Editor Component is a simple but powerful tool for keeping track of changes in your project. Let me know if you have more questions!</p>
+</section>
+</section>
+<section id="application-button-bar" class="level2" data-number="2.19">
+<h2 data-number="2.19" class="anchored" data-anchor-id="application-button-bar"><span class="header-section-number">2.19</span> Application Button Bar</h2>
+<section id="video-18" class="level3" data-number="2.19.1">
+<h3 data-number="2.19.1" class="anchored" data-anchor-id="video-18"><span class="header-section-number">2.19.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="transcript-18" class="level3" data-number="2.19.2">
+<h3 data-number="2.19.2" class="anchored" data-anchor-id="transcript-18"><span class="header-section-number">2.19.2</span> Transcript:</h3>
+<p><strong>User:</strong> R-bot, can you explain how the Application Button Bar works?</p>
+<p><strong>R-bot:</strong> Of course! The Application Button Bar is your command center for managing projects and customizing your environment. It’s packed with tools that streamline your workflow and help you navigate the app efficiently. Let’s dive in!</p>
+<p><strong>User:</strong> What’s its primary purpose?</p>
+<p><strong>R-bot:</strong> The button bar is designed to give you quick access to essential features. From managing projects to customizing settings and enabling advanced features, it ensures you can work without interruptions. Think of it as your toolbox for controlling the entire application.</p>
+<p><strong>User:</strong> Can you walk me through each button?</p>
+<p><strong>R-bot:</strong> Sure thing! Here’s a breakdown:</p>
+<ol type="1">
+<li><p><strong>Info Icon:</strong></p>
+<ul>
+<li><p>Displays documentation about the application and the button bar itself.</p></li>
+<li><p>Great if you need a refresher or quick help.</p></li>
+</ul></li>
+<li><p><strong>Folder with a Plus Icon (Project Management):</strong></p>
+<ul>
+<li><p>Opens a modal for managing projects.</p></li>
+<li><p>You can:</p>
+<ul>
+<li><p><strong>Create New Projects</strong> by entering a name and clicking “Create New Project.”</p></li>
+<li><p>View existing projects in a table with details like their name and primary key.</p></li>
+<li><p>Open projects in the <strong>current tab</strong> or a <strong>new tab.</strong></p></li>
+<li><p>Navigate to a page to delete project databases.</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Circular Arrow (Project Refresh):</strong></p>
+<ul>
+<li><p>Syncs your session with the database.</p></li>
+<li><p>Ensures all components like scripts or plots are up-to-date.</p></li>
+</ul></li>
+<li><p><strong>Floppy Disk Icon (Mass Save):</strong></p>
+<ul>
+<li><p>Saves all savable components, such as scripts or data.</p></li>
+<li><p>Displays toasts in the bottom-right corner to show save progress and success.</p></li>
+</ul></li>
+<li><p><strong>Square with a Cross (Close All):</strong></p>
+<ul>
+<li>Closes all closable components while keeping essential ones open.</li>
+</ul></li>
+<li><p><strong>Circle with a Plus Icon (New R Script):</strong></p>
+<ul>
+<li><p>Opens a new script titled <strong>Untitled.</strong></p></li>
+<li><p>It encourages renaming to avoid overwriting files named “Untitled.R.”</p></li>
+</ul></li>
+<li><p><strong>Bug Icon (Feedback):</strong></p>
+<ul>
+<li><p>Opens a feedback form in a new tab (hosted on Google Forms).</p></li>
+<li><p>Use it to report bugs, suggest features, or share feedback.</p></li>
+</ul></li>
+</ol>
+<p><strong>User:</strong> What about the IntelliSense Toggles?</p>
+<p><strong>R-bot:</strong> Ah, the IntelliSense section is all about enhancing your coding experience in the Monaco editor. Here’s what each toggle does:</p>
+<ol type="1">
+<li><p><strong>Text Bubble Icon:</strong></p>
+<ul>
+<li>Enables hover-based help for functions.</li>
+</ul></li>
+<li><p><strong>Square with Brackets Icon:</strong></p>
+<ul>
+<li>Displays function signature assistance.</li>
+</ul></li>
+<li><p><strong>Car Icon:</strong></p>
+<ul>
+<li>Activates autocomplete suggestions sorted by relevance.</li>
+</ul></li>
+<li><p><strong>Scissors Icon:</strong></p>
+<ul>
+<li>Adds snippets with default arguments in the autocomplete dropdown.</li>
+</ul></li>
+</ol>
+<p>By default, these are off. You can turn them on manually as needed.</p>
+<p><strong>User:</strong> And the settings?</p>
+<p><strong>R-bot:</strong> That’s controlled by the <strong>Cog Icon (App Settings):</strong></p>
+<ul>
+<li><p>Opens a modal for customizing your app experience.</p></li>
+<li><p>You can adjust:</p>
+<ul>
+<li><p>Confirmation prompts for actions like deletions.</p></li>
+<li><p>Enable a <strong>sticky console</strong> that always stays at the bottom.</p></li>
+<li><p>Restore documents automatically when a project starts.</p></li>
+<li><p>Set preferences for the Monaco editor.</p></li>
+</ul></li>
+<li><p><strong>Wipe Database Button:</strong></p>
+<ul>
+<li><p>Offers two layers of confirmation before wiping all databases to prevent accidental loss.</p></li>
+<li><p>The first is a modal asking, “Are you sure?”</p></li>
+<li><p>The second is a secondary prompt on a separate page.</p></li>
+</ul></li>
+</ul>
+<p><strong>User:</strong> Anything else I should know?</p>
+<p><strong>R-bot:</strong> Yes! The Application Button Bar is all about convenience and control. Use it to manage projects, enable IntelliSense, tweak app settings, and more. It’s your one-stop shop for making the most of this powerful in-browser R environment.</p>
+<p><strong>User:</strong> Thanks, R-bot. That was super helpful!</p>
+<p><strong>R-bot:</strong> You’re welcome! Let me know if you want me to explain anything else.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./getting_started.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ide_demos.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">IDE Demos Conversations</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

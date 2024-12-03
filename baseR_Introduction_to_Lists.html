@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Scaffolding - Reference Manual - 6&nbsp; Introduction to Lists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./baseR_Matrix_Operations.html" rel="next">
+<link href="./baseR_Working_with_Vectors.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Scaffolding - Reference Manual - 6&nbsp; Introduction to Lists">
+<meta property="og:site-name" content="Scaffolding - Reference Manual">
+<meta name="twitter:title" content="Scaffolding - Reference Manual - 6&nbsp; Introduction to Lists">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./baseR_Statements_and_Variables.html">Learning How to Programming</a></li><li class="breadcrumb-item"><a href="./baseR_Introduction_to_Lists.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Lists</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Scaffolding - Reference Manual</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Purpose</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">IDE</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_components.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">IDE Component Conversations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">IDE Demos Conversations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Learning How to Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Statements_and_Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statements and Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Vectors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Introduction_to_Lists.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Lists</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Matrix_Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Matrix Operations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Data_Frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with Data Frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Combining_and_Reshaping_Data_Structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combining and Reshaping Data Structures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Casting_and_Structure_Manipulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Casting and Structure Manipulations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Functions_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Functions in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_String_Manipulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">String Manipulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Applying_Functions_Across_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Applying Functions Across Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Probability_Distributions_and_Sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Probability Distributions and Sampling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Dates_and_Times.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dates and Times</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Basic_Graphics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Basic Graphics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Working with Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_R_Environment_Essentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Environment Essentials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Miscellaneous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendices_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-lists-in-r" id="toc-introduction-to-lists-in-r" class="nav-link active" data-scroll-target="#introduction-to-lists-in-r"><span class="header-section-number">6.1</span> Introduction to Lists in R</a>
+  <ul class="collapse">
+  <li><a href="#video" id="toc-video" class="nav-link" data-scroll-target="#video"><span class="header-section-number">6.1.1</span> Video</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="header-section-number">6.1.2</span> Code</a></li>
+  <li><a href="#transcript" id="toc-transcript" class="nav-link" data-scroll-target="#transcript"><span class="header-section-number">6.1.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#selecting-setting-and-removing-list-elements-in-r" id="toc-selecting-setting-and-removing-list-elements-in-r" class="nav-link" data-scroll-target="#selecting-setting-and-removing-list-elements-in-r"><span class="header-section-number">6.2</span> Selecting, Setting, and Removing List Elements in R</a>
+  <ul class="collapse">
+  <li><a href="#video-1" id="toc-video-1" class="nav-link" data-scroll-target="#video-1"><span class="header-section-number">6.2.1</span> Video</a></li>
+  <li><a href="#code-1" id="toc-code-1" class="nav-link" data-scroll-target="#code-1"><span class="header-section-number">6.2.2</span> Code</a></li>
+  <li><a href="#transcript-1" id="toc-transcript-1" class="nav-link" data-scroll-target="#transcript-1"><span class="header-section-number">6.2.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#converting-lists-to-atomic-vectors-in-rs" id="toc-converting-lists-to-atomic-vectors-in-rs" class="nav-link" data-scroll-target="#converting-lists-to-atomic-vectors-in-rs"><span class="header-section-number">6.3</span> Converting Lists to Atomic Vectors in Rs</a>
+  <ul class="collapse">
+  <li><a href="#video-2" id="toc-video-2" class="nav-link" data-scroll-target="#video-2"><span class="header-section-number">6.3.1</span> Video</a></li>
+  <li><a href="#code-2" id="toc-code-2" class="nav-link" data-scroll-target="#code-2"><span class="header-section-number">6.3.2</span> Code</a></li>
+  <li><a href="#transcript-2" id="toc-transcript-2" class="nav-link" data-scroll-target="#transcript-2"><span class="header-section-number">6.3.3</span> Transcript</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Lists</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-lists-in-r" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction-to-lists-in-r"><span class="header-section-number">6.1</span> Introduction to Lists in R</h2>
+<section id="video" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="video"><span class="header-section-number">6.1.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="code"><span class="header-section-number">6.1.2</span> Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"1"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="st">"1"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>my_named_list  <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x1=</span><span class="dv">1</span>, <span class="at">x2=</span><span class="st">"1"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my_list) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>my_empty_list  <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="dv">3</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>my_named_list[[<span class="fu">c</span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)]]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>my_named_list[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="transcript"><span class="header-section-number">6.1.3</span> Transcript</h3>
+<p><strong>User:</strong> "Alright, R-bot, I’ve learned about vectors and factors. What about lists? What makes them different?"</p>
+<p><strong>R-bot:</strong> "Lists are one of the most flexible data structures in R. Unlike vectors, they can contain elements of different types, all within a single structure. They are like the vectors we've seen before, but each element can be a different type."</p>
+<p><strong>User:</strong> "So, lists are like containers for anything I want to group together, even if the items are different?"</p>
+<p><strong>R-bot:</strong> "Correct. Let’s walk through creating a list so you can see how it works."</p>
+<p><strong>R-bot:</strong> "To create a list, you use the list() function. This function allows you to combine elements of different types. Try typing my_list &lt;- list(1, '1'). This creates a list with two different elements: a number and a character."</p>
+<p><strong>User:</strong> "Typed it out… and I see my list with each element inside. So, this list has different types all grouped together."</p>
+<p><strong>R-bot:</strong> "Yes. If we did this with the c() function, the numeric 1 would be changed to a character. Lists can handle different types of data. They’re super versatile, which makes them useful when you need to store varied types of data together."</p>
+<p><strong>R-bot:</strong> "Now, let’s talk about assigning names to the elements of a list. You can name each element as you create the list by setting name = value within the list() function."</p>
+<p><strong>User:</strong> "So I can add names to each part of the list right from the start?"</p>
+<p><strong>R-bot:</strong> "You’ve got it! Try typing my_named_list &lt;- list(x1 = 1, x2 = '1'). This gives each element a name — x1 and x2."</p>
+<p><strong>User:</strong> "Typed it… now each element has a name! I see labels ‘x1’ and ‘x2’ for each part of the list."</p>
+<p><strong>R-bot:</strong> "Naming elements makes it easier to refer to specific items later. But if you don’t set names while creating the list, you can always add them afterward using the names() function."</p>
+<p><strong>User:</strong> "Okay, so how do I add names after creating a list?"</p>
+<p><strong>R-bot:</strong> "You can use names() to set or change names anytime. Try typing names(my_list) &lt;- c('x1', 'x2'). This adds names to each element in my_list, even though we didn’t set them when creating it. The two lists are now the same."</p>
+<p><strong>User:</strong> "Typed it, and now my list has names, even though I didn’t set them during creation."</p>
+<p><strong>R-bot:</strong> "Naming elements afterward can be handy if you create a list on the fly and want to label it later for clarity."</p>
+<p><strong>R-bot:</strong> "Another helpful trick with lists is that if you know how many elements you’ll need, you can create an empty list with vector('list', n), where n is the number of elements. This is useful for pre-allocating space if you’ll be filling in the list later. This can make tasks you'll need to do in R more efficient."</p>
+<p><strong>User:</strong> "So, if I know I need a list with a certain number of elements, I can create an empty one and fill it in afterward?"</p>
+<p><strong>R-bot:</strong> "Correct. Try typing my_empty_list &lt;- vector('list', 3). This creates an empty list with three slots, ready for values to be added."</p>
+<p><strong>User:</strong> "Typed it, and I see a list with three empty spots. This will be helpful when I know how many elements I need but not their values yet."</p>
+<p><strong>R-bot:</strong> "Right! This technique can make your code cleaner, especially when working with lists you plan to populate as you go."</p>
+<p><strong>R-bot:</strong> "In this session, we covered what lists are, how to create them, how to name their elements during and after creation, and how to initialize empty lists if you know the length in advance."</p>
+<p><strong>User:</strong> "So lists are my go-to when I need to store different things together. This is going to be useful!"</p>
+</section>
+</section>
+<section id="selecting-setting-and-removing-list-elements-in-r" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="selecting-setting-and-removing-list-elements-in-r"><span class="header-section-number">6.2</span> Selecting, Setting, and Removing List Elements in R</h2>
+<section id="video-1" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="video-1"><span class="header-section-number">6.2.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-1" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="code-1"><span class="header-section-number">6.2.2</span> Code</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a=</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">10</span>, <span class="at">c=</span><span class="dv">15</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>my_list[<span class="dv">1</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_list[<span class="dv">1</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">1</span>]]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_list[[<span class="dv">1</span>]])</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">## by names</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>my_list[<span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"c"</span>)]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"c"</span>)]] <span class="do">## will throw an error!!</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="do">## by index</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>my_list[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]] <span class="do">## will throw an error!!</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="st">"changed c"</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>my_list</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>my_list[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"b2"</span>, <span class="st">"c2"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>my_list</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="do">## assign a list as an element</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"b2"</span>, <span class="st">"c2"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>my_list</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="do">## new index</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">4</span>]] <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="do">## new name</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="st">"name 5"</span>]] <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="do">## preallocate</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">vector</span>(<span class="st">"list"</span>, n)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove 5</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="st">"name 5"</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove 4</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">4</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>my_list</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove 2 &amp; 3</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>my_list[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="do">## Same thing</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="st">"a"</span>]]</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>my_list<span class="sc">$</span>a</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-1" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="transcript-1"><span class="header-section-number">6.2.3</span> Transcript</h3>
+<p><strong>User:</strong> "Hey R-bot, now that I know how to create lists, how do I actually get elements out or make changes to them?"</p>
+<p><strong>R-bot:</strong> "Just like with vectors, lists let you select and modify elements — but there are a few special rules when working with lists in R. Let’s go over selecting, setting, and removing list elements so you can get comfortable working with lists."</p>
+<p><strong>R-bot:</strong> "Let’s start with selecting elements. Just like with vectors, you can use single square brackets to select elements from a list. But here’s the catch: using single square brackets on a list always returns another list, even if you only select one element."</p>
+<p><strong>User:</strong> "Wait, so even if I select one item, it’s still returned as a list?"</p>
+<p><strong>R-bot:</strong> "Correct. For example, type my_list &lt;- list(a = 5, b = 10, c = 15). Then, type my_list[1] to select the first element."</p>
+<p><strong>User:</strong> "Typed it out… and I see a list of length one with just the first element inside. So single square brackets keeps the list structure, even for a single item."</p>
+<p><strong>R-bot:</strong> "You got it! Single square brackets always return a list. Now, if you want to actually access the value stored at a position, use double square brackets. This gives you the element itself, not as a list. Try typing my_list[[1]]."</p>
+<p><strong>User:</strong> "Typed it, and now I see the number 5, not a list. So double square brackets digs into the actual value stored there."</p>
+<p><strong>R-bot:</strong> "Correct. Think of single square brackets as the box that contains the element, while double square brackets takes the element out of the box. Single square brackets work with a vector of indexes or names, but double square brackets only work with a single index or name at a time. Try my_list[c('a', 'c')] to see how to select multiple elements at once."</p>
+<p><strong>User:</strong> "Typed it, and now I see a list with just elements ‘a’ and ‘c’. This is handy for selecting specific parts of a list by name."</p>
+<p><strong>R-bot:</strong> "Now, let’s talk about setting list elements. You can use double square brackets to add or update a single element in a list. For instance, type my_list[[3]] &lt;- "changed c" to change the element in position three."</p>
+<p><strong>User:</strong> "Typed it, and now I see position three has changed."</p>
+<p><strong>R-bot:</strong> "And if you want to change multiple items at once, you can use single square brackets and assign a list to those positions."</p>
+<p><strong>User:</strong> "Tested it. That’s helpful for changing multiple elements at once."</p>
+<p><strong>R-bot:</strong> "Exactly! When you use single square brackets and provide a list as the assignment, R adds all the elements at once based on the specified indexes or names. If you use double square brackets and assign a list, then R assigns the list to the element."</p>
+<p><strong>User:</strong> "Wow. Lists are like Yertle the Turtle. It can be turtles all the way down."</p>
+<p><strong>R-bot:</strong> "Haha, exactly! R lists can be as layered as you want — a stack of turtles, each holding another turtle. Just remember: at some point, even Yertle needs a stable base, or it’s a long way down!"</p>
+<p><strong>R-bot:</strong> "You can add new elements to the list by just using names or indexes that don’t already exist."</p>
+<p><strong>User:</strong> "Tested it. I can see how that works."</p>
+<p><strong>User:</strong> "R-bot, what if I want to keep adding new elements to my list over time? Is there a good way to do that?"</p>
+<p><strong>R-bot:</strong> "You can definitely keep adding new elements to a list in R, but there’s a small catch. While lists are flexible, repeatedly adding elements can slow things down. Adding elements to a list dynamically isn’t as fast as adding to other data structures."</p>
+<p><strong>User:</strong> "Why’s that? Shouldn’t lists be able to grow as much as I want?"</p>
+<p><strong>R-bot:</strong> "They can grow, but every time you add a new element, R has to recreate the list in memory. So if you’re adding elements one by one in a loop, R’s memory management can slow things down quite a bit."</p>
+<p><strong>User:</strong> "Got it. So if I know I need a certain number of elements, it’s better to set that up from the start?"</p>
+<p><strong>R-bot:</strong> "Correct. If you know the number of elements you’ll need, it’s faster to create an empty list of that length using vector("list", n) where n is the number of elements. This way, you pre-allocate memory for the list and avoid performance issues when you fill it in."</p>
+<p><strong>R-bot:</strong> "Now let’s cover how to remove elements from a list. To remove a single element, use double square brackets and assign it NULL."</p>
+<p><strong>User:</strong> "I tried it twice… and now the 4th and 5th elements are gone from my list. So double square brackets with NULL deletes a single item."</p>
+<p><strong>R-bot:</strong> "Correct. To remove multiple elements, use single square brackets and set those positions to NULL."</p>
+<p><strong>User:</strong> "Tested it, and now both ‘b’ and ‘c’ are gone from the list. So single square brackets with NULL clears out multiple items at once. That is probably quicker than doing the double square brackets twice."</p>
+<p><strong>User:</strong> "Alright, R-bot, I’m getting the hang of square brackets for accessing elements by index or name. Is there an easier way to grab named elements?"</p>
+<p><strong>R-bot:</strong> "Absolutely! When you’re working with named elements in a list, you can use the dollar sign $ operator as a shortcut to access them, just like double square brackets but a bit quicker to type. So instead of my_list[["element_name"]], you could just type my_list$element_name."</p>
+<p><strong>User:</strong> "Interesting! So it works like double square brackets, but only for names?"</p>
+<p><strong>R-bot:</strong> "Exactly! Dollar sign $ only works with names — you can’t use it with numeric indices. But for named elements, it’s super convenient."</p>
+<p><strong>R-bot:</strong> "Great job today! We covered how to select, set, and remove list elements using single square brackets and double square brackets. Just remember, single square brackets always return or expect a list, while double square brackets go directly to the value inside the list."</p>
+<p><strong>User:</strong> "So, single square brackets keep the list format, and double square brackets get me straight to the value. Good to know!"</p>
+</section>
+</section>
+<section id="converting-lists-to-atomic-vectors-in-rs" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="converting-lists-to-atomic-vectors-in-rs"><span class="header-section-number">6.3</span> Converting Lists to Atomic Vectors in Rs</h2>
+<section id="video-2" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="video-2"><span class="header-section-number">6.3.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-2" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="code-2"><span class="header-section-number">6.3.2</span> Code</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(my_list)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_list)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">unlist</span>(my_list))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">x1=</span><span class="dv">1</span>,<span class="at">x2=</span> <span class="dv">2</span>,<span class="at">x3=</span> <span class="dv">3</span>,<span class="at">x4=</span> <span class="dv">4</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## selecting by position</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">4</span>]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">4</span>]]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">## selecting by name</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>x[<span class="st">"x4"</span>]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>x[[<span class="st">"x4"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-2" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="transcript-2"><span class="header-section-number">6.3.3</span> Transcript</h3>
+<p><strong>User:</strong> "Hey R-bot, I have a list, but all the elements are the same type. Can I make it into a regular vector to work with it more easily?"</p>
+<p><strong>R-bot:</strong> "Good question! Lists in R are actually already vectors, but they’re special because they’re designed to hold elements of different types. That’s why we can pre-allocate them with the vector function. However, they’re not atomic vectors — which is the type you’re used to working with."</p>
+<p><strong>User:</strong> "So lists are already vectors, but they’re like a vector of mixed pieces?"</p>
+<p><strong>R-bot:</strong> "Correct. If all the elements in your list are the same type, like all numbers or all characters, you can simplify the list into a regular atomic vector using the unlist function. It pulls all the elements out into a single atomic vector."</p>
+<p><strong>User:</strong> "Alright. So, unlist is what I need to convert my list?"</p>
+<p><strong>R-bot:</strong> "Yep! Try typing my_list &lt;- list(1, 2, 3, 4) and then on a new line unlist(my_list) to see how it works."</p>
+<p><strong>User:</strong> "Typed it out… and now I see a regular numeric vector with each element from the list. Nice!"</p>
+<p><strong>R-bot:</strong> "Exactly! unlist makes it easy to simplify a list when all its elements are the same type. You now have an atomic vector, which is a bit simpler to work with."</p>
+<p><strong>R-bot:</strong> "Now that you have an atomic vector, a lot of what you learned about lists still applies. For example, you can still name elements in an atomic vector by using the names function, just like with lists."</p>
+<p><strong>User:</strong> "So, I can still add names and work with elements in the same way?"</p>
+<p><strong>R-bot:</strong> "Right! You can also use both single square brackets and double square brackets for accessing elements. However, since atomic vectors are simpler, there’s very little difference between using single square brackets and double square brackets when selecting a single element. Single square brackets return a vector of one element, and double square brackets return the element itself, but the behavior is nearly identical."</p>
+<p><strong>User:</strong> "Okay, so I don’t need to worry too much about double square brackets when working with atomic vectors?"</p>
+<p><strong>R-bot:</strong> "Most R users stick with single square brackets for atomic vectors, since it’s simpler and gives the same result. Double square brackets is rarely used on atomic vectors because there’s not much advantage to it. That said, these connections will help you understand that R is very consistent, and you have the freedom to work with lists and atomic vectors in similar ways."</p>
+<p><strong>User:</strong> "That’s good to know. So single square brackets is the go-to for atomic vectors, and double square brackets is more useful for lists."</p>
+<p><strong>R-bot:</strong> "In this conversation, we covered how to turn lists into atomic vectors with unlist, reviewed that lists are vectors designed to hold complex data types, and talked about how single square brackets and double square brackets work with atomic vectors."</p>
+<p><strong>User:</strong> "So with unlist, I get a simpler, atomic vector. That’s really useful!"</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./baseR_Working_with_Vectors.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Vectors</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./baseR_Matrix_Operations.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Matrix Operations</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

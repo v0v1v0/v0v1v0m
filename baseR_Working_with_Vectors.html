@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Scaffolding - Reference Manual - 5&nbsp; Working with Vectors</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./baseR_Introduction_to_Lists.html" rel="next">
+<link href="./baseR_Statements_and_Variables.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Scaffolding - Reference Manual - 5&nbsp; Working with Vectors">
+<meta property="og:site-name" content="Scaffolding - Reference Manual">
+<meta name="twitter:title" content="Scaffolding - Reference Manual - 5&nbsp; Working with Vectors">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./baseR_Statements_and_Variables.html">Learning How to Programming</a></li><li class="breadcrumb-item"><a href="./baseR_Working_with_Vectors.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Vectors</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Scaffolding - Reference Manual</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Scaffolding---Reference-Manual.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Purpose</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">IDE</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_components.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">IDE Component Conversations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide_demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">IDE Demos Conversations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Learning How to Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Statements_and_Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statements and Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Vectors.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Vectors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Introduction_to_Lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Lists</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Matrix_Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Matrix Operations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Data_Frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with Data Frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Combining_and_Reshaping_Data_Structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combining and Reshaping Data Structures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Casting_and_Structure_Manipulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Casting and Structure Manipulations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Functions_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Functions in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_String_Manipulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">String Manipulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Applying_Functions_Across_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Applying Functions Across Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Probability_Distributions_and_Sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Probability Distributions and Sampling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Dates_and_Times.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dates and Times</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Basic_Graphics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Basic Graphics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Working_with_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Working with Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_R_Environment_Essentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Environment Essentials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baseR_Miscellaneous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendices_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-data-types-and-structures-in-r" id="toc-introduction-to-data-types-and-structures-in-r" class="nav-link active" data-scroll-target="#introduction-to-data-types-and-structures-in-r"><span class="header-section-number">5.1</span> Introduction to Data Types and Structures in R</a>
+  <ul class="collapse">
+  <li><a href="#video" id="toc-video" class="nav-link" data-scroll-target="#video"><span class="header-section-number">5.1.1</span> Video</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="header-section-number">5.1.2</span> Code</a></li>
+  <li><a href="#transcript" id="toc-transcript" class="nav-link" data-scroll-target="#transcript"><span class="header-section-number">5.1.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#creating-vectors-and-factors" id="toc-creating-vectors-and-factors" class="nav-link" data-scroll-target="#creating-vectors-and-factors"><span class="header-section-number">5.2</span> Creating Vectors and Factors</a>
+  <ul class="collapse">
+  <li><a href="#video-1" id="toc-video-1" class="nav-link" data-scroll-target="#video-1"><span class="header-section-number">5.2.1</span> Video</a></li>
+  <li><a href="#code-1" id="toc-code-1" class="nav-link" data-scroll-target="#code-1"><span class="header-section-number">5.2.2</span> Code</a></li>
+  <li><a href="#transcript-1" id="toc-transcript-1" class="nav-link" data-scroll-target="#transcript-1"><span class="header-section-number">5.2.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#vector-operations-in-r" id="toc-vector-operations-in-r" class="nav-link" data-scroll-target="#vector-operations-in-r"><span class="header-section-number">5.3</span> Vector Operations in R</a>
+  <ul class="collapse">
+  <li><a href="#video-2" id="toc-video-2" class="nav-link" data-scroll-target="#video-2"><span class="header-section-number">5.3.1</span> Video</a></li>
+  <li><a href="#code-2" id="toc-code-2" class="nav-link" data-scroll-target="#code-2"><span class="header-section-number">5.3.2</span> Code</a></li>
+  <li><a href="#transcript-2" id="toc-transcript-2" class="nav-link" data-scroll-target="#transcript-2"><span class="header-section-number">5.3.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#creating-and-working-with-sequences" id="toc-creating-and-working-with-sequences" class="nav-link" data-scroll-target="#creating-and-working-with-sequences"><span class="header-section-number">5.4</span> Creating and Working with Sequences</a>
+  <ul class="collapse">
+  <li><a href="#video-3" id="toc-video-3" class="nav-link" data-scroll-target="#video-3"><span class="header-section-number">5.4.1</span> Video</a></li>
+  <li><a href="#code-3" id="toc-code-3" class="nav-link" data-scroll-target="#code-3"><span class="header-section-number">5.4.2</span> Code</a></li>
+  <li><a href="#transcript-3" id="toc-transcript-3" class="nav-link" data-scroll-target="#transcript-3"><span class="header-section-number">5.4.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#comparing-vectors-in-r" id="toc-comparing-vectors-in-r" class="nav-link" data-scroll-target="#comparing-vectors-in-r"><span class="header-section-number">5.5</span> Comparing Vectors in R</a>
+  <ul class="collapse">
+  <li><a href="#video-4" id="toc-video-4" class="nav-link" data-scroll-target="#video-4"><span class="header-section-number">5.5.1</span> Video</a></li>
+  <li><a href="#code-4" id="toc-code-4" class="nav-link" data-scroll-target="#code-4"><span class="header-section-number">5.5.2</span> Code</a></li>
+  <li><a href="#transcript-4" id="toc-transcript-4" class="nav-link" data-scroll-target="#transcript-4"><span class="header-section-number">5.5.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#selecting-vector-elements" id="toc-selecting-vector-elements" class="nav-link" data-scroll-target="#selecting-vector-elements"><span class="header-section-number">5.6</span> Selecting Vector Elements</a>
+  <ul class="collapse">
+  <li><a href="#video-5" id="toc-video-5" class="nav-link" data-scroll-target="#video-5"><span class="header-section-number">5.6.1</span> Video</a></li>
+  <li><a href="#code-5" id="toc-code-5" class="nav-link" data-scroll-target="#code-5"><span class="header-section-number">5.6.2</span> Code</a></li>
+  <li><a href="#transcript-5" id="toc-transcript-5" class="nav-link" data-scroll-target="#transcript-5"><span class="header-section-number">5.6.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#sorting-and-ordering-vectors-in-r" id="toc-sorting-and-ordering-vectors-in-r" class="nav-link" data-scroll-target="#sorting-and-ordering-vectors-in-r"><span class="header-section-number">5.7</span> Sorting and Ordering Vectors in R</a>
+  <ul class="collapse">
+  <li><a href="#video-6" id="toc-video-6" class="nav-link" data-scroll-target="#video-6"><span class="header-section-number">5.7.1</span> Video</a></li>
+  <li><a href="#code-6" id="toc-code-6" class="nav-link" data-scroll-target="#code-6"><span class="header-section-number">5.7.2</span> Code</a></li>
+  <li><a href="#transcript-6" id="toc-transcript-6" class="nav-link" data-scroll-target="#transcript-6"><span class="header-section-number">5.7.3</span> Transcript</a></li>
+  </ul></li>
+  <li><a href="#conditional-logic-with-ifelse-in-r" id="toc-conditional-logic-with-ifelse-in-r" class="nav-link" data-scroll-target="#conditional-logic-with-ifelse-in-r"><span class="header-section-number">5.8</span> Conditional Logic with ifelse in R</a>
+  <ul class="collapse">
+  <li><a href="#video-7" id="toc-video-7" class="nav-link" data-scroll-target="#video-7"><span class="header-section-number">5.8.1</span> Video</a></li>
+  <li><a href="#code-7" id="toc-code-7" class="nav-link" data-scroll-target="#code-7"><span class="header-section-number">5.8.2</span> Code</a></li>
+  <li><a href="#transcript-7" id="toc-transcript-7" class="nav-link" data-scroll-target="#transcript-7"><span class="header-section-number">5.8.3</span> Transcript</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Vectors</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-data-types-and-structures-in-r" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-to-data-types-and-structures-in-r"><span class="header-section-number">5.1</span> Introduction to Data Types and Structures in R</h2>
+<section id="video" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="video"><span class="header-section-number">5.1.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="code"><span class="header-section-number">5.1.2</span> Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Atomic Data Types #####</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Logical: TRUE, FALSE</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">TRUE</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Integer: Whole numbers (e.g., 1L for specifying integers explicitly)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 5L</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Numeric: Real numbers (doubles), default type for numbers (e.g., 1, 3.14)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">3.14</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Character: Text (e.g., "hello")</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"Hello World"</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">### Special Types #####</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Factor: Categorical data, stored as integers with levels</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>,<span class="st">"Female"</span>))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Date: Dates without times (e.g., as.Date("2024-01-01"))</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2010-12-31"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  POSIXct/POSIXlt: Dates with times (e.g., as.POSIXct("2024-01-01 12:34:56"))</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="do">### Data Structures #####</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="do">## Vector: One-dimensional array of data of the same type</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(1L, 2L, 3L, 4L, 5L, 6L)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Matrix: Two-dimensional array of data of the same type</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x, <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>x2</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="do">## Data Frame: Two-dimensional table where columns can be different types</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var_name=</span>x)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>x2</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="do">## List: Ordered collection where elements can be of different types</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">my_name=</span>x)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>x2</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="do">### Other #####</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="do">## NULL: Represents an empty or undefined object</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>x2</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="do">## NA: Represents missing values (used across multiple data types)</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>x2</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="do">## Function: Functions are also objects in R and can be assigned to variables and passed as arguments.</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> sum</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="do">### How to know what is in a variable</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="transcript"><span class="header-section-number">5.1.3</span> Transcript</h3>
+<p><strong>User:</strong> "Alright, R-bot, I’m here in the IDE. I keep hearing about data types and structures. Can you give me the basics? What are they, and when do I use them?"</p>
+<p><strong>R-bot:</strong> "In R, data types and structures are like the ingredients in a recipe — each one brings something unique to the table. Let’s start with the basics of atomic data types, which are the most fundamental types you’ll use."</p>
+<p><strong>R-bot:</strong> "First up, we have logical values. These are TRUE or FALSE, often used for comparisons or conditions. Think of them as the yes or no answers in your data."</p>
+<p><strong>User:</strong> "Simple enough. It’s either true or false."</p>
+<p><strong>R-bot:</strong> "Then we have integers. These are whole numbers, and in R, you can specify them explicitly by adding an L after the number, like 5L. They’re useful when you don’t need decimals."</p>
+<p><strong>User:</strong> "Alright, integers only deal with whole numbers, got it."</p>
+<p><strong>R-bot:</strong> "Now, we have numeric values, which are the default for numbers in R. They include real numbers, like 3.14, and can have decimals. When you type any number without an L, R treats it as numeric."</p>
+<p><strong>User:</strong> "So, numeric can handle all those decimals, while integers can’t."</p>
+<p><strong>R-bot:</strong> "Correct! And lastly, we have character values, which represent text. Anything inside quotes, like 'hello' or 'R is fun', is treated as character data."</p>
+<p><strong>User:</strong> "Got it. So, if I put it in quotes, it’s a character value, but if it’s a number, it’s either integer or numeric."</p>
+<p><strong>R-bot:</strong> "Now, let’s look at some special types in R. First is the factor, used for categorical data — like gender or color. Internally, R stores factors as numbers, but each number corresponds to a specific category, or level, so it keeps things organized."</p>
+<p><strong>User:</strong> "Ah, so factors are R’s way of organizing categories, like labeling groups?"</p>
+<p><strong>R-bot:</strong> "Exactly! Next are date and time types. R has Date, which stores dates without times, and POSIXct or POSIXlt for dates with times. Use Date when you just need the day, and POSIX when you need the exact date and time."</p>
+<p><strong>User:</strong> "Got it. So, use Date for general days and POSIX for specific timestamps."</p>
+<p><strong>R-bot:</strong> "Now let’s move on to data structures, which allow you to store collections of data. First is the vector, which is a one-dimensional array that holds data of the same type — like a list of numbers or names."</p>
+<p><strong>User:</strong> "So, a vector could be a series of numbers or names, but they all have to be the same type?"</p>
+<p><strong>R-bot:</strong> "Right! Then we have the matrix, a two-dimensional structure that, like a vector, only holds one data type. But it’s organized in rows and columns, which makes it useful for certain types of calculations."</p>
+<p><strong>User:</strong> "Okay, so matrices are like tables but with only one data type."</p>
+<p><strong>R-bot:</strong> "And then we have the data frame, the star of R. It’s a two-dimensional table, where each column can hold a different data type. It’s perfect for organizing real-world data, where you might have numbers in one column and text in another."</p>
+<p><strong>User:</strong> "That sounds powerful! So I can mix data types in a data frame?"</p>
+<p><strong>R-bot:</strong> "You’ve got it. A mix of different types in one place. Lastly, we have lists, which are like flexible containers. Each element in a list can be a different data type or structure — even other lists!"</p>
+<p><strong>User:</strong> "Alright, I see. So lists are the most flexible, holding anything we want, even data frames or matrices."</p>
+<p><strong>R-bot:</strong> "Now, let’s cover a few other essentials. There’s NULL, which represents an empty or undefined object. It’s R’s way of saying, 'nothing here yet.'"</p>
+<p><strong>User:</strong> "Got it. NULL means empty or not defined."</p>
+<p><strong>R-bot:</strong> "Correct. And NA represents missing values, which you’ll see across different data types. It’s R’s way of saying, 'I don’t have data for this spot.'"</p>
+<p><strong>User:</strong> "Makes sense. I can imagine NA being useful in data cleaning."</p>
+<p><strong>R-bot:</strong> "And don’t forget functions! In R, functions are objects too. You can assign them to variables, pass them as arguments, or even create other functions with them."</p>
+<p><strong>User:</strong> "So, functions are treated like data in R?"</p>
+<p><strong>R-bot:</strong> "Precisely! Functions are just another type of object in R’s toolbox."</p>
+<p><strong>User:</strong> "Alright, I think I get the basics of types and structures. How can I check the type of something?"</p>
+<p><strong>R-bot:</strong> "Great question! You can use typeof() to check a variable’s data type. For example, typeof(x) would return 'integer' if x is an integer. You can also use class() to get more information about the structure."</p>
+<p><strong>User:</strong> "So, typeof for the type and class for more structural details. Got it."</p>
+<p><strong>R-bot:</strong> "Great job today! We covered the essentials of atomic data types, special types like factors and dates, and structures like vectors, matrices, and data frames."</p>
+<p><strong>User:</strong> "Thanks, R-bot! I feel like I know what tools I have in R now."</p>
+</section>
+</section>
+<section id="creating-vectors-and-factors" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="creating-vectors-and-factors"><span class="header-section-number">5.2</span> Creating Vectors and Factors</h2>
+<section id="video-1" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="video-1"><span class="header-section-number">5.2.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-1" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="code-1"><span class="header-section-number">5.2.2</span> Code</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## vectors #####</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## base::c</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="st">"Hello"</span>, <span class="fl">3.14</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Logical to Integer</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, 1L)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Integer to Numeric</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, 1L, <span class="fl">3.14</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Numeric to Character</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, 1L, <span class="fl">3.14</span>, <span class="st">"Hello World"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">## factors #####</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="do">## base::factor</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">'red'</span>, <span class="st">'blue'</span>, <span class="st">'red'</span>, <span class="st">'green'</span>))</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(colors)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>priority  <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">'high'</span>, <span class="st">'medium'</span>, <span class="st">'low'</span>, <span class="st">'medium'</span>),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels=</span><span class="fu">c</span>(<span class="st">'low'</span>, <span class="st">'medium'</span>, <span class="st">'high'</span>), </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ordered=</span><span class="cn">TRUE</span> )</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="st">"Hello"</span>))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(colors)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="st">"Hello"</span>))</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(colors)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(priority)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-1" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="transcript-1"><span class="header-section-number">5.2.3</span> Transcript</h3>
+<p><strong>User:</strong> "Alright, R-bot, I’m here in the IDE and ready to get hands-on with vectors and factors. How do I actually create these in R?"</p>
+<p><strong>R-bot:</strong> "Vectors and factors are two of R’s favorite data structures. Let’s dive into creating these building blocks and see how they work."</p>
+<p><strong>R-bot:</strong> "Let’s start with vectors. Vectors are one-dimensional collections of elements of the same type, like a list of numbers or text entries. You create them using the c() function, which combines values into a single vector."</p>
+<p><strong>User:</strong> "Okay, so c() is the function that builds vectors. Got it."</p>
+<p><strong>R-bot:</strong> "Exactly! Try creating a numeric vector by typing numbers &lt;- c(1, 2, 3, 4, 5). This will create a vector of five numbers."</p>
+<p><strong>User:</strong> "Typed it out and ran it. So this is a vector?"</p>
+<p><strong>R-bot:</strong> "Yep! Vectors are simple but powerful, and all elements must be the same type. If you try to mix types, R will automatically convert them to a common type."</p>
+<p><strong>User:</strong> "So, if I add text to this vector, R will turn everything into characters?"</p>
+<p><strong>R-bot:</strong> "Exactly right! For example, if you type mixed &lt;- c(1, 'hello', 3.5), R will convert everything to characters since that’s the only type that can hold all these values."</p>
+<p><strong>User:</strong> "Ah, so R automatically adjusts to keep everything compatible. Good to know!"</p>
+<p><strong>R-bot:</strong> "Now let’s move on to factors. Factors are a little different; they’re used for categorical data — like gender or color. A factor keeps track of the unique categories, or levels, in a variable."</p>
+<p><strong>User:</strong> "So, factors are R’s way of organizing categories, kind of like labels?"</p>
+<p><strong>R-bot:</strong> "Exactly! To create a factor, use the factor() function. Try typing colors &lt;- factor(c('red', 'blue', 'red', 'green')). This will create a factor with three levels: red, blue, and green."</p>
+<p><strong>User:</strong> "Typed it out and ran it. So, I’ve created a factor with levels?"</p>
+<p><strong>R-bot:</strong> "Yes! And you can view the unique levels of a factor by using the levels() function. Try levels(colors) to see the categories it’s tracking."</p>
+<p><strong>User:</strong> "Okay, typed levels(colors)… and I see red, blue, and green listed as levels. Nice!"</p>
+<p><strong>R-bot:</strong> "Great! Factors are super useful when working with categorical data, especially for data with repeat entries. They make it easier for R to keep track of each unique value."</p>
+<p><strong>User:</strong> "That’s helpful. Anything else about factors I should know?"</p>
+<p><strong>R-bot:</strong> "Absolutely! You can assign levels in a specific order, which is useful for ordered categories, like 'low', 'medium', and 'high.' To create an ordered factor, type priority &lt;- factor(c('high', 'medium', 'low', 'medium'), levels = c('low', 'medium', 'high'), ordered = TRUE)."</p>
+<p><strong>User:</strong> "Alright, so by setting levels in that order, R knows how to arrange them?"</p>
+<p><strong>R-bot:</strong> "Correct! Now, priority will know that 'low' comes before 'medium', and 'medium' before 'high'. This is handy when you need to rank data or create ordered categories."</p>
+<p><strong>User:</strong> "Alright, I’m starting to see the difference between vectors and factors. Anything else I need to know?"</p>
+<p><strong>R-bot:</strong> "Just remember all elements must be of the same type, like all numbers or all characters. Factors, however, are designed to manage categories, and R treats each unique value as a level."</p>
+<p><strong>User:</strong> "Got it. Vectors for storing single types and factors for categories."</p>
+<p><strong>R-bot:</strong> "Exactly! You can also check the type of any object by using typeof() or class() functions to confirm what you’re working with."</p>
+<p><strong>User:</strong> "So typeof() shows the data type, and class() gives more structure details?"</p>
+<p><strong>R-bot:</strong> "Right! Go ahead and try creating a few vectors and factors yourself to test them out. It’ll help you get a feel for the differences."</p>
+<p><strong>R-bot:</strong> "Great job today! We covered creating vectors and factors, saw the differences between them, and learned how factors help organize categorical data in R."</p>
+<p><strong>User:</strong> "Thanks, R-bot! Vectors and factors — got it. This makes organizing data a lot easier."</p>
+<p><strong>R-bot:</strong> "You got it! Now you’re ready to work with these foundational types. And remember, R takes its type compatibility seriously — no mixing without converting!"</p>
+<p><strong>User:</strong> "Noted! Alright, R-bot, what’s next?"</p>
+<p><strong>R-bot:</strong> "Next up, we’ll dive into vector operations, exploring how you can use vectors for calculations and comparisons. Get ready to unlock some power!"</p>
+</section>
+</section>
+<section id="vector-operations-in-r" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="vector-operations-in-r"><span class="header-section-number">5.3</span> Vector Operations in R</h2>
+<section id="video-2" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="video-2"><span class="header-section-number">5.3.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-2" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="code-2"><span class="header-section-number">5.3.2</span> Code</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Operators #####</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">/</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">^</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Precedence</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Length</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="dv">1</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Recycling </span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-2" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="transcript-2"><span class="header-section-number">5.3.3</span> Transcript</h3>
+<p><strong>User:</strong> "Hey R-bot, I know how to create vectors, but what can I actually do with them? How do I perform calculations on these things?"</p>
+<p><strong>R-bot:</strong> "R has powerful operations for vectors, from simple arithmetic to logical comparisons. Let’s go through the main ones and see them in action."</p>
+<p><strong>R-bot:</strong> "Let’s start with some basic arithmetic operations on vectors. You can add, subtract, multiply, divide, and even use exponents on vector elements."</p>
+<p><strong>R-bot:</strong> "To add vectors, use the + operator. Try adding two vectors together. This will add each element in the first vector to the corresponding element in the second vector."</p>
+<p><strong>User:</strong> "Typed it out, and… got it. Each pair of elements adds up!"</p>
+<p><strong>R-bot:</strong> "Now let’s try subtraction. Use the - operator to subtract elements of one vector from the corresponding elements of another."</p>
+<p><strong>User:</strong> "Okay, got it. Each element from the second vector was subtracted from the first."</p>
+<p><strong>R-bot:</strong> "Now let’s try multiplication. The * symbol multiplies elements of one vector by the corresponding elements in another."</p>
+<p><strong>User:</strong> "Typed it out… and I see the products!"</p>
+<p><strong>R-bot:</strong> "Division works the same way with the / symbol."</p>
+<p><strong>User:</strong> "Alright, division results for each pair."</p>
+<p><strong>R-bot:</strong> "And if you want to raise elements to a power, use the ^ symbol."</p>
+<p><strong>User:</strong> "Typed it, and each number squared itself. Easy enough!"</p>
+<p><strong>R-bot:</strong> "Another useful operator is %in%. It checks if elements in one vector are present in another."</p>
+<p><strong>User:</strong> "Typed it, and it returned TRUE or FALSE for each element."</p>
+<p><strong>R-bot:</strong> "It shows you which elements of the first vector are in the second vector — a handy tool for comparisons."</p>
+<p><strong>R-bot:</strong> "Now let’s talk about operator precedence, or the order of operations. Just like in math, multiplication and division happen before addition and subtraction. You can change the order by using parentheses."</p>
+<p><strong>User:</strong> "Alright, so R follows regular math rules for order of operations."</p>
+<p><strong>R-bot:</strong> "Correct! Try typing 2 + 3 * 4, and then try (2 + 3) * 4. See the difference?"</p>
+<p><strong>User:</strong> "Typed it… and yeah, different results depending on the parentheses."</p>
+<p><strong>R-bot:</strong> "Parentheses help you control the order in which operations are carried out. They’re your friend when you need precision in calculations."</p>
+<p><strong>R-bot:</strong> "Next, let’s talk about vector length. The length of a vector is simply the number of elements it contains. You can check it with the length() function. For example, create a vector with 5 elements and see what length() returns."</p>
+<p><strong>User:</strong> "So, length helps us see the size of a vector before doing operations. Got it."</p>
+<p><strong>R-bot:</strong> "One more thing! In R, there’s actually no such thing as a single standalone value. Even a single value, like 1, is considered a vector of length one."</p>
+<p><strong>User:</strong> "Wait, so 1 is a vector? Just a vector with one element?"</p>
+<p><strong>R-bot:</strong> "Exactly! R treats everything as a vector. So when you see a single value, it’s really a vector of length one. This consistency makes it easier to work with data because every value is part of a vector, no matter the length."</p>
+<p><strong>User:</strong> "Interesting! So, even the simplest number is part of R’s vector world."</p>
+<p><strong>R-bot:</strong> "Whether it’s one element or a thousand, R handles it all in the same way — as vectors."</p>
+<p><strong>R-bot:</strong> "Now, let’s talk about recycling rules. Recycling lets R repeat elements of a shorter vector to match the length of a longer vector when doing operations. Try the vector c(1, 2, 3) + 1. R will recycle the shorter vector to match the length of the longer one."</p>
+<p><strong>User:</strong> "Typed it out, and it worked without any warnings!"</p>
+<p><strong>R-bot:</strong> "Perfect! Just remember, R will warn you if the longer vector’s length isn’t a multiple of the shorter vector’s length. Try the vector c(1, 2, 3) + c(10, 20)."</p>
+<p><strong>User:</strong> "Typed it, and yeah, there’s a warning about unequal lengths."</p>
+<p><strong>R-bot:</strong> "R lets you recycle, but it will let you know when there’s a mismatch. Recycling makes operations flexible, but be careful to check the lengths of your vectors to avoid unexpected results."</p>
+<p><strong>R-bot:</strong> "We covered essential vector operations, how operator precedence affects calculations, and how R handles vector lengths and recycling in calculations."</p>
+<p><strong>User:</strong> "Alright, so R has its own rules for working with vectors. This is going to make calculations much easier!"</p>
+</section>
+</section>
+<section id="creating-and-working-with-sequences" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="creating-and-working-with-sequences"><span class="header-section-number">5.4</span> Creating and Working with Sequences</h2>
+<section id="video-3" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="video-3"><span class="header-section-number">5.4.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-3" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="code-3"><span class="header-section-number">5.4.2</span> Code</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Operators #####</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## : operator</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">length.out=</span><span class="dv">5</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each=</span><span class="dv">2</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-3" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="transcript-3"><span class="header-section-number">5.4.3</span> Transcript</h3>
+<p><strong>User:</strong> "Alright, R-bot, I keep seeing functions like seq and rep everywhere. What’s the deal with these? Is there some secret to getting R to do all the counting for me?"</p>
+<p><strong>R-bot:</strong> "R loves to count, repeat, and reverse things — and it has tools to do it efficiently. Let’s dive in so you can make sequences work for you."</p>
+<p><strong>R-bot:</strong> "First up, we have the colon operator, :, which generates a sequence of integers from one value to another. For example, typing 1:10 gives you a sequence from 1 to 10."</p>
+<p><strong>User:</strong> "So you’re saying R can count for me with just a colon?"</p>
+<p><strong>R-bot:</strong> "Correct. Now, if you want more control, there’s the seq() function. To create a sequence from 1 to 10, type seq(1, 10)."</p>
+<p><strong>User:</strong> "Typed it out. Looks just like the colon operator."</p>
+<p><strong>R-bot:</strong> "Exactly, but seq() offers more flexibility. For instance, you can specify a step size. Try typing seq(1, 10, by = 2) to create a sequence counting by twos."</p>
+<p><strong>User:</strong> "Alright, stepping up my sequence game!"</p>
+<p><strong>R-bot:</strong> "Nice! And if you want a specific number of elements in the sequence, you can use length.out. Try typing seq(1, 10, length.out = 5). This will give you five evenly spaced values from 1 to 10."</p>
+<p><strong>User:</strong> "I see… so R can either count by steps or split the range evenly."</p>
+<p><strong>R-bot:</strong> "Now, let’s talk about repeating values with rep()."</p>
+<p><strong>User:</strong> "Sounds like we’re getting repetitive already!"</p>
+<p><strong>R-bot:</strong> "With rep(), you can repeat elements of a vector as many times as you need. For example, typing rep(1:3, times = 3) repeats the sequence from 1 to 3, three times."</p>
+<p><strong>User:</strong> "R, doing all my repetitive tasks for me. If only it could do my chores!"</p>
+<p><strong>R-bot:</strong> "Now, if you want each element repeated a specific number of times before moving to the next, use the each argument. Try typing rep(1:3, each = 2) to repeat each number twice."</p>
+<p><strong>User:</strong> "Okay, I see. So I get to pick whether to repeat the whole thing or each item individually. Got it!"</p>
+<p><strong>R-bot:</strong> "Now let’s talk about reversing sequences. The rev() function flips the order of elements in a sequence."</p>
+<p><strong>R-bot:</strong> "To try it out, type rev(1:5). R will take your sequence and reverse the order of the elements."</p>
+<p><strong>User:</strong> "Typed it, and the order is flipped."</p>
+<p><strong>R-bot:</strong> "Now you’ve got tools to count, repeat, and reverse your data."</p>
+<p><strong>R-bot:</strong> "Think of R as your sequence DJ — it can play, repeat, or remix data in any pattern you need."</p>
+<p><strong>R-bot:</strong> "You learned how to create and customize sequences in R, with tools to count, repeat, and reverse data with just a few commands."</p>
+<p><strong>User:</strong> "Good to know R has my back when it comes to repetitive work. Now I can count and repeat without lifting a finger!"</p>
+</section>
+</section>
+<section id="comparing-vectors-in-r" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="comparing-vectors-in-r"><span class="header-section-number">5.5</span> Comparing Vectors in R</h2>
+<section id="video-4" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="video-4"><span class="header-section-number">5.5.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-4" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="code-4"><span class="header-section-number">5.5.2</span> Code</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span> <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span> <span class="sc">!=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span> <span class="sc">&gt;=</span> <span class="dv">2</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span> <span class="sc">&lt;</span> <span class="dv">2</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span> <span class="sc">&lt;=</span> <span class="dv">2</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="dv">1</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="cn">NULL</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(x)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">4</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">4</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">4</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">5</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">5</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(<span class="dv">5</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(x)</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="fu">pmax</span>(<span class="fu">rep</span>(<span class="dv">3</span>,<span class="dv">5</span>), <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="fu">pmin</span>(<span class="fu">rep</span>(<span class="dv">3</span>,<span class="dv">5</span>), <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-4" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="transcript-4"><span class="header-section-number">5.5.3</span> Transcript</h3>
+<p><strong>User:</strong> "Alright, R-bot, I know vectors hold data, but how can I actually compare them? I need R to tell me where things match up or differ."</p>
+<p><strong>R-bot:</strong> "R has plenty of tools for comparing vectors, from simple checks to functions that help you find exactly what you’re looking for. Let’s explore each one."</p>
+<p><strong>R-bot:</strong> "Let’s start with the basic comparison operators. You can use double equals (==) to check for equality or an exclamation mark equals (!=) to check for inequality. Try typing 1:3 == c(1, 2, 3). This will compare each element and give TRUE where they match and FALSE where they don’t."</p>
+<p><strong>User:</strong> "Typed it out… So == is for matches. What about !=?"</p>
+<p><strong>R-bot:</strong> "Use != to check if elements don’t match. Swap == with != to see where they differ."</p>
+<p><strong>User:</strong> "Got it."</p>
+<p><strong>R-bot:</strong> "Now, you can also use &lt;, &gt;, &lt;=, and &gt;= for comparisons. For example, type x &lt;- 1:4 &gt; 2. It will return FALSE, FALSE, TRUE, and TRUE, showing where values in the first vector are greater than the second."</p>
+<p><strong>R-bot:</strong> "Now, let’s talk about missing data. In R, NA represents missing values in vectors. To check if any element is NA, use the function is.na(). For example, is.na(c(1, NA, 3)) returns FALSE, TRUE, and FALSE, showing which elements are missing."</p>
+<p><strong>User:</strong> "So is.na() just tells me where values are missing. Got it. What about NULL?"</p>
+<p><strong>R-bot:</strong> "NULL is different. It represents the absence of an object, not just missing data. When NULL is in a vector, R usually removes it from calculations automatically, so it’s treated separately from NA. You can use is.null() to check for it."</p>
+<p><strong>User:</strong> "Alright, so NA is for missing data, and NULL is for non-existent data. Makes sense."</p>
+<p><strong>R-bot:</strong> "Now let’s talk about two useful functions for checking conditions: all and any."</p>
+<p><strong>User:</strong> "Okay, what do they do?"</p>
+<p><strong>R-bot:</strong> "all() checks if all elements in a vector are TRUE. For instance, all(c(TRUE, FALSE, TRUE)) returns FALSE because not all values are TRUE."</p>
+<p><strong>User:</strong> "So all() only returns TRUE if everything matches the condition?"</p>
+<p><strong>R-bot:</strong> "Correct. On the other hand, any() checks if at least one element is TRUE. Try any(c(TRUE, FALSE, TRUE)). It will return TRUE because there’s at least one TRUE value."</p>
+<p><strong>User:</strong> "Alright, all() checks for complete matches, and any() checks for partial matches."</p>
+<p><strong>R-bot:</strong> "Next, let’s talk about functions that help you find values or their positions. First, there’s match(), which finds the position of a specific value in a vector. For example, if you type match(2, c(1, 2, 3, 4, 5)), it returns the index of the first occurrence of two."</p>
+<p><strong>User:</strong> "So match() just tells me where the value is located?"</p>
+<p><strong>R-bot:</strong> "Yes. And if you want to find the positions of TRUE values directly, use which(). For example, which(c(FALSE, TRUE, TRUE)) returns 2 and 3, showing where values are TRUE."</p>
+<p><strong>User:</strong> "Alright, so match() finds specific values, and which() finds the positions of TRUE values."</p>
+<p><strong>R-bot:</strong> "That’s right. Now, we also have which.min() and which.max(), which are super handy for finding the position of the smallest or largest value in a vector. Type which.min(c(2, 5, 1, 4)) and which.max(c(2, 5, 1, 4)) to see them in action."</p>
+<p><strong>User:</strong> "Typed it… Nice, I see it gives the position of the minimum or maximum value in the vector."</p>
+<p><strong>R-bot:</strong> "Finally, let’s look at pmax() and pmin(), which are for pairwise comparisons across vectors."</p>
+<p><strong>User:</strong> "Pairwise? How does that work?"</p>
+<p><strong>R-bot:</strong> "pmax() finds the maximum value between two vectors, element-by-element. Try pmax(rep(3, 5), 1:5). It will compare each element and return the maximum for each pair."</p>
+<p><strong>User:</strong> "Typed it… Okay, I see the maximum for each element pair."</p>
+<p><strong>R-bot:</strong> "And pmin() does the opposite — it returns the minimum value for each pair. Try pmin() instead of pmax() to see it in action."</p>
+<p><strong>User:</strong> "So with pmax() and pmin(), I can compare vectors element-by-element without loops."</p>
+<p><strong>R-bot:</strong> "You learned how to compare vectors in R, handle missing data, and use functions like match(), which(), which.min(), which.max(), pmax(), and pmin() to find specific values or positions."</p>
+<p><strong>User:</strong> "Comparing vectors is way easier with all these built-in tools. Thanks for the shortcuts!"</p>
+</section>
+</section>
+<section id="selecting-vector-elements" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="selecting-vector-elements"><span class="header-section-number">5.6</span> Selecting Vector Elements</h2>
+<section id="video-5" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="video-5"><span class="header-section-number">5.6.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-5" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="code-5"><span class="header-section-number">5.6.2</span> Code</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Postion selection #####</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">2</span>] <span class="do">## 2nd value</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>vec[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="do">## 1st, 3rd, and 5th values</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>vec[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>)] <span class="do">## 1st, 3rd, and 5th values</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>vec[<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)] <span class="do">## 2nd value 5 times</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Excluding #####</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>vec[<span class="sc">-</span><span class="dv">1</span>] <span class="do">## Exclude the 1st</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>vec[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)] <span class="do">## Exclude the 1st - 3rd</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Logical selection #####</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>vec[vec <span class="sc">&gt;</span> <span class="dv">3</span>] <span class="do">## all vec elements greater than 3</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>vec[<span class="fu">which</span>(vec <span class="sc">&gt;</span> <span class="dv">3</span>)]</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Set Operations #####</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>) <span class="do">## drop elements 7 &amp; 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-5" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="transcript-5"><span class="header-section-number">5.6.3</span> Transcript</h3>
+<p><strong>User:</strong> "Alright, R-bot, now that I can compare vectors, how do I actually pull out just the elements I need?"</p>
+<p><strong>R-bot:</strong> "R gives you plenty of ways to pick out exactly what you’re looking for in a vector. Let’s walk through the most useful methods."</p>
+<p><strong>R-bot:</strong> "First up, we use square brackets ([]) to select specific elements from a vector. Type the vector name, followed by square brackets, and place your selection criteria inside."</p>
+<p><strong>User:</strong> "So, the brackets are like a window to look into specific parts of a vector?"</p>
+<p><strong>R-bot:</strong> "Correct. Let’s start with position indexing. To select a specific position, use a single number in the brackets. For example, vec[2] gives you the second element in vec."</p>
+<p><strong>User:</strong> "Got it. So that gives me one element. How do I select more than one?"</p>
+<p><strong>R-bot:</strong> "To select multiple elements, you can use a vector of positions. For example, if vec is the vector c(1, 2, 3, 4, 5), typing vec[c(1, 3, 5)] selects the first, third, and fifth elements. You can also use the colon operator or seq() to generate a range. For instance, vec[2:4] selects elements two through four."</p>
+<p><strong>User:</strong> "Using a range is handy. Less typing!"</p>
+<p><strong>R-bot:</strong> "It is. Now, if you want to exclude specific positions, you can use negative indexes. For example, vec[-1] returns all elements except the first one."</p>
+<p><strong>User:</strong> "Interesting. So negatives let me ignore positions instead of selecting them."</p>
+<p><strong>R-bot:</strong> "Exactly. Next, let’s talk about logical indexing, which is powerful for filtering. You can use a logical vector to select elements where a condition is TRUE. For example, vec[vec &gt; 3] will return all elements in vec that are greater than three."</p>
+<p><strong>User:</strong> "So I can apply conditions directly to filter out what I want? Not bad."</p>
+<p><strong>R-bot:</strong> "Right. And if you need the exact positions of TRUE values, you can use the which() function to convert logical results into positions. For instance, vec[which(vec &gt; 3)] will give the same result as before, but using position indexes instead of TRUE or FALSE values. For large vectors, this approach will be faster."</p>
+<p><strong>User:</strong> "Nice. So which() gives me the positions of TRUE values. Handy!"</p>
+<p><strong>R-bot:</strong> "Now, let’s talk about a function called setdiff(). This function finds the difference between two vectors, so it’s useful when you want to select certain indexes but exclude others. For example, if you type setdiff(5:10, 7:8), it returns 5, 6, 9, and 10. This lets you select what you want while leaving out specific values."</p>
+<p><strong>User:</strong> "So setdiff() helps filter things out without using negatives or logical conditions."</p>
+<p><strong>R-bot:</strong> "Correct. It’s especially useful for flexible data selection when you want to pick certain values and skip others."</p>
+<p><strong>R-bot:</strong> "In this session, you learned how to select vector elements using position indexing, logical indexing, and set operations to make data selection precise and simple."</p>
+<p><strong>User:</strong> "Good to know I can fine-tune what I pull from my data."</p>
+</section>
+</section>
+<section id="sorting-and-ordering-vectors-in-r" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="sorting-and-ordering-vectors-in-r"><span class="header-section-number">5.7</span> Sorting and Ordering Vectors in R</h2>
+<section id="video-6" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="video-6"><span class="header-section-number">5.7.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-6" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="code-6"><span class="header-section-number">5.7.2</span> Code</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">2</span>), <span class="at">na.last=</span><span class="cn">TRUE</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">2</span>), <span class="at">na.last=</span><span class="cn">FALSE</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(x)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">order</span>(x)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-6" class="level3" data-number="5.7.3">
+<h3 data-number="5.7.3" class="anchored" data-anchor-id="transcript-6"><span class="header-section-number">5.7.3</span> Transcript</h3>
+<p><strong>User:</strong> "Hey R-bot, I’ve got my data in vectors. But what if I want to arrange it in order? How do I sort it in R?"</p>
+<p><strong>R-bot:</strong> "R makes sorting easy with the sort() and order() functions. Let’s dive into how each one works and when to use them."</p>
+<p><strong>R-bot:</strong> "Let’s start with sort(). This function arranges the elements of a vector in ascending order by default. Try typing x &lt;- c(1, 3, 2). On the next line, type sort(x)."</p>
+<p><strong>User:</strong> "Typed it out… and now everything’s in order from smallest to largest."</p>
+<p><strong>R-bot:</strong> "Exactly! And if you want to sort in descending order, just add the argument decreasing = TRUE."</p>
+<p><strong>User:</strong> "Got it. Now it’s sorted from largest to smallest!"</p>
+<p><strong>R-bot:</strong> "There’s also a way to handle missing values, or NAs, in a vector. By default, NAs are excluded. But if you want them first, you can use the argument na.last = FALSE."</p>
+<p><strong>User:</strong> "Typed it out, and now I see the NA at the beginning."</p>
+<p><strong>R-bot:</strong> "Alright! Now let’s look at order(). This function is a bit different — instead of sorting values directly, order() returns the indices that would arrange the vector in ascending order. Type x &lt;- c(2, 1, 3, 2), and on the next line order(x)."</p>
+<p><strong>User:</strong> "Typed it, and I see a set of numbers. So, these are positions rather than values?"</p>
+<p><strong>R-bot:</strong> "Exactly! You can think of it as the order in which the elements should appear. For example, if you use order() to rearrange the original vector, it will sort it according to these positions."</p>
+<p><strong>User:</strong> "Okay, how would I use it to reorder the vector?"</p>
+<p><strong>R-bot:</strong> "Good question! You can try it out by typing x[order(x)]."</p>
+<p><strong>User:</strong> "Got it. Now the vector is arranged in ascending order using order()."</p>
+<p><strong>R-bot:</strong> "Exactly! So, sort() is perfect when you need the sorted values directly, while order() is helpful when you want to rearrange other related vectors based on this sorted order."</p>
+<p><strong>R-bot:</strong> "In this session, we covered how to use sort() for directly arranging values, and order() for sorting by indices, which is especially handy with data frames."</p>
+<p><strong>User:</strong> "Nice! I can see how order() helps when working with related data."</p>
+</section>
+</section>
+<section id="conditional-logic-with-ifelse-in-r" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="conditional-logic-with-ifelse-in-r"><span class="header-section-number">5.8</span> Conditional Logic with ifelse in R</h2>
+<section id="video-7" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="video-7"><span class="header-section-number">5.8.1</span> Video</h3>
+<p>Link</p>
+</section>
+<section id="code-7" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="code-7"><span class="header-section-number">5.8.2</span> Code</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), <span class="st">"yes"</span>, <span class="st">"no"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>), <span class="st">"yes"</span>, <span class="st">"no"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="st">"high"</span>, <span class="st">"low"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="st">"high"</span>, </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="st">"low"</span>, <span class="st">"very low"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="transcript-7" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="transcript-7"><span class="header-section-number">5.8.3</span> Transcript</h3>
+<p><strong>User:</strong> "Hey R-bot, I’ve heard that R can handle conditions across whole vectors. How does that work?"</p>
+<p><strong>R-bot:</strong> "You’re absolutely right! The ifelse function lets you apply conditions to vectors all at once. It’s like a shortcut for ‘if’ statements that works across entire vectors. Let’s dive in and see how you can use it for conditional checks."</p>
+<p><strong>R-bot:</strong> "The basic syntax for ifelse is ifelse(condition, value if true, value if false). This means that if the condition is true for an element, R will return the first value, and if it’s false, R will return the second value."</p>
+<p><strong>User:</strong> "Got it. So, it checks each element of a vector and returns something based on whether it’s true or false?"</p>
+<p><strong>R-bot:</strong> "Exactly! Let’s try a simple example to see how it works. Type ifelse(c(TRUE, FALSE), "yes", "no"). This will return ‘yes’ for true elements and ‘no’ for false ones."</p>
+<p><strong>User:</strong> "Typed it out, and I see ‘yes’ for true and ‘no’ for false. Pretty straightforward!"</p>
+<p><strong>R-bot:</strong> "Now let’s try applying ifelse to a numeric vector. Say you have a vector of numbers, and you want to label values greater than 10 as ‘high’ and others as ‘low’. Type ifelse(1:20 &gt; 10, "high", "low")."</p>
+<p><strong>User:</strong> "Typed it… now I see ‘low’, ‘low’, and ‘high’ based on the threshold of 10."</p>
+<p><strong>R-bot:</strong> "Perfect! ifelse makes it easy to categorize values without writing loops. You can use it to transform values based on any condition."</p>
+<p><strong>R-bot:</strong> "One more advanced trick with ifelse is using it for multiple categories. You can do this by nesting ifelse statements. For example, copy the last line and replace the low value with another ifelse call. In the second ifelse, test 1:20 &gt; 5. If it is, then set the value to low. Otherwise, set it to 'very low'."</p>
+<p><strong>User:</strong> "Typed it out… and now I see ‘very low’, ‘low’, and ‘high’ for each category. So, you can use ifelse to create multiple labels."</p>
+<p><strong>R-bot:</strong> "You’ve got it! By nesting ifelse, you can handle more than two categories. Just keep in mind that too many nested ifelse statements can get hard to read, so try to keep it simple when you can."</p>
+<p><strong>User:</strong> "I like it! ifelse makes it easy to handle conditions without needing a lot of code."</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./baseR_Statements_and_Variables.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statements and Variables</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./baseR_Introduction_to_Lists.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Lists</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
