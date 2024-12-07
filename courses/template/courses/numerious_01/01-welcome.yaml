@@ -1,0 +1,146 @@
+block1:
+  html: |
+    <div>
+      <h2 class="lesson_image">Welcome to Numerious Inc.</h2>
+      <img src="https://www.numerious.tools/media/courses/numerious_01/l01/img1_desk.webp" alt="Virtual Office Scene" class="lesson_image" />
+      
+   
+      <p>
+          You’ve just logged onto your computer for the first time as a new remote employee at Numerious Inc. 
+          After booting up, you receive a meeting invitation from the CEO of Numerious.
+      </p>
+      
+      <!-- CEO's Virtual Call Image -->
+      <img src="https://www.numerious.tools/media/courses/numerious_01/l01/img2_call.webp" alt="CEO Phone Call" class="lesson_image"/>
+      
+      <p><strong>The CEO appears on your screen and begins speaking:</strong></p>
+      
+      <blockquote>
+          <p>
+          "Welcome to Numerious! We are thrilled to have you on board. I'm sorry your manager couldn’t join us today. 
+          It’s a bit unusual that they aren’t here, but I’ll catch them up later."
+          </p>
+          <p>
+          "At Numerious, our vision is to become the world leader in advanced analytics for solving complex business 
+          problems. Our mission is to equip businesses with actionable insights through robust, unbiased analysis."
+          </p>
+          <p>
+          "As part of our team, you’ll be working on important projects that transform data into strategic decisions for our clients. 
+          You’ll need to understand how to handle data, perform in-depth analysis, and deliver insights that drive business growth."
+          </p>
+          <p>
+          "In the coming weeks, you'll be diving into our training program. This will cover everything you need to know—from 
+          data wrangling to advanced statistical models—to become proficient in our methodologies. But don't worry, 
+          we'll guide you through each step."
+          </p>
+      </blockquote>
+      
+      <p>
+          As the CEO continues to speak, she goes on to explain that you’ll be expected to contribute to the company’s goals by 
+          applying data-driven solutions and keeping up with the latest in analytics technology. However, before she can finish explaining, 
+          she receives an urgent phone call.
+      </p>
+      
+      <!-- Urgent Phone Call Image -->
+      <img src="https://www.numerious.tools/media/courses/numerious_01/l01/img3_emergency.webp" alt="Urgent Phone Call"   class="lesson_image"/>
+      
+      <p><strong>The CEO looks startled as her phone rings:</strong></p>
+      
+      <blockquote>
+          <p>"I’m so sorry, I have to take this urgent call."</p>
+          <p>She quickly turns off her video and audio, and the screen displays a muted icon. You wait as the CEO handles the call.</p>
+      </blockquote>
+      
+      <p>After a moment, the CEO returns, turning her video and audio back on.</p>
+      
+      <blockquote>
+          <p>"I just received some unfortunate news—your manager had an accident and is in the hospital."</p>
+          <p>"It looks like the training we had planned for today will need to be postponed."</p>
+          <p>"But I need a quick insight from you. Can you log into the web app and help me pull a few data insights?"</p>
+      </blockquote>
+      
+      <p>
+          The CEO thanks you for your flexibility and encourages you to get started right away. She assures you that 
+          the training will be rescheduled soon, but for now, it’s time to jump in and help.
+      </p>
+      
+      <p><strong>Close this window and check the console for your first task.</strong></p>
+    </div>
+
+    
+    
+block1b:
+  question:
+    - "To confirm your role, please assign your job title to the variable \x1b[1;30mrole\x1b[0m\x1b[32m."
+    - "like this: \x1b[1;30mrole <- 'Data Analyst'\x1b[0m\x1b[32m"
+  code:
+    - "role <- 'Data Analyst'"
+  hints:
+    - "Assign the string 'Data Analyst' to the variable \x1b[1;30mrole\x1b[0m\x1b[32m."
+    - "The correct code is: \x1b[1;30mrole <- 'Data Analyst'\x1b[0m\x1b[32m"
+  feedback: "Great! Now let’s move on to loading some data."
+  answers:
+    - "role"
+
+block2:
+  question:
+    - "Please load the CSV file \x1b[1;30m'./in/data.csv'\x1b[0m\x1b[32m into a variable called \x1b[1;30mdf\x1b[0m\x1b[32m."
+    - "Type the following code: \x1b[1;30mdf <- read.csv('./in/data.csv')\x1b[0m\x1b[32m"
+  code:
+    - "df <- read.csv('./in/data.csv')"
+  hints:
+    - "Make sure to use the \x1b[1;30mread.csv()\x1b[0m\x1b[32m function to load the file."
+    - "The file name is \x1b[1;30m'./in/data.csv'\x1b[0m\x1b[32m, and you should assign the result to a variable named \x1b[1;30mdf\x1b[0m\x1b[32m."
+    - "The exact code is: \x1b[1;30mdf <- read.csv('./in/data.csv')\x1b[0m\x1b[32m"
+  feedback: "Good job! You've successfully loaded the dataset. Now let’s move on to the next task."
+  answers:
+    - "df"
+
+block3:
+  code:
+    - "x <- which.max(apply(df, 2, mean))"
+  question:
+    - "Now, let’s find which column has the largest mean value."
+    - "Type the following code: \x1b[1;30mx <- which.max(apply(df, 2, mean))\x1b[0m\x1b[32m"
+  answers:
+    - "x"
+  hints:
+    - "Use the \x1b[1;30mwhich.max()\x1b[0m\x1b[32m function combined with \x1b[1;30mapply()\x1b[0m\x1b[32m to find the column with the largest mean value."
+    - "The correct code is: \x1b[1;30mx <- which.max(apply(df, 2, mean))\x1b[0m\x1b[32m"
+  feedback: "Great! You've calculated which column has the largest mean value."
+
+block4:
+  question:
+    - "Now, write the variable \x1b[1;30mx\x1b[0m\x1b[32m to see which column has the largest mean."
+    - "Type \x1b[1;30mx\x1b[0m\x1b[32m and press Enter."
+  code:
+    - "x"
+  answers:
+    - "x"
+  hints:
+    - "Simply type \x1b[1;30mx\x1b[0m\x1b[32m and press Enter to see the value of the largest column."
+  feedback: "Good! You've identified the column with the largest mean."
+
+block5:
+  html: |
+    <div>
+      <h3>The CEO returns via another virtual call.</h3>
+            <!-- Urgent Phone Call Image -->
+      <img src="https://www.numerious.tools/media/courses/numerious_01/l01/block4_thank_you.webp" alt="Thank You Phone Call"  class="lesson_image" />
+      
+      <p>
+        "Thank you so much for your help! I appreciate you jumping in, especially with your manager out.
+        This insight is exactly what I needed to prepare for an urgent client meeting."
+      </p>
+      <p>
+        The CEO promises that the full training program will resume soon and encourages you to continue exploring
+        the data and the company's internal tools.
+      </p>
+      <p><strong>Click the next button to complete this lesson.</strong></p>
+    </div>
+
+
+block5b:
+  question:
+    - "You’ve finished the first lesson!"
+    - "Click the next button on the console button bar to complete the lesson."

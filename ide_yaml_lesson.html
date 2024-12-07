@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-07">
 
-<title>Scaffolding - Reference Manual</title>
+<title>Scaffolding - Reference Manual - 4&nbsp; Guide to Writing YAML Lessons for the Numerious IDE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./getting_started.html" rel="next">
+<link href="./baseR_Statements_and_Variables.html" rel="next">
+<link href="./ide_demos.html" rel="prev">
 <link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -64,10 +98,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Scaffolding - Reference Manual">
+<meta property="og:title" content="Scaffolding - Reference Manual - 4&nbsp; Guide to Writing YAML Lessons for the Numerious IDE">
 <meta property="og:description" content="">
 <meta property="og:site-name" content="Scaffolding - Reference Manual">
-<meta name="twitter:title" content="Scaffolding - Reference Manual">
+<meta name="twitter:title" content="Scaffolding - Reference Manual - 4&nbsp; Guide to Writing YAML Lessons for the Numerious IDE">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Purpose</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ide_components.html">IDE</a></li><li class="breadcrumb-item"><a href="./ide_yaml_lesson.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guide to Writing YAML Lessons for the Numerious IDE</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -133,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Purpose</span></a>
   </div>
 </li>
@@ -166,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ide_yaml_lesson.html" class="sidebar-item-text sidebar-link">
+  <a href="./ide_yaml_lesson.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guide to Writing YAML Lessons for the Numerious IDE</span></span></a>
   </div>
 </li>
@@ -312,7 +346,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a></li>
+  <li><a href="#structure-of-a-lesson" id="toc-structure-of-a-lesson" class="nav-link active" data-scroll-target="#structure-of-a-lesson"><span class="header-section-number">4.1</span> Structure of a Lesson</a>
+  <ul class="collapse">
+  <li><a href="#sections" id="toc-sections" class="nav-link" data-scroll-target="#sections"><span class="header-section-number">4.1.1</span> Sections</a></li>
+  </ul></li>
+  <li><a href="#string-formatting-with-tag...tag" id="toc-string-formatting-with-tag...tag" class="nav-link" data-scroll-target="#string-formatting-with-tag...tag"><span class="header-section-number">4.2</span> String Formatting with <code>{{#tag}}...{{/tag}}</code></a>
+  <ul class="collapse">
+  <li><a href="#supported-tags" id="toc-supported-tags" class="nav-link" data-scroll-target="#supported-tags"><span class="header-section-number">4.2.1</span> Supported Tags</a></li>
+  </ul></li>
+  <li><a href="#writing-yaml-sections" id="toc-writing-yaml-sections" class="nav-link" data-scroll-target="#writing-yaml-sections"><span class="header-section-number">4.3</span> Writing YAML Sections</a>
+  <ul class="collapse">
+  <li><a href="#html-section" id="toc-html-section" class="nav-link" data-scroll-target="#html-section"><span class="header-section-number">4.3.1</span> HTML Section</a></li>
+  <li><a href="#question-section" id="toc-question-section" class="nav-link" data-scroll-target="#question-section"><span class="header-section-number">4.3.2</span> Question Section</a></li>
+  <li><a href="#code-section" id="toc-code-section" class="nav-link" data-scroll-target="#code-section"><span class="header-section-number">4.3.3</span> Code Section</a></li>
+  <li><a href="#hints-section" id="toc-hints-section" class="nav-link" data-scroll-target="#hints-section"><span class="header-section-number">4.3.4</span> Hints Section</a></li>
+  <li><a href="#feedback-section" id="toc-feedback-section" class="nav-link" data-scroll-target="#feedback-section"><span class="header-section-number">4.3.5</span> Feedback Section</a></li>
+  <li><a href="#answers-section" id="toc-answers-section" class="nav-link" data-scroll-target="#answers-section"><span class="header-section-number">4.3.6</span> Answers Section</a></li>
+  </ul></li>
+  <li><a href="#example-block" id="toc-example-block" class="nav-link" data-scroll-target="#example-block"><span class="header-section-number">4.4</span> Example Block</a></li>
+  <li><a href="#guidelines-for-non-technical-writers" id="toc-guidelines-for-non-technical-writers" class="nav-link" data-scroll-target="#guidelines-for-non-technical-writers"><span class="header-section-number">4.5</span> Guidelines for Non-Technical Writers</a></li>
   </ul>
 </nav>
     </div>
@@ -321,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Scaffolding - Reference Manual</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guide to Writing YAML Lessons for the Numerious IDE</span></h1>
 </div>
 
 
@@ -329,12 +381,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 7, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -342,22 +388,152 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="purpose" class="level1 unnumbered">
-<h1 class="unnumbered">Purpose</h1>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TODO</p>
-</div>
-</div>
-<p>TODO</p>
+<section id="structure-of-a-lesson" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="structure-of-a-lesson"><span class="header-section-number">4.1</span> Structure of a Lesson</h2>
+<p>Each lesson consists of multiple <strong>blocks</strong>, which can include the following sections:</p>
+<section id="sections" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="sections"><span class="header-section-number">4.1.1</span> Sections</h3>
+<ul>
+<li><strong><code>html</code></strong>: Contains HTML content for modals or additional context.</li>
+<li><strong><code>question</code></strong>: Instructions displayed in the R Console, written in the voice of R-bot.</li>
+<li><strong><code>code</code></strong>: The correct R code to solve the block.</li>
+<li><strong><code>hints</code></strong>: Progressive hints to assist users, also written in R-bot’s voice.</li>
+<li><strong><code>feedback</code></strong>: Encouraging feedback displayed upon block completion.</li>
+<li><strong><code>answers</code></strong>: Variables or expected outputs to validate user input.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="string-formatting-with-tag...tag" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="string-formatting-with-tag...tag"><span class="header-section-number">4.2</span> String Formatting with <code>{{#tag}}...{{/tag}}</code></h2>
+<p>Use <code>{{#tag}}...{{/tag}}</code> to format console output. This simplifies readability for non-technical writers.</p>
+<section id="supported-tags" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="supported-tags"><span class="header-section-number">4.2.1</span> Supported Tags</h3>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 39%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Tag</strong></th>
+<th><strong>Purpose</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>green</code></td>
+<td>Highlight important instructions or terms in green.</td>
+<td><code>{{#green}}Remember to save your work!{{/green}}</code></td>
+</tr>
+<tr class="even">
+<td><code>var</code></td>
+<td>Bold variables to draw attention.</td>
+<td><code>Assign the value to {{#var}}x{{/var}}.</code></td>
+</tr>
+<tr class="odd">
+<td><code>func</code></td>
+<td>Italicize and cyan color for functions.</td>
+<td><code>Call {{#func}}print(){{/func}} to see the result.</code></td>
+</tr>
+<tr class="even">
+<td><code>code</code></td>
+<td>Monospaced text for R code snippets.</td>
+<td><code>Type {{#code}}x &lt;- 42{{/code}} in the console.</code></td>
+</tr>
+<tr class="odd">
+<td><code>file</code></td>
+<td>Bold and italicized for filenames or paths.</td>
+<td><code>Save to {{#file}}./out/results.csv{{/file}}.</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="writing-yaml-sections" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="writing-yaml-sections"><span class="header-section-number">4.3</span> Writing YAML Sections</h2>
+<section id="html-section" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="html-section"><span class="header-section-number">4.3.1</span> HTML Section</h3>
+<p>Use HTML for visuals and context. Avoid using <code>{{#tag}}</code> syntax here; use HTML styling instead.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  &lt;div&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    &lt;h2&gt;Welcome to Numerious Inc.&lt;/h2&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    &lt;p&gt;Here’s an overview of your first task.&lt;/p&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  &lt;/div&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="question-section" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="question-section"><span class="header-section-number">4.3.2</span> Question Section</h3>
+<p>Provide instructions using <code>{{#tag}}</code> formatting for clarity.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">question</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"To confirm your role, assign your job title to {{#var}}role{{/var}}."</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"Example: {{#code}}role &lt;- 'Data Analyst'{{/code}}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="code-section" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="code-section"><span class="header-section-number">4.3.3</span> Code Section</h3>
+<p>Write valid R code that solves the block.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">code</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"role &lt;- 'Data Analyst'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="hints-section" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="hints-section"><span class="header-section-number">4.3.4</span> Hints Section</h3>
+<p>Write progressive hints to guide the user.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hints</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"Assign {{#green}}'Data Analyst'{{/green}} to {{#var}}role{{/var}}."</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"The correct syntax is {{#code}}role &lt;- 'Data Analyst'{{/code}}."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="feedback-section" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="feedback-section"><span class="header-section-number">4.3.5</span> Feedback Section</h3>
+<p>Encourage users with feedback upon completion.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">feedback</span><span class="kw">:</span><span class="at"> </span><span class="st">"Great job! You’ve successfully assigned {{#var}}role{{/var}}. Let’s move on."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="answers-section" class="level3" data-number="4.3.6">
+<h3 data-number="4.3.6" class="anchored" data-anchor-id="answers-section"><span class="header-section-number">4.3.6</span> Answers Section</h3>
+<p>List variables or outputs the system should validate.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">answers</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"role"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="example-block" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="example-block"><span class="header-section-number">4.4</span> Example Block</h2>
+<p>Here’s a complete example of a YAML block:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">block1</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">  html</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    &lt;div&gt;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      &lt;h2&gt;Welcome to Numerious Inc.&lt;/h2&gt;</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      &lt;p&gt;Let's get started with your first task!&lt;/p&gt;</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    &lt;/div&gt;</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">question</span><span class="kw">:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">"Assign your job title to {{#var}}role{{/var}}."</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">"Example: {{#code}}role &lt;- 'Data Analyst'{{/code}}"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">"role &lt;- 'Data Analyst'"</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hints</span><span class="kw">:</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">"Think of your job title. Assign it to {{#var}}role{{/var}}."</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">"Use this syntax: {{#code}}role &lt;- 'Data Analyst'{{/code}}."</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">feedback</span><span class="kw">:</span><span class="at"> </span><span class="st">"Excellent work! You’ve successfully assigned {{#var}}role{{/var}}."</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">answers</span><span class="kw">:</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">"role"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="guidelines-for-non-technical-writers" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="guidelines-for-non-technical-writers"><span class="header-section-number">4.5</span> Guidelines for Non-Technical Writers</h2>
+<ul>
+<li><strong>Focus on Clarity</strong>: Write instructions and hints as if explaining to a beginner.</li>
+<li><strong>Use Tags Sparingly</strong>: Use <code>{{#tag}}...{{/tag}}</code> only when needed.</li>
+<li><strong>Test Your Code</strong>: Ensure the <code>code</code> section works in R before submitting.</li>
+<li><strong>Encourage Progress</strong>: Keep feedback positive and motivating.</li>
+<li><strong>Be Consistent</strong>: Follow the same structure and formatting across lessons.</li>
+</ul>
+<p>This guide ensures a structured, user-friendly approach to writing YAML courses.</p>
 
 
 </section>
@@ -598,10 +774,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ide_demos.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">IDE Demos Conversations</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./getting_started.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./baseR_Statements_and_Variables.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statements and Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
