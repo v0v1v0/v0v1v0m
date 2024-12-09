@@ -2,106 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/index.html</loc>
-    <lastmod>2024-12-09T17:16:46.103Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.674Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/getting_started.html</loc>
-    <lastmod>2024-12-09T17:16:46.114Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.681Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/ide_components.html</loc>
-    <lastmod>2024-12-09T17:16:46.149Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.720Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/ide_demos.html</loc>
-    <lastmod>2024-12-09T17:16:46.183Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.742Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/ide_yaml_lesson.html</loc>
-    <lastmod>2024-12-09T17:16:46.195Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.765Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Statements_and_Variables.html</loc>
-    <lastmod>2024-12-09T17:16:46.211Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.777Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Working_with_Vectors.html</loc>
-    <lastmod>2024-12-09T17:16:46.242Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.810Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Introduction_to_Lists.html</loc>
-    <lastmod>2024-12-09T17:16:46.259Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.828Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Matrix_Operations.html</loc>
-    <lastmod>2024-12-09T17:16:46.283Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.845Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Working_with_Data_Frames.html</loc>
-    <lastmod>2024-12-09T17:16:46.339Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.902Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Combining_and_Reshaping_Data_Structures.html</loc>
-    <lastmod>2024-12-09T17:16:46.379Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.945Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Casting_and_Structure_Manipulations.html</loc>
-    <lastmod>2024-12-09T17:16:46.429Z</lastmod>
+    <lastmod>2024-12-09T19:18:38.999Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Functions_in_R.html</loc>
-    <lastmod>2024-12-09T17:16:46.463Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.028Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Programming_in_R.html</loc>
-    <lastmod>2024-12-09T17:16:46.509Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.072Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_String_Manipulation.html</loc>
-    <lastmod>2024-12-09T17:16:46.573Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.132Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Applying_Functions_Across_Data.html</loc>
-    <lastmod>2024-12-09T17:16:46.619Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.162Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Probability_Distributions_and_Sampling.html</loc>
-    <lastmod>2024-12-09T17:16:46.651Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.201Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Dates_and_Times.html</loc>
-    <lastmod>2024-12-09T17:16:46.709Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.242Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Basic_Graphics.html</loc>
-    <lastmod>2024-12-09T17:16:46.769Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.302Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Working_with_Files.html</loc>
-    <lastmod>2024-12-09T17:16:46.805Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.335Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_R_Environment_Essentials.html</loc>
-    <lastmod>2024-12-09T17:16:46.821Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.352Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/baseR_Miscellaneous.html</loc>
-    <lastmod>2024-12-09T17:16:46.966Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.480Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/appendices_references.html</loc>
-    <lastmod>2024-12-09T17:16:46.972Z</lastmod>
+    <lastmod>2024-12-09T19:18:39.488Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/Scaffolding---Reference-Manual.docx</loc>
-    <lastmod>2024-12-09T17:15:38.005Z</lastmod>
+    <lastmod>2024-12-09T19:17:28.194Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/Scaffolding---Reference-Manual.pdf</loc>
-    <lastmod>2024-12-09T17:16:25.745Z</lastmod>
+    <lastmod>2024-12-09T19:18:18.012Z</lastmod>
   </url>
   <url>
     <loc>https://v0v1v0.github.io/v0v1v0m/Scaffolding---Reference-Manual.epub</loc>
-    <lastmod>2024-12-09T17:16:43.009Z</lastmod>
+    <lastmod>2024-12-09T19:18:35.612Z</lastmod>
   </url>
 </urlset>
