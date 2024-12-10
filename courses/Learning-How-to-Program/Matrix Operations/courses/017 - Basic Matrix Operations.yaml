@@ -1,0 +1,102 @@
+block1:
+  question:
+    - "R-bot: Let’s start by transposing a matrix. Transposing flips rows into columns and vice versa. Create a 2 by 3 matrix with numbers 1 to 6 using {{#code}}matrix(1:6, nrow = 2, ncol = 3){{/code}}. Then, use {{#func}}t(){{/func}} to transpose it."
+    - "What are the dimensions of the transposed matrix?"
+  code:
+    - "my_matrix <- matrix(1:6, nrow = 2, ncol = 3)"
+    - "transposed_matrix <- t(my_matrix)"
+  answers:
+    - "my_matrix"
+    - "transposed_matrix"
+  hints:
+    - "R-bot: Use the {{#func}}matrix(){{/func}} function to create the matrix, then {{#func}}t(){{/func}} to transpose."
+    - "R-bot: Transposing swaps rows and columns. Check the dimensions of the transposed matrix."
+  feedback: "R-bot: Great! The transpose of a 2x3 matrix becomes a 3x2 matrix."
+
+block2:
+  question:
+    - "R-bot: Explore matrix indexing with {{#var}}drop{{/var}}. Select the first row of {{#var}}my_matrix{{/var}} using {{#code}}my_matrix[1, ]{{/code}}. Then, keep the structure of the row as a matrix using {{#code}}my_matrix[1, , drop = FALSE{{/code}}."
+    - "Reflect: How does adding {{#code}}drop = FALSE{{/code}} change the result?"
+  code:
+    - "row_as_vector <- my_matrix[1, ]"
+    - "row_as_matrix <- my_matrix[1, , drop = FALSE]"
+  answers:
+    - "row_as_vector"
+    - "row_as_matrix"
+  hints:
+    - "R-bot: Index a matrix by specifying rows and columns within square brackets."
+    - "R-bot: Add {{#code}}drop = FALSE{{/code}} to retain the matrix structure."
+  feedback: "R-bot: Well done! Adding {{#code}}drop = FALSE{{/code}} prevents R from simplifying the result into a vector."
+
+block3:
+  question:
+    - "R-bot: Let’s compare element-wise multiplication and true matrix multiplication. Multiply {{#var}}my_matrix{{/var}} by a vector {{#code}}c(1, 1, 1){{/code}} using both {{#code}}*{{/code}} and {{#code}}%*%{{/code}}."
+    - "Predict: How does the result of {{#code}}my_matrix * c(1, 1, 1){{/code}} differ from {{#code}}my_matrix %*% c(1, 1, 1){{/code}}?"
+  code:
+    - "elementwise_product <- my_matrix * c(1, 1, 1)"
+    - "matrix_product <- my_matrix %*% c(1, 1, 1)"
+  answers:
+    - "elementwise_product"
+    - "matrix_product"
+  hints:
+    - "R-bot: {{#code}}*{{/code}} multiplies corresponding elements. {{#code}}%*%{{/code}} performs true matrix multiplication."
+    - "R-bot: Remember, for {{#code}}%*%{{/code}}, the number of columns in the matrix must match the length of the vector."
+  feedback: "R-bot: Great! Element-wise multiplication operates directly on individual elements, while {{#code}}%*%{{/code}} follows linear algebra rules."
+
+block4:
+  question:
+    - "R-bot: Find the inverse of a matrix using {{#func}}solve(){{/func}}. Start with a 3 by 3 matrix {{#code}}my_matrix <- matrix(c(1, 0, 2, 4, 5, 0, 6, 0, 1), nrow = 3){{/code}}. Then calculate its inverse and verify the result by multiplying the matrix with its inverse."
+    - "What is the resulting matrix after the multiplication?"
+  code:
+    - "my_matrix <- matrix(c(1, 0, 2, 4, 5, 0, 6, 0, 1), nrow = 3)"
+    - "my_matrix_inverse <- solve(my_matrix)"
+    - "identity_matrix <- my_matrix %*% my_matrix_inverse"
+  answers:
+    - "my_matrix"
+    - "my_matrix_inverse"
+    - "identity_matrix"
+  hints:
+    - "R-bot: Use {{#func}}solve(){{/func}} to compute the inverse of a square matrix."
+    - "R-bot: Multiply the matrix by its inverse to verify the result. It should return the identity matrix."
+  feedback: "R-bot: Excellent! Multiplying a matrix by its inverse gives the identity matrix."
+
+block5:
+  question:
+    - "R-bot: Create an identity matrix using {{#func}}diag(){{/func}}. Type {{#code}}identity_matrix <- diag(3){{/code}} to create a 3 by 3 identity matrix."
+    - "Reflect: What are the values in the diagonal of the identity matrix?"
+  code:
+    - "identity_matrix <- diag(3)"
+  answers:
+    - "identity_matrix"
+  hints:
+    - "R-bot: The {{#func}}diag(){{/func}} function generates identity matrices. The diagonal contains ones, and all other elements are zero."
+    - "R-bot: The size of the matrix is determined by the argument in {{#func}}diag()."
+  feedback: "R-bot: Great! Identity matrices are essential in linear algebra as the multiplicative identity."
+
+block6:
+  question:
+    - "R-bot: Calculate row and column sums using {{#func}}rowSums(){{/func}} and {{#func}}colSums(){{/func}}. Create a new matrix {{#code}}my_matrix <- matrix(1:12, nrow=3){{/code}}, then calculate the sums of rows and columns."
+    - "Which row has the highest sum? Which column has the lowest?"
+  code:
+    - "my_matrix <- matrix(1:12, nrow = 3)"
+    - "row_sums <- rowSums(my_matrix)"
+    - "col_sums <- colSums(my_matrix)"
+  answers:
+    - "row_sums"
+    - "col_sums"
+  hints:
+    - "R-bot: {{#func}}rowSums(){{/func}} adds elements across rows. {{#func}}colSums(){{/func}} adds elements across columns."
+    - "R-bot: Compare the sums to find the highest and lowest values."
+  feedback: "R-bot: Well done! Calculating row and column sums is quick and efficient in R."
+
+block7:
+  question:
+    - "R-bot: Quiz time! Which of these statements is TRUE? Assign the correct answer number to {{#var}}quiz_answer{{/var}}.\n1. {{#func}}%*%{{/func}} performs element-wise multiplication.\n2. {{#func}}solve(){{/func}} calculates the determinant of a matrix.\n3. {{#func}}diag(){{/func}} creates a diagonal matrix.\n4. Row and column sums require looping over elements manually."
+  code:
+    - "quiz_answer <- 3"
+  answers:
+    - "quiz_answer"
+  hints:
+    - "R-bot: Think about the purpose of each function we’ve covered: {{#func}}%*%{{/func}}, {{#func}}solve(){{/func}}, {{#func}}diag(){{/func}}, and summation functions."
+    - "R-bot: Only one statement aligns with the functionality of {{#func}}diag(){{/func}}."
+  feedback: "R-bot: Correct! {{#func}}diag(){{/func}} creates a diagonal matrix, and the rest of the statements are false."

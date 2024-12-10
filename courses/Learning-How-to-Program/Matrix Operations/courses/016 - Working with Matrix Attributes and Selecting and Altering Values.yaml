@@ -1,0 +1,97 @@
+block1:
+  question:
+    - "R-bot: Welcome to this lesson! Before we begin, please open the associated R script for this lesson. You'll find placeholders and commented suggestions there, waiting for you to fill in the answers."
+    - "Once the R script is open, let's get started!"
+  hints:
+    - "R-bot: Check your files for the R script named similarly to this lesson."
+    - "R-bot: Keep this YAML file and the R script side-by-side for the best experience."
+  feedback: "R-bot: Excellent! Let's dive into the lesson."
+
+block2:
+  question:
+    - "R-bot: Let’s start by creating a matrix and adding row and column names."
+    - "Create {{#var}}my_matrix{{/var}} using {{#code}}my_matrix <- matrix(1:9, nrow=3){{/code}}."
+    - "Assign row names as {{#code}}Row1, Row2, Row3{{/code}} and column names as {{#code}}Col1, Col2, Col3{{/code}}."
+    - "What is the value in the second row and third column? Assign it to {{#var}}value_second_row_third_col{{/var}}."
+  code:
+    - "my_matrix <- matrix(1:9, nrow=3)"
+    - "rownames(my_matrix) <- c('Row1', 'Row2', 'Row3')"
+    - "colnames(my_matrix) <- c('Col1', 'Col2', 'Col3')"
+    - "value_second_row_third_col <- my_matrix[2, 3]"
+  answers:
+    - "my_matrix"
+    - "value_second_row_third_col"
+  hints:
+    - "R-bot: Use {{#func}}rownames(){{/func}} and {{#func}}colnames(){{/func}} to assign labels to rows and columns."
+    - "R-bot: Access specific values using {{#code}}my_matrix[row, column]{{/code}}."
+  feedback: "R-bot: Great! Row and column names make your matrix more readable and help you identify elements quickly."
+
+block3:
+  question:
+    - "R-bot: Use {{#func}}dim(){{/func}} to check the current dimensions of {{#var}}my_matrix{{/var}}. What does the function return?"
+    - "Assign the output to {{#var}}current_dimensions{{/var}}."
+    - "Change the dimensions of the matrix to 1 row and 9 columns using {{#code}}dim(my_matrix) <- c(1, 9){{/code}}."
+    - "Predict: What will the value in the first row and fifth column be? Assign it to {{#var}}value_first_row_fifth_col{{/var}}."
+  code:
+    - "current_dimensions <- dim(my_matrix)"
+    - "dim(my_matrix) <- c(1, 9)"
+    - "value_first_row_fifth_col <- my_matrix[1, 5]"
+  answers:
+    - "current_dimensions"
+    - "value_first_row_fifth_col"
+  hints:
+    - "R-bot: {{#func}}dim(){{/func}} returns a vector with the number of rows and columns."
+    - "R-bot: Adjust dimensions by assigning a new vector, e.g., {{#code}}dim(my_matrix) <- c(new_rows, new_cols){{/code}}."
+  feedback: "R-bot: Well done! Adjusting dimensions reshapes the matrix while preserving its elements."
+
+block4:
+  question:
+    - "R-bot: Reset {{#var}}my_matrix{{/var}} to its original 3x3 shape using the same code from Block 2."
+    - "Select the value in the first row and second column using {{#code}}my_matrix[1, 2]{{/code}} and assign it to {{#var}}value_first_row_second_col{{/var}}."
+    - "Predict: What would {{#code}}my_matrix[, 2]{{/code}} return? Assign the result to {{#var}}entire_second_column{{/var}}."
+  code:
+    - "my_matrix <- matrix(1:9, nrow=3)"
+    - "rownames(my_matrix) <- c('Row1', 'Row2', 'Row3')"
+    - "colnames(my_matrix) <- c('Col1', 'Col2', 'Col3')"
+    - "value_first_row_second_col <- my_matrix[1, 2]"
+    - "entire_second_column <- my_matrix[, 2]"
+  answers:
+    - "value_first_row_second_col"
+    - "entire_second_column"
+  hints:
+    - "R-bot: Use {{#code}}[row, column]{{/code}} to select specific elements."
+    - "R-bot: Leave rows or columns blank to select entire rows or columns."
+  feedback: "R-bot: Nice work! Selecting rows and columns allows you to isolate parts of the matrix for analysis."
+
+block5:
+  question:
+    - "R-bot: Modify the matrix values. Change the value in the first row and second column to {{#code}}99{{/code}} using {{#code}}my_matrix[1, 2] <- 99{{/code}}."
+    - "Update all values in the first column to {{#code}}50{{/code}} using {{#code}}my_matrix[, 1] <- 50{{/code}}."
+    - "What is the new value in the third row and first column? Assign it to {{#var}}value_third_row_first_col{{/var}}."
+  code:
+    - "my_matrix[1, 2] <- 99"
+    - "my_matrix[, 1] <- 50"
+    - "value_third_row_first_col <- my_matrix[3, 1]"
+  answers:
+    - "my_matrix"
+    - "value_third_row_first_col"
+  hints:
+    - "R-bot: Use {{#code}}[row, column] <- value{{/code}} to assign new values to specific positions."
+    - "R-bot: Assign vectors to entire rows or columns using the same approach."
+  feedback: "R-bot: Excellent! Modifying values in a matrix lets you adapt your data dynamically."
+
+block6:
+  question:
+    - "R-bot: Quiz time! Which of the following is TRUE about working with matrices in R? Assign the correct answer number to {{#var}}quiz_answer{{/var}}."
+    - "1. Row and column names must be assigned during matrix creation."
+    - "2. The {{#func}}dim(){{/func}} function only works with square matrices."
+    - "3. You can select entire rows or columns using {{#code}}[ , ]{{/code}} with one index blank."
+    - "4. Matrices in R cannot be reshaped once created."
+  code:
+    - "quiz_answer <- 3"
+  answers:
+    - "quiz_answer"
+  hints:
+    - "R-bot: Think about how flexible matrices are and which methods allow for dynamic interaction."
+    - "R-bot: Recall the syntax for selecting rows and columns using blank indices."
+  feedback: "R-bot: Correct! Blank indices let you select entire rows or columns, making matrix manipulation easy."
